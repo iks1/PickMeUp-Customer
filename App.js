@@ -1,11 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import FoodCard from "./components/FoodCard";
+import ShopCard from "./components/Shopcard";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>lol</Text>
       <StatusBar style="auto" />
+      {/* <ShopCard/> */}
+      <FoodCard />
     </View>
   );
 }
@@ -13,8 +17,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
