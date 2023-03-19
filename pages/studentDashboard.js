@@ -13,18 +13,14 @@ import Shake from '../assets/shake.png'
 import Maggie from '../assets/maggi.png'
 import SearchBar from '../components/SearchBar'
 import NavBar from '../components/Navbar'
+import Header from '../components/header'
 
 const Dash=()=>{
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
             <View style={styles.up}>
-                <View style={styles.head}>
-                    <Text style={styles.headTex}>
-                        Hey, Aarya
-                    </Text>
-                    <Profile/>
-                </View>
+                <Header text="Hey, Aarya" />
                 <SearchBar textInput="Search here for restauran, food, etc"/>
             </View>
             <View style={styles.down}>
