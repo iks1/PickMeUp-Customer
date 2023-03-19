@@ -6,7 +6,7 @@ import NavBar from './components/Navbar';
 import canteen from './assets/canteen.png';
 import stationery from './assets/stationery.png';
 
-export default function App() {
+export default function App() { 
   return (
     <View style={styles.container}>
       {/* <Text>lol</Text>
