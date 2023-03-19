@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     backgroundColor: "#FFFFFF",
-    marginTop: -1,
+    // marginTop: -1,
   },
 });
 
