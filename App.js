@@ -20,10 +20,10 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     <View style={styles.container}>
-      <Text>lol</Text>
+      {/* <Text>lol</Text> */}
       <StatusBar style="auto" />
       {/* <ShopCard/> */}
-      <FoodCard />
+      {/* <FoodCard /> */}
     </View>
   );
 }
@@ -31,6 +31,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
   },

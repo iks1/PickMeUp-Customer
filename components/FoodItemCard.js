@@ -9,11 +9,11 @@ const FoodCard = (props) => {
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <View style={styles.left}>
-          <View style={styles.headingDecorator}>
-            <NonVegIcon />
-            <Text style={styles.tag}>{"  Bestseller"}</Text>
-          </View>
           <View>
+            <View style={styles.headingDecorator}>
+              <NonVegIcon />
+              <Text style={styles.tag}>{"  Bestseller"}</Text>
+            </View>
             <Text style={styles.heading}>Chicken Tikka Masala</Text>
             <Text style={styles.price}>₹265</Text>
           </View>
@@ -26,9 +26,7 @@ const FoodCard = (props) => {
         <View style={styles.right}>
           {/* <View style={styles.box}></View> */}
           <Image source={chickenImage} style={styles.image} />
-          <View style={styles.addBtn}>
-            <Text>Add +</Text>
-          </View>
+          <Text style={styles.addBtn}>Add +</Text>
         </View>
       </View>
       <HorizontalDashedLine style={styles.line} />
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
   },
   right: {
     alignItems: "flex-end",
+    justifyContent: "center",
     // backgroundColor: "black",
   },
   left: {
@@ -62,6 +61,7 @@ const styles = StyleSheet.create({
   },
   image: {
     marginRight: 0,
+    borderRadius: 20,
     // marginLeft: 10,
   },
   heading: {
@@ -69,9 +69,11 @@ const styles = StyleSheet.create({
     fontWeight: 500,
   },
   addBtn: {
+    fontWeight: 500,
     backgroundColor: "#EEEDFA",
+    textAlign: "center",
     borderRadius: 30,
-    paddingHorizontal: 15,
+    width: "80%",
     paddingVertical: 7,
     marginTop: -10,
     alignSelf: "center",
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 7,
   },
   ratingValue: {
     color: "white",
@@ -114,12 +117,12 @@ const styles = StyleSheet.create({
 
     display: "flex",
     flexDirection: "row",
-    padding: 30,
+    padding: "6%",
     justifyContent: "space-between",
   },
   mainContainer: {
     backgroundColor: "#FFFFFF",
-    marginTop: -1,
+    // marginTop: -1,
   },
 });
 
