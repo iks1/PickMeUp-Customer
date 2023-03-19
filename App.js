@@ -1,8 +1,5 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import FoodCard from "./components/FoodCard";
-import ShopCard from "./components/Shopcard";
-import ShopCardInFocus from "./components/ShopCardInFocus";
 import ShopPage from "./pages/ShopPage";
 
 export default function App() {

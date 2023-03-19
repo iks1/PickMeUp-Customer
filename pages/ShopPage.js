@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, View } from "react-native";
 import FoodCard from "../components/FoodCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
+import SearchBar from "../components/SearchBar";
 
 const ShopPage = () => {
   const [veg, setVeg] = useState(true);
@@ -14,6 +15,7 @@ const ShopPage = () => {
           <ShopCardInFocus />
         </View>
         <View style={styles.searchArea}>
+          <SearchBar />
           <View>
             <ToggleSwitch
               isOn={veg}
@@ -43,11 +45,11 @@ const ShopPage = () => {
 
 const styles = StyleSheet.create({
   toggleView: {
-    alignSelf:"flex-end",
+    alignSelf: "flex-end",
   },
   searchArea: {
     display: "flex",
-    flexDirection:"column",
+    flexDirection: "column",
   },
   foodCardStyle: {
     marginTop: 10,
