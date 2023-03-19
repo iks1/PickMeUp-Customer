@@ -3,36 +3,44 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import NonVegIcon from "../assets/Icons/NonVegIcon";
 import StarIcon from "../assets/Icons/StarIcon";
 import chickenImage from "./../assets/Img/Chicken.png";
+import HorizontalDashedLine from "./HorizontalDashedLine";
 const FoodCard = (props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.left}>
-        <View style={styles.headingDecorator}>
-          <NonVegIcon />
-          <Text style={styles.tag}>{"  Bestseller"}</Text>
+    <View style={styles.mainContainer}>
+      <View style={styles.container}>
+        <View style={styles.left}>
+          <View style={styles.headingDecorator}>
+            <NonVegIcon />
+            <Text style={styles.tag}>{"  Bestseller"}</Text>
+          </View>
+          <View>
+            <Text style={styles.heading}>Chicken Tikka Masala</Text>
+            <Text style={styles.price}>₹265</Text>
+          </View>
+          <View style={styles.rating}>
+            <Text style={styles.ratingValue}>{"4.0  "}</Text>
+            <StarIcon />
+          </View>
         </View>
-        <View>
-          <Text style={styles.heading}>Chicken Tikka Masala</Text>
-          <Text style={styles.price}>₹265</Text>
-        </View>
-        <View style={styles.rating}>
-          <Text style={styles.ratingValue}>{"4.0  "}</Text>
-          <StarIcon />
-        </View>
-      </View>
 
-      <View style={styles.right}>
-        {/* <View style={styles.box}></View> */}
-        <Image source={chickenImage} style={styles.image} />
-        <View style={styles.addBtn}>
-          <Text>Add +</Text>
+        <View style={styles.right}>
+          {/* <View style={styles.box}></View> */}
+          <Image source={chickenImage} style={styles.image} />
+          <View style={styles.addBtn}>
+            <Text>Add +</Text>
+          </View>
         </View>
       </View>
+      <HorizontalDashedLine style={styles.line} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  line: {
+    zIndex: 3, // works on ios
+    elevation: 3, // works on android
+  },
   price: {
     fontSize: 18,
   },
@@ -100,7 +108,7 @@ const styles = StyleSheet.create({
     position: "relative",
     width: "100%",
     height: 170,
-    marginVertical: 10,
+    marginVertical: 0,
     backgroundColor: "#FFFFFF",
     // backgroundColor: "black",
 
@@ -108,6 +116,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 30,
     justifyContent: "space-between",
+  },
+  mainContainer: {
+    backgroundColor: "#FFFFFF",
+    marginTop: -1,
   },
 });
 
