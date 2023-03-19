@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet} from "react-native";
+import LocationCard from "../components/LocationCard";
 import {Shadow} from 'react-native-shadow-2';  
 import Profile from './../assets/profile.svg'
 import ShopCard from './../components/Shopcard'
@@ -14,23 +15,31 @@ import Maggie from '../assets/maggi.png'
 import SearchBar from '../components/SearchBar'
 import NavBar from '../components/Navbar'
 import Header from '../components/header'
+import SmallShopCard from "../components/smallShopCard";
+import Recommended from './../components/recommended'
+import bg from './../assets/recdummy.png'
 
 const Dash=()=>{
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
             <View style={styles.up}>
-                <Header text="Hey, Aarya" />
+                <Header text="Order with ease" />
                 <SearchBar textInput="Search here for restauran, food, etc"/>
             </View>
             <View style={styles.down}>
+                <View style={styles.subHead}>
+                        <Text style={styles.subHeadTex} >
+                            Locations Across Campus
+                        </Text>
+                </View>
                 <View style={styles.choice}>
                 <Shadow
                 distance={30}  
                 startColor={'#00000010'}  
                 radius={16} >
                     <View style={styles.wrapper2}>
-                    <FoodCard heading1="Food" heading2="Order Food from across the campus" image={Pizza} />
+                    <LocationCard text='Canteen'/>
                     </View>
                 </Shadow>
 
@@ -39,7 +48,25 @@ const Dash=()=>{
                 startColor={'#00000010'}  
                 radius={16} >
                     <View style={styles.wrapper2}>
-                    <FoodCard heading1="Food" heading2="Order Food from across the campus" image={Pizza} />
+                    <LocationCard text='Khoka'/>
+                    </View>
+                </Shadow>
+
+                <Shadow
+                distance={30}  
+                startColor={'#00000010'}  
+                radius={16} >
+                    <View style={styles.wrapper2}>
+                    <LocationCard text='Market Complex'/>
+                    </View>
+                </Shadow>
+
+                <Shadow
+                distance={30}  
+                startColor={'#00000010'}  
+                radius={16} >
+                    <View style={styles.wrapper2}>
+                    <LocationCard text='Food Court'/>
                     </View>
                 </Shadow>
                     
@@ -64,7 +91,7 @@ const Dash=()=>{
                 startColor={'#00000010'}  
                 radius={16} >
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
+                        <FoodCard2 heading1="Oreo Shake" image={Shake}/>
                     </View>
                 </Shadow>
                 <Shadow
@@ -76,15 +103,51 @@ const Dash=()=>{
                     </View>
                 </Shadow>
                 </View>
+                <View style={styles.subHead}>
+                        <Text style={styles.subHeadTex} >
+                            Places You Love
+                        </Text>
+                        <Edit/>
+                </View>
+                <View style={styles.placeYouLove}>
+                    <View style={styles.shadow2}>
+                <Shadow
+                distance={30}  
+                startColor={'#00000010'}  
+                radius={16} >
+                    <View style={styles.wrapper4}>
+                    <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
+                    </View>
+                </Shadow>
+                </View>
 
+                <View style={styles.shadow2}>
+                <Shadow
+                distance={30}  
+                startColor={'#00000010'}  
+                radius={16} >
+                    <View style={styles.wrapper4}>
+                    <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
+                    </View>
+                </Shadow>
+                </View>
+                </View>
+                <View style={styles.subHead}>
+                        <Text style={styles.subHeadTex} >
+                            Recommended
+                        </Text>
+                </View>
+                <View style={styles.rec}>
+                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                </View>
                 
                 
                 <View style={styles.subHead}>
                         <Text style={styles.subHeadTex} >
-                            Places Near You
-                        </Text>
-                        <Text style={styles.LinkText}>
-                            See all
+                            Explore Places
                         </Text>
                 </View>
                 <View style={styles.nearYou}>
@@ -182,6 +245,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         marginBottom:16,
+        paddingLeft:10,
+        paddingRight:10,
     },
     nearYou:{
         width:"100%",
@@ -191,16 +256,18 @@ const styles = StyleSheet.create({
     },
     choice:{
         width:"100%",
-        height:188,
+        height:268,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
         padding:25,
+        flexWrap:'wrap'
     },
     wrapper2:{
         borderRadius:16,
-        height:156,
-        width:152,
+        height: 96,
+        width: 156,
+        marginBottom:16,
     },
     food:{
         height:158,
@@ -214,5 +281,32 @@ const styles = StyleSheet.create({
         height:110,
         width:110,
     },
+    placeYouLove:{
+        height:279,
+        width:"100%",
+        flexDirection:'row',
+    },
+    wrapper4:{
+        width: 236, 
+        height: 230, 
+        backgroundColor: "#FFFFFF", 
+        borderRadius: 16, 
+    },
+    shadow2:{
+        width: 236, 
+        height: 230, 
+        marginTop: 17,
+        marginBottom: 32,
+        marginRight: 16,
+        marginLeft: 16,
+        borderRadius:6,
+    },
+    rec:{
+        height:426,
+        width:"100%",
+        flexDirection:'row',
+        justifyContent:'space-between',
+        flexWrap:'wrap'
+    }
 })
 
