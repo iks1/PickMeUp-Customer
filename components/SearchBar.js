@@ -7,7 +7,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { useState } from "react";
 
 const SearchBar = props => {
-
+    
     const [text, setText] = useState('');
     return (
         <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20}]}>
