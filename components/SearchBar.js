@@ -10,9 +10,9 @@ const SearchBar = props => {
 
     const [text, setText] = useState('');
     return (
-        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10}]}>
+        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20}]}>
             <TextInput
-                style={styles.text}
+                style={[styles.text,{width:"80%"}]}
                 placeholder={props.textInput}
                 placeholderTextColor="#A9A9A9"
             />
@@ -35,26 +35,20 @@ const styles = props => StyleSheet.create({
         flexDirection: 'row',
         // alignItems: 'center',
         borderRadius: 16,
+        justifyContent:'space-around',
         marginLeft: 16,
         marginTop: 12,
         height:100,
-        width:100,
-    },
-    box: {
-        display:"flex",
-        flexDirection:"row",
-        justifyContent:"center",
-        alignItems:"center",
-        width:100,
-        height:100,
-        backgroundColor:"red",
+        width:"90%",
+        backgroundColor:'white'
     },
     text: {
         color:"#6F6F6F", 
         // paddingLeft:20, 
         // paddingTop:"4%"
-        flex: 0.5,
-        fontSize: 14
+        fontSize: 14,
+        backgroundColor:'white',
+        width:'80%'
     },
     iconContainer: {
         width: 1, 
@@ -63,6 +57,7 @@ const styles = props => StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         flex: 0.5,
+        backgroundColor:'white'
       },
     
 });
