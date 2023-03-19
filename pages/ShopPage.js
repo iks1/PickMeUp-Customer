@@ -4,6 +4,7 @@ import FoodCard from "../components/FoodCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar";
+import ShopHeader from "../components/ShopHeader";
 
 const ShopPage = () => {
   const [veg, setVeg] = useState(true);
@@ -11,24 +12,27 @@ const ShopPage = () => {
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
-        <View style={styles.shopCardStyle}>
-          <ShopCardInFocus />
-        </View>
-        <View style={styles.searchArea}>
-          <SearchBar />
-          <View>
-            <ToggleSwitch
-              isOn={veg}
-              onColor="green"
-              offColor="red"
-              label={label}
-              labelStyle={{ color: "black", fontWeight: "900" }}
-              size="medium"
-              onToggle={() => {
-                console.log("changed to : ", veg);
-                setVeg(!veg);
-              }}
-            />
+        <View style={styles.UpperParent}>
+          <ShopHeader isFavourite={0} />
+          <View style={styles.shopCardParent}>
+            <ShopCardInFocus />
+          </View>
+          <View style={styles.searchArea}>
+            <SearchBar textInput="Search for food items..." />
+            <View style={styles.toggleView}>
+              <ToggleSwitch
+                isOn={veg}
+                onColor="green"
+                offColor="red"
+                label={label}
+                labelStyle={{ color: "black", fontWeight: "900" }}
+                size="medium"
+                onToggle={() => {
+                  console.log("changed to : ", veg);
+                  setVeg(!veg);
+                }}
+              />
+            </View>
           </View>
         </View>
         <View style={styles.foodCardStyle}>
@@ -44,17 +48,29 @@ const ShopPage = () => {
 };
 
 const styles = StyleSheet.create({
+  UpperParent: {
+    display: "flex",
+    alignItems: "center",
+  },
   toggleView: {
     alignSelf: "flex-end",
+    paddingRight: "5%",
   },
   searchArea: {
     display: "flex",
-    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   foodCardStyle: {
     marginTop: 10,
   },
-  shopCardStyle: {},
+  shopCardParent: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   main: {
     backgroundColor: "#EFEEFA",
     height: "100%",

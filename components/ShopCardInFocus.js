@@ -6,33 +6,31 @@ import StarIcon from "../assets/Icons/StarIcon";
 
 const ShopCardInFocus = (props) => {
   return (
-    <View style={styles.parent}>
-      <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.head}>{"Dihing Canteen"}</Text>
-          <View style={styles.rating}>
-            <Text style={styles.ratingValue}>{"4.0  "}</Text>
-            <StarIcon />
-          </View>
+    <View style={styles.container}>
+      <View style={styles.heading}>
+        <Text style={styles.head}>{"Dihing Canteen"}</Text>
+        <View style={styles.rating}>
+          <Text style={styles.ratingValue}>{"4.0  "}</Text>
+          <StarIcon />
         </View>
-        <View>
-          <Text style={styles.description}>
-            {"400m · Snacks, Multi Cuisine  "}
-          </Text>
+      </View>
+      <View>
+        <Text style={styles.description}>
+          {"400m · Snacks, Multi Cuisine  "}
+        </Text>
+      </View>
+      <View style={styles.openClose}>
+        <Text style={styles.openBtn}>{"Open"}</Text>
+        <Text style={styles.closesInText}>{"  Closes in 4 hours"}</Text>
+      </View>
+      <View style={styles.shopDetails}>
+        <View style={styles.button}>
+          <PhoneIcon style={styles.buttonText} />
+          <Text style={styles.buttonText}>{"  Contact"}</Text>
         </View>
-        <View style={styles.openClose}>
-          <Text style={styles.openBtn}>{"Open"}</Text>
-          <Text style={styles.closesInText}>{"  Closes in 4 hours"}</Text>
-        </View>
-        <View style={styles.shopDetails}>
-          <View style={styles.button}>
-            <PhoneIcon style={styles.buttonText} />
-            <Text style={styles.buttonText}>{"  Contact"}</Text>
-          </View>
-          <View style={{ ...styles.button, marginLeft: 10 }}>
-            <ArrowInCircleIcon />
-            <Text style={{ ...styles.buttonText }}>{"  Directions"}</Text>
-          </View>
+        <View style={{ ...styles.button, marginLeft: 10 }}>
+          <ArrowInCircleIcon />
+          <Text style={{ ...styles.buttonText }}>{"  Directions"}</Text>
         </View>
       </View>
     </View>
@@ -117,16 +115,9 @@ const styles = StyleSheet.create({
     padding: 30,
     height: 170,
     width: "90%",
-    backgroundColor: "black",
+    backgroundColor: "white",
   },
-  parent:{
-    display:"flex",
-    flexDirection:"row",
-    width:"100%",
-    alignItems:"center",
-    justifyContent:'center'
-  }
-
+  parent: {},
 });
 
 export default ShopCardInFocus;
