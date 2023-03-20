@@ -90,52 +90,61 @@ const PrintDash=()=>{
                             </Text>
                             <Edit/>
                     </View>
-                    <View nestedScrollEnabled={true}  style={styles.places}>
-                        <Shadow
-                            distance={30}  
-                            startColor={'#00000010'}  
-                            radius={16} >
-                            <View style={styles.wrapper2}>
-                                <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
+                    <View style={styles.places}>
+                        <ScrollView horizontal={true}>
+                            <View style={styles.places1}>
+                                <Shadow
+                                    distance={30}  
+                                    startColor={'#00000010'}  
+                                    radius={16} >
+                                    <View style={styles.wrapper2}>
+                                        <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
+                                    </View>
+                                </Shadow>
                             </View>
-                        </Shadow>
-                        <Shadow
-                            distance={30}  
-                            startColor={'#00000010'}  
-                            radius={16} >
-                            <View style={styles.wrapper2}>
-                                <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
+                            <View style={styles.places1}>
+                                <Shadow
+                                    distance={30}  
+                                    startColor={'#00000010'}  
+                                    radius={16} >
+                                    <View style={styles.wrapper2}>
+                                        <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
+                                    </View>
+                                </Shadow>
                             </View>
-                        </Shadow>
+                        </ScrollView>
                     </View>
-
+                    
                     <View style={styles.subHead}>
                             <Text style={styles.subHeadTex} >
                                 Explore Places
                             </Text>
                     </View>
                     <View style={styles.explore}>
-                        <Shadow 
-                            distance={30}  
-                            startColor={'#00000010'}  
-                            radius={16} >
-                            <View style={styles.wrapper3}>
-                                <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                            </View>
-                        </Shadow>
-                    </View>
-                    <View style={styles.explore}>
-                        <Shadow
-                            distance={30}  
-                            startColor={'#00000010'}  
-                            radius={16} >
+                        <View style={styles.explore1}>
+                            <Shadow 
+                                distance={30}  
+                                startColor={'#00000010'}  
+                                radius={16} >
                                 <View style={styles.wrapper3}>
-                                <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                            </View>
-                        </Shadow>
+                                    <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
+                                </View>
+                            </Shadow>
+                        </View>
+                        <View style={styles.explore1}>
+                            <Shadow
+                                distance={30}  
+                                startColor={'#00000010'}  
+                                radius={16} >
+                                    <View style={styles.wrapper3}>
+                                    <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
+                                </View>
+                            </Shadow>
+                        </View>
+                        
                     </View>
-                    
                 </View>
+                    
                 
             </ScrollView>     
             <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
@@ -149,7 +158,7 @@ export default PrintDash
 
 const styles = StyleSheet.create({
     up:{
-        backgroungColor:'#5736B5',
+        // backgroungColor:'#5736B5',
         height:180,
         width:"100%",
     },
@@ -157,7 +166,7 @@ const styles = StyleSheet.create({
         height:"100%",
         width:"100%",
         borderRadius:16,
-        backgroundColor:'white',
+        backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
     },
@@ -193,13 +202,14 @@ const styles = StyleSheet.create({
         height:19,
         flexDirection:'row',
         justifyContent:'space-between',
-        marginTop:28,
+        marginTop:20,
     },
     options:{
         width:"100%",
         flexDirection:'column',
         justifyContent:'space-between',
         alignItems:'center',
+        marginBottom:12,
     },
     options1:{
         height:102,
@@ -208,20 +218,27 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding:16,
         marginTop:6,
-        marginBottom:6,
     },
     places:{
-        height:234,
         width:"100%",
         flexDirection:'row',
         justifyContent: 'space-between',
-        padding:16,
+        paddingTop:16,
+    },
+    places1:{
+        height:234,
+        width:236,
+        marginRight:5,
+        marginLeft:16,
     },
     explore:{
-        width:"100%",
-        height: 212,
+        marginBottom: 80,
         flexDirection:'column',
         justifyContent: 'space-between',
+    },
+    explore1:{
+        width:"100%",
+        height: 212,
         padding:16,
         marginBottom:16,
     },
@@ -229,16 +246,14 @@ const styles = StyleSheet.create({
         borderRadius:16,
         height:98,
         width:110,
-        marginRight:16,
     },
     wrapper2:{
         borderRadius:16,
         height:230,
         width:236,
-        marginRight:16,
     },
     wrapper3:{
-        height:208,
+        height:204,
         width:360,
         borderRadius:16,
     },
