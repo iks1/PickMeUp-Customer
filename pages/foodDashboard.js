@@ -25,7 +25,7 @@ const Dash=()=>{
         <ScrollView  style={styles.main}>
             <View style={styles.up}>
                 <Header text="Order with ease" />
-                <SearchBar textInput="Search here for restauran, food, etc"/>
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}><SearchBar textInput="Search here for restauran, food, etc"/></View>
             </View>
             <View style={styles.down}>
                 <View style={styles.subHead}>
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         alignItems:'center',
         paddingTop:20,
+        zIndex:1
     },
     main:{
         backgroundColor:'#5736B5',
@@ -309,4 +310,3 @@ const styles = StyleSheet.create({
         flexWrap:'wrap'
     }
 })
-
