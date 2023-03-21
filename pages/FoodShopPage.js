@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
-import FoodCard from "../components/FoodItemCard";
+import FoodCard from "../components/FoodCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar";
@@ -15,7 +15,7 @@ const FoodShopPage = () => {
   const toggleFavourite = () => {
     setIsFavourite((isFavourite) => !isFavourite);
   };
-
+  
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
