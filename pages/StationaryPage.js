@@ -5,12 +5,15 @@ import ReviewCard from "../components/ReviewCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ShopHeader from "../components/ShopHeader";
 import SearchBar from "../components/SearchBar";
+import PrintCard from "../components/Printcard";
+import chickenImage from "./../assets/Img/Chicken.png";
 
 const StationaryPage = () => {
   const [isFavourite, setIsFavourite] = useState(true);
   const toggleFavourite = () => {
     setIsFavourite((isFavourite) => !isFavourite);
   };
+
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
@@ -20,6 +23,14 @@ const StationaryPage = () => {
         </View>
         <View style={styles.searchArea}>
           <SearchBar textInput="Search for food items..." />
+        </View>
+        <View style={styles.stationaryServices}>
+          <View style={styles.headingView}>
+            <Text>Services</Text>
+          </View>
+          <View style={styles.wrapper1}>
+            <PrintCard heading1="Color Print" image={chickenImage} />
+          </View>
         </View>
         <View style={styles.reviewsContainer}>
           <View style={styles.headingView}>
@@ -48,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#6F6F6F",
   },
-  headingView:{
+  headingView: {
     marginLeft: 4,
     marginBottom: 15,
     marginTop: 15,

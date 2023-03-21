@@ -15,6 +15,7 @@ const FoodShopPage = () => {
   const toggleFavourite = () => {
     setIsFavourite((isFavourite) => !isFavourite);
   };
+  
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
