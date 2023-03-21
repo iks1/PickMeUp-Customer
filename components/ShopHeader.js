@@ -18,7 +18,6 @@ const ShopHeader = (props) => {
 const styles = StyleSheet.create({
   header: {
     width: "90%",
-    marginVertical: 25,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",

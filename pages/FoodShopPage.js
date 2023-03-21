@@ -6,10 +6,11 @@ import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar";
 import ShopHeader from "../components/ShopHeader";
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
+import VegIcon from "../assets/Icons/VegIcon";
 
 const FoodShopPage = () => {
   const [veg, setVeg] = useState(true);
-  const label = veg ? "Veg" : "Non-Veg";
+  const label = "Veg";
   const [isFavourite, setIsFavourite] = useState(true);
   const toggleFavourite = () => {
     setIsFavourite((isFavourite) => !isFavourite);
@@ -19,25 +20,26 @@ const FoodShopPage = () => {
       <ScrollView style={styles.main}>
         <View style={styles.UpperParent}>
           <ShopHeader isFavourite={isFavourite} onPress={toggleFavourite} />
-          <View style={styles.shopCardParent}>
-            <ShopCardInFocus />
-          </View>
+          <ShopCardInFocus />
           <View style={styles.searchArea}>
             <SearchBar textInput="Search for food items..." />
-            <View style={styles.toggleView}>
-              <ToggleSwitch
-                isOn={veg}
-                onColor="green"
-                offColor="red"
-                label={label}
-                labelStyle={{ color: "black", fontWeight: "900" }}
-                size="medium"
-                onToggle={() => {
-                  console.log("changed to : ", veg);
-                  setVeg(!veg);
-                }}
-              />
-            </View>
+          </View>
+          <View style={styles.toggleView}>
+            <VegIcon />
+            <ToggleSwitch
+              isOn={veg}
+              onColor="green"
+              offColor="white"
+              thumbOnStyle={{ backgroundColor: "#EEEDFA" }}
+              thumbOffStyle={{ backgroundColor: "#EEEDFA" }}
+              label={label}
+              labelStyle={{ color: "black", fontWeight: "900" }}
+              size="medium"
+              onToggle={() => {
+                console.log("changed to : ", veg);
+                setVeg(!veg);
+              }}
+            />
           </View>
         </View>
         <View style={styles.foodCardsContainerStyle}>
@@ -68,15 +70,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: 10,
-    padding: "5%",
+    marginBottom: -30,
+    zIndex: 1,
+    padding: "6%",
+
   },
   UpperParent: {
     display: "flex",
     alignItems: "center",
+    marginTop: 35,
   },
   toggleView: {
     alignSelf: "flex-end",
     paddingRight: "5%",
+    marginVertical: 5,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   searchArea: {
     display: "flex",

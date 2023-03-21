@@ -7,10 +7,9 @@ import Svg, {
 const LeftArrowIcon = (props) => (
   <View {...props}>
     <Svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <Path d="M31 24H17" stroke="#6F6F6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <Path d="M24 31L17 24L24 17" stroke="#6F6F6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </Svg>
-
+<Path d="M31 24H17" stroke="#6F6F6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<Path d="M24 31L17 24L24 17" stroke="#6F6F6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</Svg>
   </View>
 )
 
