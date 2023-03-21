@@ -7,7 +7,7 @@ import SearchBar from "../components/SearchBar";
 import ShopHeader from "../components/ShopHeader";
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
 
-const ShopPage = () => {
+const FoodShopPage = () => {
   const [veg, setVeg] = useState(true);
   const label = veg ? "Veg" : "Non-Veg";
   const [isFavourite, setIsFavourite] = useState(true);
@@ -107,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShopPage;
+export default FoodShopPage;

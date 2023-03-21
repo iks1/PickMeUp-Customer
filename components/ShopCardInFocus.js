@@ -3,16 +3,14 @@ import { View, Text, StyleSheet } from "react-native";
 import PhoneIcon from "./../assets/Icons/PhoneIcon";
 import ArrowInCircleIcon from "./../assets/Icons/ArrowInCircleIcon";
 import StarIcon from "../assets/Icons/StarIcon";
+import RatingView from "./RatingView";
 
 const ShopCardInFocus = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={styles.head}>{"Dihing Canteen"}</Text>
-        <View style={styles.rating}>
-          <Text style={styles.ratingValue}>{"4.0  "}</Text>
-          <StarIcon />
-        </View>
+        <RatingView rating="4.0" />
       </View>
       <View>
         <Text style={styles.description}>
@@ -81,19 +79,7 @@ const styles = StyleSheet.create({
     color: "#6F6F6F",
     marginTop: -4,
   },
-  ratingValue: {
-    color: "white",
-  },
-  rating: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#55AE63",
-    justifyContent: "center",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 1,
-  },
+
   head: {
     fontWeight: 500,
     fontSize: 20,
