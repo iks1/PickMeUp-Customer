@@ -21,27 +21,18 @@ const Dash=()=>{
         <ScrollView  style={styles.main}>
             <View style={styles.up}>
                 <Header text="Hey, Aarya" />
-                <SearchBar textInput="Search here for restauran, food, etc"/>
+                <SearchBar textInput="Search here for restaurant, food, etc"/>
             </View>
             <View style={styles.down}>
                 <View style={styles.choice}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper2}>
                     <FoodCard heading1="Food" heading2="Order Food from across the campus" image={Pizza} />
                     </View>
-                </Shadow>
 
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
+                
                     <View style={styles.wrapper2}>
                     <FoodCard heading1="Food" heading2="Order Food from across the campus" image={Pizza} />
                     </View>
-                </Shadow>
                     
                 </View>
                 <View style={styles.subHead}>
@@ -50,31 +41,24 @@ const Dash=()=>{
                         </Text>
                         <Edit/>
                 </View>
-                <View nestedScrollEnabled={true}  style={styles.food}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
+                <View style={styles.food}>
+                    <ScrollView horizontal={true} style={styles.food1}>
                     <View style={styles.wrapper3}>
                         <FoodCard2 heading1="Bread Omelette" image={Omelette}/>
                     </View>
-                </Shadow>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper3}>
                         <FoodCard2 heading1="Ore Shake" image={Shake}/>
                     </View>
-                </Shadow>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper3}>
                         <FoodCard2 heading1="Maggie" image={Maggie}/>
                     </View>
-                </Shadow>
+                    <View style={styles.wrapper3}>
+                        <FoodCard2 heading1="Maggie" image={Maggie}/>
+                    </View>
+                    <View style={styles.wrapper3}>
+                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
+                    </View>
+                    </ScrollView>
                 </View>
 
                 
@@ -88,23 +72,8 @@ const Dash=()=>{
                         </Text>
                 </View>
                 <View style={styles.nearYou}>
-                <Shadow style={styles.shadow}
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                        <View style={styles.wrapper}>
                         <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </View>
-                </Shadow>
-                <Shadow
-                style={styles.shadow}
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                        <View style={styles.wrapper}>
                         <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </View>
-                </Shadow>
                 </View>
             </View>
             
@@ -123,6 +92,7 @@ const styles = StyleSheet.create({
         backgroungColor:'#5736B5',
         height:180,
         width:"100%",
+        zIndex:2
     },
     shadow:{
         marginBottom:20,
@@ -132,10 +102,11 @@ const styles = StyleSheet.create({
         height:"100%",
         width:"100%",
         borderRadius:16,
-        backgroundColor:'white',
+        backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
         paddingTop:20,
+        marginBottom:64
     },
     main:{
         backgroundColor:'#5736B5',
@@ -200,18 +171,20 @@ const styles = StyleSheet.create({
     wrapper2:{
         borderRadius:16,
         height:156,
-        width:152,
+        width:'46%',
+        marginBottom:20,
+        borderRadius:16,
     },
     food:{
         height:158,
         width:"100%",
-        flexDirection:'row',
-        justifyContent: 'space-between',
-        padding:16,
+        
     },
     wrapper3:{
         borderRadius:16,
         height:110,
         width:110,
+        marginRight:10,
+        marginLeft:10
     },
 })
