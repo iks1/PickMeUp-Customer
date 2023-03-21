@@ -7,6 +7,7 @@ import ShopHeader from "../components/ShopHeader";
 import SearchBar from "../components/SearchBar";
 import PrintCard from "../components/Printcard";
 import chickenImage from "./../assets/Img/Chicken.png";
+import { Shadow } from "react-native-shadow-2";
 
 const StationaryPage = () => {
   const [isFavourite, setIsFavourite] = useState(true);
@@ -24,14 +25,49 @@ const StationaryPage = () => {
         <View style={styles.searchArea}>
           <SearchBar textInput="Search for food items..." />
         </View>
-        <View style={styles.stationaryServices}>
-          <View style={styles.headingView}>
+
+        <View style={styles.servicesContainer}>
+          <View style={{ ...styles.headingView, marginLeft: 20 }}>
             <Text>Services</Text>
           </View>
-          <View style={styles.wrapper1}>
-            <PrintCard heading1="Color Print" image={chickenImage} />
+          <View style={styles.options}>
+            <View style={styles.options1}>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="Color Print" image={chickenImage} />
+                </View>
+              </Shadow>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="B/W Print" image={chickenImage} />
+                </View>
+              </Shadow>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="Laminate" image={chickenImage} />
+                </View>
+              </Shadow>
+            </View>
+            <View style={styles.options1}>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="Spiral Binding" image={chickenImage} />
+                </View>
+              </Shadow>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="Banner Print" image={chickenImage} />
+                </View>
+              </Shadow>
+              <Shadow distance={30} startColor={"#00000010"} radius={16}>
+                <View style={styles.wrapper1}>
+                  <PrintCard heading1="ID Card Print" image={chickenImage} />
+                </View>
+              </Shadow>
+            </View>
           </View>
         </View>
+
         <View style={styles.reviewsContainer}>
           <View style={styles.headingView}>
             <Text>Reviews</Text>
@@ -59,8 +95,32 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#6F6F6F",
   },
+  options: {
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  servicesContainer: {
+    // marginLeft: "5%",
+  },
+  options1: {
+    height: 102,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 16,
+    marginTop: 6,
+    marginHorizontal: 4,
+  },
+  wrapper1: {
+    borderRadius: 16,
+    height: 98,
+    width: 105,
+  },
   headingView: {
-    marginLeft: 4,
+    // marginLeft: 30,
     marginBottom: 15,
     marginTop: 15,
   },
@@ -70,6 +130,7 @@ const styles = StyleSheet.create({
   },
   reviewsContainer: {
     marginLeft: "5%",
+    marginBottom: 10,
   },
   searchArea: {
     display: "flex",
