@@ -22,13 +22,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
         height: 152,
-        width: 156,
-        marginTop: 32,
-        marginLeft: 16,
+        width: '100%',
         position:"relative",
         display: "flex", 
         flexDirection: "column",
         overflow: 'hidden',
+        backgroundColor:'white'
     },
     textContainer: {
         flex: 0.5,

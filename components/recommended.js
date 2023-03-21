@@ -5,11 +5,6 @@ import {Shadow} from 'react-native-shadow-2';
 
 const rec=(props)=>{
     return(
-        <View style={styles.shadow}>
-        <Shadow  distance={10}  
-        startColor={'#00000010'}  
-        containerViewStyle={{marginVertical: 0}}  
-        radius={8} >
         <View style={styles.main}>
             <View style={styles.imgContainer}>
                 <ImageBackground source={props.bg} style={styles.imgbg}>
@@ -29,29 +24,24 @@ const rec=(props)=>{
             </Text>
             </View>
         </View>
-        </Shadow>
-        </View>
     );
 }
 
 export default rec
 
 const styles = StyleSheet.create({
-    shadow:{
-        height:170,
-        width:156,
-        margin:20,
-    },
     main:{
         height:170,
-        width:156,
+        width:'100%',
         borderRadius:16,
         flexDirection:'column',
         justifyContent:'space-between',
         backgroundColor:'white',
+        marginBottom:10,
+        marginTop:10
     },
     imgContainer:{
-        width:156,
+        width:'100%',
         heigth:91,
         borderRadius:16,
         overflow:"hidden",
