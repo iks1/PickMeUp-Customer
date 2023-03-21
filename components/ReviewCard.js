@@ -13,9 +13,7 @@ const ReviewCard = (props) => {
         </View>
         <RatingView rating="3.9" />
       </View>
-      <Text>
-        {props.review}
-      </Text>
+      <Text>{props.review}</Text>
     </View>
   );
 };
@@ -44,10 +42,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   container: {
-    width: "70%",
-    padding: 10,
-    // backgroundColor: "black",
+    width: 280,
+    padding: 15,
+    backgroundColor: "white",
     borderRadius: 20,
+    marginRight: 20,
   },
 });
 

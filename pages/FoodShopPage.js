@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     marginBottom: -30,
     zIndex: 1,
     padding: "6%",
-
   },
   UpperParent: {
     display: "flex",

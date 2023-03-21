@@ -7,8 +7,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* <StationaryPage /> */}
-      <FoodShopPage />
+      <StationaryPage />
+      {/* <FoodShopPage /> */}
       {/* <Text>lol</Text> */}
     </View>
   );
