@@ -1,3 +1,7 @@
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import FoodShopPage from "./pages/FoodShopPage";
+import StationaryPage from "./pages/StationaryPage";
 // import { StatusBar } from 'expo-status-bar';
 // import { StyleSheet, Text, View } from 'react-native';
 // import SearchBar from './components/SearchBar';
@@ -42,14 +46,12 @@ import ShopCard from './components/Shopcard';
 import PrintDash from './pages/printDashboard'
 import FoodDash from './pages/foodDashboard'
 
-export default function App() { 
+export default function App() {
   return (
-    // <View style={styles.container}>
-    //   <Text>lol</Text>
-    //   <StatusBar style="auto" />
-    // </View>
     <View style={styles.container}>
-        <StudDash/>
+      <StatusBar style="auto" />
+      {/* <FoodShopPage /> */}
+      <StationaryPage />
     </View>
   );
 }
@@ -57,8 +59,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
