@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
-import FoodCard from "../components/FoodCard";
+import FoodItemCard from "../components/FoodItemCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar";
@@ -43,16 +43,16 @@ const FoodShopPage = () => {
             />
           </View>
         </View>
-        <View style={styles.foodCardsContainerStyle}>
+        <View style={styles.foodItemCardsContainerStyle}>
           <View style={styles.recommendedHeader}>
             <Text style={styles.recommendedTextStyle}>Recommended</Text>
             <UpArrowIcon />
           </View>
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
+          <FoodItemCard />
+          <FoodItemCard />
+          <FoodItemCard />
+          <FoodItemCard />
+          <FoodItemCard />
         </View>
       </ScrollView>
     </View>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  foodCardsContainerStyle: {
+  foodItemCardsContainerStyle: {
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     backgroundColor: "white",
