@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     },
     choice:{
         width:"100%",
-        height:188,
+        height:168,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
@@ -171,12 +171,12 @@ const styles = StyleSheet.create({
     wrapper2:{
         borderRadius:16,
         height:156,
-        width:'46%',
+        width:'48%',
         marginBottom:20,
         borderRadius:16,
     },
     food:{
-        height:158,
+        height:136,
         width:"100%",
         
     },
