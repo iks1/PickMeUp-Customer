@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, Text } from "react-native";
 import FoodCard from "../components/FoodCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar";
 import ShopHeader from "../components/ShopHeader";
+import UpArrowIcon from "../assets/Icons/UpArrowIcon";
 
 const ShopPage = () => {
   const [veg, setVeg] = useState(true);
   const label = veg ? "Veg" : "Non-Veg";
+  const [isFavourite, setIsFavourite] = useState(true);
+  const toggleFavourite = () => {
+    setIsFavourite((isFavourite) => !isFavourite);
+  };
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
         <View style={styles.UpperParent}>
-          <ShopHeader isFavourite={0} />
+          <ShopHeader isFavourite={isFavourite} onPress={toggleFavourite} />
           <View style={styles.shopCardParent}>
             <ShopCardInFocus />
           </View>
@@ -35,7 +40,11 @@ const ShopPage = () => {
             </View>
           </View>
         </View>
-        <View style={styles.foodCardStyle}>
+        <View style={styles.foodCardsContainerStyle}>
+          <View style={styles.recommendedHeader}>
+            <Text style={styles.recommendedTextStyle}>Recommended</Text>
+            <UpArrowIcon />
+          </View>
           <FoodCard />
           <FoodCard />
           <FoodCard />
@@ -48,6 +57,19 @@ const ShopPage = () => {
 };
 
 const styles = StyleSheet.create({
+  recommendedTextStyle: {
+    color: "#6F6F6F",
+    fontSize: 16,
+    fontWeight: 500,
+  },
+  recommendedHeader: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 10,
+    padding: "5%",
+  },
   UpperParent: {
     display: "flex",
     alignItems: "center",
@@ -62,7 +84,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  foodCardStyle: {
+  foodCardsContainerStyle: {
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    backgroundColor: "white",
     marginTop: 10,
   },
   shopCardParent: {

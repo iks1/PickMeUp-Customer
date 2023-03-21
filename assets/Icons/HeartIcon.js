@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { View } from "react-native";
 import Svg, {
   Circle,
@@ -23,47 +23,44 @@ import Svg, {
   Pattern,
   Mask,
 } from "react-native-svg";
+import { TouchableOpacity } from "react-native";
 
 const HeartIcon = (props) => {
-  const Favourite = props.isFavourite;
-  const [isFavourite, setIsFavourite] = useState(isFavourite)
-  //   const [isFavourite, setIsFavourite] = useEffect(props.isFavourite);
-  const strokeColor = isFavourite ? "white" : "#FA3440";
-  const fillColor = !isFavourite ? "white" : "#FA3440";
-  const onToggle = () => {
-    setIsFavourite(!isFavourite)
-  }
+  const fillColor = !props.isFavourite ? "white" : "#FA3440";
+  const toggleFavourite = props.onPress;
+
   return (
-    <View {...props}>
+    <TouchableOpacity onPress={toggleFavourite}>
       <Svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <Rect width="48" height="48" rx="24" fill={fillColor} />
-        <G clip-path="url(#clip0_260_1647)">
+        <Rect width="36" height="36" rx="18" fill={fillColor} />
+        <G clip-path="url(#clip0_90_7)">
           <Path
-            d="M29.8933 19.0733C29.5528 18.7327 29.1485 18.4624 28.7036 18.2781C28.2586 18.0937 27.7817 17.9988 27.3 17.9988C26.8183 17.9988 26.3414 18.0937 25.8964 18.2781C25.4515 18.4624 25.0472 18.7327 24.7067 19.0733L24 19.78L23.2933 19.0733C22.6055 18.3855 21.6727 17.9991 20.7 17.9991C19.7273 17.9991 18.7945 18.3855 18.1067 19.0733C17.4189 19.7611 17.0325 20.694 17.0325 21.6667C17.0325 22.6394 17.4189 23.5722 18.1067 24.26L18.8133 24.9667L24 30.1533L29.1867 24.9667L29.8933 24.26C30.234 23.9195 30.5042 23.5152 30.6886 23.0702C30.873 22.6253 30.9679 22.1483 30.9679 21.6667C30.9679 21.185 30.873 20.7081 30.6886 20.2631C30.5042 19.8181 30.234 19.4138 29.8933 19.0733Z"
-            stroke={strokeColor}
+            d="M23.8933 13.0733C23.5528 12.7327 23.1485 12.4624 22.7036 12.2781C22.2586 12.0937 21.7817 11.9988 21.3 11.9988C20.8183 11.9988 20.3414 12.0937 19.8964 12.2781C19.4515 12.4624 19.0472 12.7327 18.7067 13.0733L18 13.78L17.2933 13.0733C16.6055 12.3855 15.6727 11.9991 14.7 11.9991C13.7273 11.9991 12.7945 12.3855 12.1067 13.0733C11.4189 13.7611 11.0325 14.694 11.0325 15.6667C11.0325 16.6394 11.4189 17.5722 12.1067 18.26L12.8133 18.9667L18 24.1533L23.1867 18.9667L23.8933 18.26C24.234 17.9195 24.5042 17.5152 24.6886 17.0702C24.873 16.6253 24.9679 16.1483 24.9679 15.6667C24.9679 15.185 24.873 14.7081 24.6886 14.2631C24.5042 13.8181 24.234 13.4138 23.8933 13.0733Z"
+            fill="white"
+            stroke="#FA3440"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </G>
         <Defs>
-          <ClipPath id="clip0_260_1647">
+          <ClipPath id="clip0_90_7">
             <Rect
               width="16"
               height="16"
-              fill={fillColor}
-              transform="translate(16 16)"
+              fill="white"
+              transform="translate(10 10)"
             />
           </ClipPath>
         </Defs>
       </Svg>
-    </View>
+    </TouchableOpacity>
   );
 };
 export default HeartIcon;
