@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View } from "react-native";
 import HeartIcon from "../assets/Icons/HeartIcon";
 import LeftArrowIcon from "../assets/Icons/LeftArrowIcon";
 
