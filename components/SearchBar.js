@@ -2,27 +2,44 @@ import React from "react";
 import Search_icon1 from "../assets/Search_icon1.svg";
 import Search_icon2 from '../assets/Search_icon2.svg';
 import Search_icon3 from '../assets/Search_icon3.svg';
+import Search_icon3_copy from '../assets/Search_icon3_copy.svg';
+import Close from '../assets/close.svg'
 import {StyleSheet, View, Text, TextInput} from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
 import { useState } from "react";
-
+import FilterCard from "./FilterCard";
 const SearchBar = props => {
-    
-    const [text, setText] = useState('');
+
+    const [vis, setVis] = useState(false);
     return (
-        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20}]}>
+        <View style={{flexDirection:'column', alignItems:'center', width:'100%'}}>
+        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20, zIndex:1,borderColor:'#D7D2E9', borderWidth:1,justifyContent:'space-between'}]}>
             <TextInput
-                style={[styles.text,{width:"80%"}]}
+                style={[styles.text,{width:"75%"}]}
                 placeholder={props.textInput}
                 placeholderTextColor="#A9A9A9"
             />
            
             <View style={[styles.iconContainer,{flexDirection:'row'}]}>
-            <Search_icon1 />
-            <Search_icon2 />
-            <Search_icon3 />
+            <View style={{marginLeft:4,marginRight:4}}>
+                <Search_icon1  />
+            </View>
+            
+            <View style={{marginLeft:4,marginRight:4}}>
+                <Search_icon2  />
+            </View>
+            <View style={{marginLeft:4,marginRight:4}}>
+            {vis==true ?<Search_icon3_copy onPress={()=>{setVis(!vis)}}/> : <Search_icon3 onPress={()=>{setVis(!vis)}}/>}
+            </View>
+           
             {/* <Image source={Search_icon1} alt="" className="card-img" style={styles.icon3}  /> */}
             </View>
+        </View>
+        <View style={{marginTop:-35, display:vis?'flex':"none",width:'90%'}}>
+            <FilterCard list1={[{id:1,label:'name'},{id:2,label:'veg'},{id:3,label:'nonveg'},{id:4,label:'name'}]} list2={[{id:4,label:["price:","low to high"]},{id:1,label:["price:","low to high"]}]}/>
+        </View>
+        <View style={{margin:12,display:vis?'flex':"none"}}>
+            <Close onPress={()=>{setVis(!vis)}} />
+        </View>
         </View>
     );
 }
@@ -32,15 +49,17 @@ const styles = props => StyleSheet.create({
         // margin:"auto",
         display:"flex",
         position:"relative",
-        flexDirection: 'row',
+        flexDirection: 'column',
         // alignItems: 'center',
         borderRadius: 16,
         justifyContent:'space-around',
+        alignItems:'center',
         marginLeft: 16,
         marginTop: 12,
         height:100,
-        width:"90%",
-        backgroundColor:'white'
+        width:"80%",
+        backgroundColor:'white',
+        borderWidth:1
     },
     text: {
         color:"#6F6F6F", 
@@ -59,6 +78,9 @@ const styles = props => StyleSheet.create({
         flex: 0.5,
         backgroundColor:'white'
       },
+      icon:{
+        
+      }
     
 });
 

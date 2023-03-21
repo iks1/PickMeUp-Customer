@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
         height: 114,
-        width: 110,
+        width: '100%',
         position:"relative",
         display: "flex", 
         flexDirection: "column",

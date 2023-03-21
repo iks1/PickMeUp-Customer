@@ -39,7 +39,7 @@ const SmallShopCard = (props) => {
             </View>
     );
 };
-
+export default SmallShopCard
 const styles = StyleSheet.create({
     container: {
         width: 236, 
@@ -107,5 +107,3 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
     },
 });
-
-export default SmallShopCard;

@@ -25,7 +25,7 @@ const Dash=()=>{
         <ScrollView  style={styles.main}>
             <View style={styles.up}>
                 <Header text="Order with ease" />
-                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}><SearchBar textInput="Search here for restauran, food, etc"/></View>
+                <SearchBar textInput="Search here for restauran, food, etc"/>
             </View>
             <View style={styles.down}>
                 <View style={styles.subHead}>
@@ -34,41 +34,18 @@ const Dash=()=>{
                         </Text>
                 </View>
                 <View style={styles.choice}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper2}>
                     <LocationCard text='Canteen'/>
                     </View>
-                </Shadow>
-
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper2}>
                     <LocationCard text='Khoka'/>
                     </View>
-                </Shadow>
-
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper2}>
                     <LocationCard text='Market Complex'/>
                     </View>
-                </Shadow>
-
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper2}>
                     <LocationCard text='Food Court'/>
                     </View>
-                </Shadow>
                     
                 </View>
                 <View style={styles.subHead}>
@@ -77,31 +54,24 @@ const Dash=()=>{
                         </Text>
                         <Edit/>
                 </View>
-                <View nestedScrollEnabled={true}  style={styles.food}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
+                <View style={styles.food}>
+                    <ScrollView horizontal={true} style={styles.food1}>
                     <View style={styles.wrapper3}>
                         <FoodCard2 heading1="Bread Omelette" image={Omelette}/>
                     </View>
-                </Shadow>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Oreo Shake" image={Shake}/>
+                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
                     </View>
-                </Shadow>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
                     <View style={styles.wrapper3}>
                         <FoodCard2 heading1="Maggie" image={Maggie}/>
                     </View>
-                </Shadow>
+                    <View style={styles.wrapper3}>
+                        <FoodCard2 heading1="Maggie" image={Maggie}/>
+                    </View>
+                    <View style={styles.wrapper3}>
+                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
+                    </View>
+                    </ScrollView>
                 </View>
                 <View style={styles.subHead}>
                         <Text style={styles.subHeadTex} >
@@ -109,28 +79,12 @@ const Dash=()=>{
                         </Text>
                         <Edit/>
                 </View>
-                <View style={styles.placeYouLove}>
-                    <View style={styles.shadow2}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                    <View style={styles.wrapper4}>
-                    <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
-                    </View>
-                </Shadow>
-                </View>
 
-                <View style={styles.shadow2}>
-                <Shadow
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                    <View style={styles.wrapper4}>
+                <View style={styles.placeYouLove}>
+                    <ScrollView horizontal={true}>
                     <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
-                    </View>
-                </Shadow>
-                </View>
+                    <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
+                    </ScrollView>
                 </View>
                 <View style={styles.subHead}>
                         <Text style={styles.subHeadTex} >
@@ -138,10 +92,18 @@ const Dash=()=>{
                         </Text>
                 </View>
                 <View style={styles.rec}>
+                    <View style={{width:'45%'}}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    </View>
+                    <View style={{width:'45%'}}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    </View>
+                    <View style={{width:'45%'}}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    </View>
+                    <View style={{width:'45%'}}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
+                    </View>
                 </View>
                 
                 
@@ -151,23 +113,10 @@ const Dash=()=>{
                         </Text>
                 </View>
                 <View style={styles.nearYou}>
-                <Shadow style={styles.shadow}
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                        <View style={styles.wrapper}>
                         <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </View>
-                </Shadow>
-                <Shadow
-                style={styles.shadow}
-                distance={30}  
-                startColor={'#00000010'}  
-                radius={16} >
-                        <View style={styles.wrapper}>
+                    
                         <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </View>
-                </Shadow>
+                    
                 </View>
             </View>
             
@@ -186,6 +135,7 @@ const styles = StyleSheet.create({
         backgroungColor:'#5736B5',
         height:180,
         width:"100%",
+        zIndex:2
     },
     shadow:{
         marginBottom:20,
@@ -195,11 +145,11 @@ const styles = StyleSheet.create({
         height:"100%",
         width:"100%",
         borderRadius:16,
-        backgroundColor:'white',
+        backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
         paddingTop:20,
-        zIndex:1
+        paddingBottom:64
     },
     main:{
         backgroundColor:'#5736B5',
@@ -257,33 +207,34 @@ const styles = StyleSheet.create({
     },
     choice:{
         width:"100%",
-        height:268,
+        height:238,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        padding:25,
+        paddingLeft:25,
+        paddingRight:25,
         flexWrap:'wrap'
     },
     wrapper2:{
         borderRadius:16,
         height: 96,
-        width: 156,
+        width: "46%",
         marginBottom:16,
     },
     food:{
-        height:158,
+        height:138,
         width:"100%",
-        flexDirection:'row',
-        justifyContent: 'space-between',
-        padding:16,
+        
     },
     wrapper3:{
         borderRadius:16,
         height:110,
         width:110,
+        marginRight:10,
+        marginLeft:10
     },
     placeYouLove:{
-        height:279,
+        height:269,
         width:"100%",
         flexDirection:'row',
     },
@@ -303,10 +254,11 @@ const styles = StyleSheet.create({
         borderRadius:6,
     },
     rec:{
-        height:426,
-        width:"100%",
+        height:416,
+        width:"90%",
         flexDirection:'row',
         justifyContent:'space-between',
-        flexWrap:'wrap'
+        flexWrap:'wrap',
+        alignItems:'center'
     }
 })
