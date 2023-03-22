@@ -135,7 +135,9 @@ const styles = StyleSheet.create({
         backgroungColor:'#5736B5',
         height:180,
         width:"100%",
-        zIndex:2
+        zIndex:2,
+        flexDirection:'column',
+        alignItems:'center',
     },
     shadow:{
         marginBottom:20,

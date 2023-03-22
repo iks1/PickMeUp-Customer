@@ -2,7 +2,6 @@ import React,{useState} from "react";
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 import { RadioButton } from 'react-native-paper';
-
 const FilterCard = props => {
     const [checkboxState, setCheckboxState] = useState(
         props.list1.map((checkbox) => ({
@@ -16,7 +15,6 @@ const FilterCard = props => {
         newCheckboxState[index].checked = !newCheckboxState[index].checked;
         setCheckboxState(newCheckboxState);
     };
-
     const [selectedOption, setSelectedOption] = useState(null);
     const handleOptionSelect = (value) => {
         setSelectedOption(value);
@@ -90,7 +88,7 @@ const FilterCard = props => {
     );
 };
 const styles = StyleSheet.create({
-    containers: {
+    container: {
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
         height: 331,
@@ -173,6 +171,4 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     } 
 });
-
 export default FilterCard;
-
