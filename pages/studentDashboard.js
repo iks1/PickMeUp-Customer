@@ -14,7 +14,6 @@ import Maggie from '../assets/maggi.png'
 import SearchBar from '../components/SearchBar'
 import NavBar from '../components/Navbar'
 import Header from '../components/header'
-import { useNavigation } from "@react-navigation/core";
 
 const Dash=({navigation})=>{
     return (
@@ -80,7 +79,7 @@ const Dash=({navigation})=>{
             
         </ScrollView>
         <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                <NavBar/>
+                <NavBar active="Home"/>
         </View>
         </View>
     );
