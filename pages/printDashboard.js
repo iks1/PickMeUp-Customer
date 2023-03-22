@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet} from "react-native";
-import {Shadow} from 'react-native-shadow-2';  
+// import {Shadow} from 'react-native-shadow-2';  
 import ShopCard from './../components/Shopcard'
 import Edit from './../assets/edit.svg'
 import Omelette from "./../assets/omelette.png"
@@ -9,7 +9,7 @@ import NavBar from '../components/Navbar'
 import PrintCard from "../components/Printcard";
 import Header from "../components/header";
 import stationery from "./../assets/stationery.png"
-import SmallShopCard from "../components/smallShopCard";
+import SmallShopCard2 from "../components/smallShopCard2";
 import canteen from "./../assets/canteen.png"
 
 const PrintDash=({navigation})=>{
@@ -19,72 +19,42 @@ const PrintDash=({navigation})=>{
 
                 <View style={styles.up}>
                     <Header text="Skip the queue"/>
-                    <SearchBar textInput="Search fot printing shops, serv..."/>
+                    <SearchBar textInput="Search for printing shops, serv..."/>
                 </View>
 
                 <View style={styles.down}>
                     
-                    <View style={styles.subHead}>
+                    <View style={styles.subHead2}>
                             <Text style={styles.subHeadTex} >
                                 What are you looking for?
                             </Text>
                     </View>
                     <View style={styles.options}>
                         <View style={styles.options1}>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="Color Print" image={Omelette}/>
                                 </View>
-                            </Shadow>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="B/W Print" image={Omelette}/>
                                 </View>
-                            </Shadow>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="Laminate" image={Omelette}/>
                                 </View>
-                            </Shadow>
                         </View>
                         <View style={styles.options1}>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="Spiral Binding" image={Omelette}/>
                                 </View>
-                            </Shadow>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="Banner Print" image={Omelette}/>
                                 </View>
-                            </Shadow>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
                                 <View style={styles.wrapper1}>
                                     <PrintCard heading1="ID Card Print" image={Omelette}/>
                                 </View>
-                            </Shadow>
                         </View>
                     </View>
 
-                    <View style={styles.subHead}>
+                    <View style={styles.subHead2}>
                             <Text style={styles.subHeadTex} >
                                 Places You Love
                             </Text>
@@ -93,24 +63,13 @@ const PrintDash=({navigation})=>{
                     <View style={styles.places}>
                         <ScrollView horizontal={true}>
                             <View style={styles.places1}>
-                                <Shadow
-                                    distance={30}  
-                                    startColor={'#00000010'}  
-                                    radius={16} >
-                                    <View style={styles.wrapper2}>
-                                        <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
-                                    </View>
-                                </Shadow>
+                                <SmallShopCard2 img={canteen} line1="Brahma Hostel Food Canteen" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
                             </View>
                             <View style={styles.places1}>
-                                <Shadow
-                                    distance={30}  
-                                    startColor={'#00000010'}  
-                                    radius={16} >
-                                    <View style={styles.wrapper2}>
-                                        <SmallShopCard img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
-                                    </View>
-                                </Shadow>
+                                <SmallShopCard2 img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
+                            </View>
+                            <View style={styles.places1}>
+                                <SmallShopCard2 img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
                             </View>
                         </ScrollView>
                     </View>
@@ -121,35 +80,19 @@ const PrintDash=({navigation})=>{
                             </Text>
                     </View>
                     <View style={styles.explore}>
-                        <View style={styles.explore1}>
-                            <Shadow 
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
-                                <View style={styles.wrapper3}>
-                                    <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                                </View>
-                            </Shadow>
-                        </View>
-                        <View style={styles.explore1}>
-                            <Shadow
-                                distance={30}  
-                                startColor={'#00000010'}  
-                                radius={16} >
-                                    <View style={styles.wrapper3}>
-                                    <ShopCard img={stationery} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                                </View>
-                            </Shadow>
-                        </View>
-                        
+                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
+                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
+                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
+                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
                     </View>
-                </View>
-                    
-                
-            </ScrollView>     
-            <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                    <NavBar navigation={navigation}/>
+
+                </View>          
+            </ScrollView>   
+
+            <View style={styles.navbar}>
+                    <NavBar/>
             </View>
+
         </View>
     );
 }
@@ -157,10 +100,19 @@ const PrintDash=({navigation})=>{
 export default PrintDash
 
 const styles = StyleSheet.create({
+    main:{
+        height:"100%",
+        width:"100%",
+    },
+    mainContainer:{
+        backgroundColor:'#5736B5',
+        width:"100%",
+        height:"100%"
+    },
     up:{
-        // backgroungColor:'#5736B5',
         height:180,
         width:"100%",
+        zIndex: 2,
     },
     down:{
         height:"100%",
@@ -169,93 +121,58 @@ const styles = StyleSheet.create({
         backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
+        marginBottom: 64,
+        paddingTop: 24,
     },
-    main:{
-        backgroundColor:'#5736B5',
-        height:"100%",
-        width:"100%",
-    },
-    mainContainer:{
-        width:"100%",
-        height:"100%"
-    },
-    head:{
-        marginTop:48,
-        marginLeft:24,
-        marginRight:24,
+    subHead:{
+        width:"90%",
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center',
+        paddingVertical: 10,
     },
-    headTex:{
-        fontSize:20,
-        fontWeight:500,
-        color:'white',
+    subHead2:{
+        width:"90%",
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingTop: 2,
+        paddingBottom: 4,
     },
     subHeadTex:{
         color:'#6F6F6F',
         fontSize:14,
         fontWeight:500,
     },
-    subHead:{
-        width:"90%",
-        height:19,
-        flexDirection:'row',
-        justifyContent:'space-between',
-        marginTop:20,
-    },
     options:{
         width:"100%",
         flexDirection:'column',
-        justifyContent:'space-between',
-        alignItems:'center',
-        marginBottom:12,
+        padding:16,
     },
     options1:{
-        height:102,
         width:"100%",
         flexDirection:'row',
         justifyContent: 'space-between',
-        padding:16,
-        marginTop:6,
+        paddingVertical: 8
+    },
+    wrapper1: {
+        width: "30%",
     },
     places:{
         width:"100%",
-        flexDirection:'row',
-        justifyContent: 'space-between',
-        paddingTop:16,
     },
     places1:{
-        height:234,
-        width:236,
-        marginRight:5,
-        marginLeft:16,
+        padding: 16,
     },
     explore:{
-        marginBottom: 80,
         flexDirection:'column',
-        justifyContent: 'space-between',
+        alignItems: "center",
+        width: "100%",
+        height: "100%"
     },
-    explore1:{
-        width:"100%",
-        height: 212,
-        padding:16,
-        marginBottom:16,
-    },
-    wrapper1:{
-        borderRadius:16,
-        height:98,
-        width:110,
-    },
-    wrapper2:{
-        borderRadius:16,
-        height:230,
-        width:236,
-    },
-    wrapper3:{
-        height:204,
-        width:360,
-        borderRadius:16,
+    navbar: {
+        position:'absolute', 
+        bottom:0, 
+        width:'100%', 
+        height:64,
     },
 })
 
