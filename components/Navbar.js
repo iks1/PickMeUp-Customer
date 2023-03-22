@@ -48,7 +48,7 @@ const NavBar = () => {
       <TouchableOpacity
         onPress={() => {
           onTabPress("Food");
-          navigation.navigate("Food");
+          navigation.navigate("Home");
         }}
         style={styles.tab}
       >
