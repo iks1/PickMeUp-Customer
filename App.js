@@ -29,11 +29,15 @@ export default function App() {
 
     // </View>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen
           name="Home"
           component={StudentDashboard}
-          // options={{ title: "Welcome" }}
         />
         <Stack.Screen name="Food" component={FoodDashboard} />
         <Stack.Screen name="Print" component={PrintDashboard} />
