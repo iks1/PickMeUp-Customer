@@ -12,7 +12,7 @@ import stationery from "./../assets/stationery.png"
 import SmallShopCard from "../components/smallShopCard";
 import canteen from "./../assets/canteen.png"
 
-const PrintDash=()=>{
+const PrintDash=({navigation})=>{
     return (
         <View style={styles.mainContainer}>
             <ScrollView  style={styles.main}>
@@ -148,7 +148,7 @@ const PrintDash=()=>{
                 
             </ScrollView>     
             <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                    <NavBar/>
+                    <NavBar navigation={navigation}/>
             </View>
         </View>
     );

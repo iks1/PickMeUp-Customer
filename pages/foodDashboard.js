@@ -19,7 +19,7 @@ import SmallShopCard from "../components/smallShopCard";
 import Recommended from './../components/recommended'
 import bg from './../assets/recdummy.png'
 
-const Dash=()=>{
+const Dash=({navigation})=>{
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
@@ -122,7 +122,7 @@ const Dash=()=>{
             
         </ScrollView>
         <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                <NavBar/>
+                <NavBar navigation={navigation}/>
         </View>
         </View>
     );

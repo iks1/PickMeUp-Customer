@@ -10,34 +10,35 @@ import FoodShopPage from "./pages/FoodShopPage";
 import StationaryPage from "./pages/StationaryPage";
 
 // navigation
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // icons
 
 export default function App() {
+  // const navigation = useNavigation()
   const Stack = createNativeStackNavigator();
 
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
 
-      <StatusBar style="auto" />
-      <StudentDashboard/>
-      {/* <FoodShopPage />
-      <StationaryPage /> */}
+    //   <StatusBar style="auto" />
+    //   <StudentDashboard/>
+    //   <FoodShopPage />
+    //   <StationaryPage />
 
-    </View>
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen
-    //       name="Home"
-    //       component={StudentDashboard}
-    //       // options={{ title: "Welcome" }}
-    //     />
-    //     <Stack.Screen name="Food" component={FoodDashboard} />
-    //     <Stack.Screen name="Print" component={PrintDashboard} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+    // </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={StudentDashboard}
+          // options={{ title: "Welcome" }}
+        />
+        <Stack.Screen name="Food" component={FoodDashboard} />
+        <Stack.Screen name="Print" component={PrintDashboard} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
