@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect }from 'react';
+import { View, TouchableOpacity, StyleSheet, Text, Keyboard } from 'react-native';
 import HomeIcon from '../assets/homeNav.svg';
 import FoodIcon from '../assets/foodNav.svg';
 import PrintIcon from '../assets/printNav.svg';
@@ -8,9 +8,26 @@ import HomeIconActive from '../assets/homeNavActive.svg';
 import FoodIconActive from '../assets/foodNavActive.svg';
 import PrintIconActive from '../assets/printNavActive.svg';
 import OrderIconActive from '../assets/orderNavActive.svg';
+
   
 const NavBar = () => {
+    const [visible, setVisible] = useState(true);
 
+  useEffect(() => {
+    let keyboardEventListeners;
+    if (Platform.OS === 'android') {
+      keyboardEventListeners = [
+        Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
+        Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
+      ];
+    }
+    return () => {
+      if (Platform.OS === 'android') {
+        keyboardEventListeners &&
+          keyboardEventListeners.forEach(eventListener => eventListener.remove());
+      }
+    };
+  }, []);
     const [activeTab, setActiveTab] = useState('Home');
   
     const onTabPress = (tabName) => {
@@ -18,8 +35,8 @@ const NavBar = () => {
     }
   
     return (
-
-        <View style={styles.navBar}>
+        
+        <View style={[styles.navBar,{display: visible?'flex':'none'}]}>
 
             <TouchableOpacity onPress={() => onTabPress('Home')} style={styles.tab}>
 
