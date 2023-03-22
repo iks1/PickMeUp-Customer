@@ -1,44 +1,54 @@
-import React, { useState, useEffect }from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Keyboard } from 'react-native';
-import HomeIcon from '../assets/homeNav.svg';
-import FoodIcon from '../assets/foodNav.svg';
-import PrintIcon from '../assets/printNav.svg';
-import OrderIcon from '../assets/orderNav.svg';
-import HomeIconActive from '../assets/homeNavActive.svg';
-import FoodIconActive from '../assets/foodNavActive.svg';
-import PrintIconActive from '../assets/printNavActive.svg';
-import OrderIconActive from '../assets/orderNavActive.svg';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Keyboard,
+} from "react-native";
+import HomeIcon from "../assets/homeNav.svg";
+import FoodIcon from "../assets/foodNav.svg";
+import PrintIcon from "../assets/printNav.svg";
+import OrderIcon from "../assets/orderNav.svg";
+import HomeIconActive from "../assets/homeNavActive.svg";
+import FoodIconActive from "../assets/foodNavActive.svg";
+import PrintIconActive from "../assets/printNavActive.svg";
+import OrderIconActive from "../assets/orderNavActive.svg";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
-  
 const NavBar = () => {
-    const [visible, setVisible] = useState(true);
+  const navigation = useNavigation();
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     let keyboardEventListeners;
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       keyboardEventListeners = [
-        Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
-        Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
+        Keyboard.addListener("keyboardDidShow", () => setVisible(false)),
+        Keyboard.addListener("keyboardDidHide", () => setVisible(true)),
       ];
     }
     return () => {
-      if (Platform.OS === 'android') {
+      if (Platform.OS === "android") {
         keyboardEventListeners &&
-          keyboardEventListeners.forEach(eventListener => eventListener.remove());
+          keyboardEventListeners.forEach((eventListener) =>
+            eventListener.remove()
+          );
       }
     };
   }, []);
-    const [activeTab, setActiveTab] = useState('Home');
-  
-    const onTabPress = (tabName) => {
-      setActiveTab(tabName);
-    }
-  
-    return (
-        
-        <View style={[styles.navBar,{display: visible?'flex':'none'}]}>
+  const [activeTab, setActiveTab] = useState("Home");
 
-          console.log("home");
+  const onTabPress = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  return (
+    <View style={[styles.navBar, { display: visible ? "flex" : "none" }]}>
+      <TouchableOpacity
+        onPress={() => {
+          onTabPress("Food");
+          navigation.navigate("Food");
         }}
         style={styles.tab}
       >
