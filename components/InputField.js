@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
         height: 51,
-        width: '80%', 
+        width: '91%', 
     },
     text: {
         color: "black",
