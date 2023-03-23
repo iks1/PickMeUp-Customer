@@ -1,9 +1,6 @@
 import React from "react";
 import {View, Text, Button, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
-import { LinearGradient } from "react-native-linear-gradient";
-import { Line } from "react-native-svg";
-import ProfileEllipse from '../assets/profileEllipse.svg'
-import StartBg from '../assets/StartBg.png'
+import ProfileEllipse from '../assets/profileEllipse.svg';
 
 const Start=()=>{
     return(
@@ -17,9 +14,11 @@ const Start=()=>{
                 <TouchableOpacity style={styles.but}>
                     <Text style={styles.buttonText}>Get Started</Text>
                 </TouchableOpacity>
-                <Text style={styles.Tex}>
-                    Already have an account? Log in
-                </Text>
+                <TouchableOpacity>
+                    <Text style={styles.Tex}>
+                        Already have an account? Log in
+                    </Text>
+                </TouchableOpacity>
             </View>
             
         </View>

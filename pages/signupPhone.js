@@ -1,39 +1,31 @@
 import React from "react";
-import {View, Text, TextInput, StyleSheet} from 'react-native'
-import LeftArrow from '../assets/leftArrow.svg'
-import Line2 from '../assets/Line2'
-import Down from '../assets/down.svg'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import Arrow from '../assets/leftArrow.svg';
+import Line2 from '../assets/Line2';
 import RegisterButton from "../components/registerButton";
+import InputField from "../components/InputField";
 
+const SignupPhone = () => {
+    const handleClick = () => {
+        ;
+    };
 
-const SignupPhone =(props)=>{
     return(
-        <View style={styles.mainContainer}>
+        <View style={styles.main}>
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <View>
-                        <View style={styles.iconwrap}>
-                            <LeftArrow/>
-                        </View>
-                    </View>
-                    <View style={styles.lineWrap} >
-                        <Line2/>
-                    </View>
+                <View style={styles.arrow}>
+                    <TouchableOpacity onPress={handleClick}>
+                        <Arrow/>
+                    </TouchableOpacity>
                 </View>
-                <View style={styles.body}>
-                    <View style={{width:'90%', flexDirection:'row',justifyContent:'space-between', alignItems:'center'}}>
-                    <View>
-                        <Text>+91</Text>
-                        
-                    </View>
-                    <View style={styles.texcontainer}>
-                    <TextInput
-                        style={styles.text}
-                        placeholder={props.text}
-                        placeholderTextColor="#6F6F6F"
-                     />
-                    </View>
-                    </View>
+                <View style={styles.linev}>
+                    <Line2/>
+                </View>
+
+                <View style={styles.input}>
+                    <InputField text="Phone number"/>  
+                </View>
+                <View style={styles.input2}>
                     <RegisterButton text="Proceed"/>
                 </View>
             </View>
@@ -44,50 +36,38 @@ const SignupPhone =(props)=>{
 export default SignupPhone
 
 const styles = StyleSheet.create({
-    mainContainer:{
-        width:'100%',
-        height:'100%',
+    main: {
+        height: "100%",
+        width: "100%",
         backgroundColor:'#5736B5',
         flexDirection:'row',
-        alignItems:'flex-end'
+        alignItems:'flex-end',
     },
     container:{
-        width:'100%',
-        height:'93%',
+        backgroundColor:'#EFEEFA',
+        height: "93%",
+        width:"100%",
         borderTopLeftRadius:24,
         borderTopRightRadius:24,
-        backgroundColor:'#EFEEFA'
-    },
-    header:{
-        height:72,
-        width:'100%'
-    },
-    body:{
-        width:'100%',
-        height:'70%',
-        paddingTop:48,
         flexDirection:'column',
-        alignItems:'center'
     },
-    iconwrap:{
-        margin:33
+    arrow: {
+        paddingLeft: 28,
+        paddingTop: 28,
     },
-    lineWrap:{
-        height:4,
-        width:'100%',
-        backgroundColor:'white'
+    linev: {
+        marginTop: "6%",
+        backgroundColor:'#FFFFFF',
     },
-    text:{
-        color: "black",
-        paddingLeft: 20,
-        paddingTop: 16,
-        paddingBottom: 16,
-        fontSize: 14,
+    input: {
+        marginTop: 32,
+        width: "100%",
+        height: "6%",
+        alignItems:'center',
     },
-    texcontainer: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: 16, 
-        height: 51,
-        width: '65%', 
+    input2: {
+        marginTop: 24,
+        height: "6%",
+        alignItems:'center',
     },
-})
+});
