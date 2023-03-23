@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const RegisterButton = () => {
+const RegisterButton = (props) => {
     const handleClick = () => {
         ;
     };
