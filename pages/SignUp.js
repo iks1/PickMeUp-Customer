@@ -13,7 +13,6 @@ const SignUp = () => {
 
     return (
         <View style={styles.main}>
-        <ScrollView style={styles.scroll}>
             <View style={styles.maincontainer}>
                 <View style={styles.container}>
                 <View style={styles.arrow}>
@@ -42,7 +41,6 @@ const SignUp = () => {
                 </View>
            </View>
            </View>
-        </ScrollView>
         </View>
     );
 }
@@ -73,8 +71,8 @@ const styles = StyleSheet.create({
         flexDirection:'column',
     },
     arrow: {
-        // paddingLeft: 28,
-        // paddingTop: 28,
+        paddingLeft: 28,
+        paddingTop: 28,
     },
     linev: {
         // marginTop: "6%",
@@ -83,14 +81,14 @@ const styles = StyleSheet.create({
     input: {
         // marginTop: "6%",
         width: "100%",
-        // height: "50%",
+        height: "28%",
         flexDirection:'column',
         alignItems:'center',
         justifyContent:'space-evenly',
     },
     input2: {
         // marginTop: "4%",
-        // height: "40%",
+        height: "23%",
         flexDirection:'column',
         alignItems:'center',
         justifyContent:'space-evenly',
