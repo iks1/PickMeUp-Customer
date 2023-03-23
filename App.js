@@ -35,10 +35,7 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={StudentDashboard}
-        />
+        <Stack.Screen name="Home" component={StudentDashboard} />
         <Stack.Screen name="Food" component={FoodDashboard} />
         <Stack.Screen name="Print" component={PrintDashboard} />
       </Stack.Navigator>
