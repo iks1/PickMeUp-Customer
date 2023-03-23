@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  Keyboard,
-} from "react-native";
+import {View,TouchableOpacity,StyleSheet,Text,Keyboard} from "react-native";
 import HomeIcon from "../assets/homeNav.svg";
 import FoodIcon from "../assets/foodNav.svg";
 import PrintIcon from "../assets/printNav.svg";
@@ -14,9 +8,9 @@ import HomeIconActive from "../assets/homeNavActive.svg";
 import FoodIconActive from "../assets/foodNavActive.svg";
 import PrintIconActive from "../assets/printNavActive.svg";
 import OrderIconActive from "../assets/orderNavActive.svg";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(true);
 
@@ -37,66 +31,57 @@ const NavBar = () => {
       }
     };
   }, []);
-  const [activeTab, setActiveTab] = useState("Home");
-
-  const onTabPress = (tabName) => {
-    setActiveTab(tabName);
-  };
 
   return (
     <View style={[styles.navBar, { display: visible ? "flex" : "none" }]}>
       <TouchableOpacity
         onPress={() => {
-          onTabPress("Food");
           navigation.navigate("Home");
         }}
         style={styles.tab}
       >
-        {activeTab === "Home" ? <HomeIconActive /> : <HomeIcon />}
+        {props.active === "Home" ? <HomeIconActive /> : <HomeIcon />}
 
-        <Text style={activeTab === "Home" ? styles.activeText : styles.text}>
+        <Text style={props.active === "Home" ? styles.activeText : styles.text}>
           Home
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => {
-          onTabPress("Food");
           navigation.navigate("Food");
         }}
         style={styles.tab}
       >
-        {activeTab === "Food" ? <FoodIconActive /> : <FoodIcon />}
+        {props.active === "Food" ? <FoodIconActive /> : <FoodIcon />}
 
-        <Text style={activeTab === "Food" ? styles.activeText : styles.text}>
+        <Text style={props.active === "Food" ? styles.activeText : styles.text}>
           Food
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => {
-          onTabPress("Print");
           navigation.navigate("Print");
         }}
         style={styles.tab}
       >
-        {activeTab === "Print" ? <PrintIconActive /> : <PrintIcon />}
+        {props.active === "Print" ? <PrintIconActive /> : <PrintIcon />}
 
-        <Text style={activeTab === "Print" ? styles.activeText : styles.text}>
+        <Text style={props.active === "Print" ? styles.activeText : styles.text}>
           Print
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => {
-          onTabPress("Order");
           navigation.navigate("Order");
         }}
         style={styles.tab}
       >
-        {activeTab === "Order" ? <OrderIconActive /> : <OrderIcon />}
+        {props.active === "Order" ? <OrderIconActive /> : <OrderIcon />}
 
-        <Text style={activeTab === "Order" ? styles.activeText : styles.text}>
+        <Text style={props.active === "Order" ? styles.activeText : styles.text}>
           Order
         </Text>
       </TouchableOpacity>
