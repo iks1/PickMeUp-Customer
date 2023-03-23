@@ -1,6 +1,5 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet} from "react-native";
-// import {Shadow} from 'react-native-shadow-2';  
 import ShopCard from './../components/Shopcard'
 import Edit from './../assets/edit.svg'
 import Omelette from "./../assets/omelette.png"
@@ -90,7 +89,7 @@ const PrintDash=({navigation})=>{
             </ScrollView>   
 
             <View style={styles.navbar}>
-                    <NavBar/>
+                    <NavBar active="Print"/>
             </View>
 
         </View>
