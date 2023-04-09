@@ -4,17 +4,16 @@ import Arrow from '../assets/leftArrow.svg';
 import Line2 from '../assets/Line2';
 import RegisterButton from "../components/registerButton";
 import InputField from "../components/InputField";
+import { useNavigation } from "@react-navigation/native";
 
 const SignupPhone = () => {
-    const handleClick = () => {
-        ;
-    };
+    const navigation = useNavigation();
 
     return(
         <View style={styles.main}>
             <View style={styles.container}>
                 <View style={styles.arrow}>
-                    <TouchableOpacity onPress={handleClick}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("SignUp");}}>
                         <Arrow/>
                     </TouchableOpacity>
                 </View>
@@ -25,9 +24,9 @@ const SignupPhone = () => {
                 <View style={styles.input}>
                     <InputField text="Phone number"/>  
                 </View>
-                <View style={styles.input2}>
+                <TouchableOpacity style={styles.input2} onPress={()=>{navigation.navigate("SignUpOTP");}}>
                     <RegisterButton text="Proceed"/>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     )

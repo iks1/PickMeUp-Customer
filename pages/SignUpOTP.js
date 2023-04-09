@@ -3,20 +3,15 @@ import Arrow from "../assets/leftArrow.svg";
 import Line3 from "../assets/Line3.svg";
 import SmallLine from "../assets/smallLine.svg";
 import RegisterButton from "../components/registerButton";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUp = props => {
-    const handleClick = () => {
-        ;
-    };
-    const handleResend = () => {
-        ;
-    };
-
+    const navigation = useNavigation();
     return (
         <View style={styles.main}>
             <View style={styles.container}>
                 <View style={styles.arrow}>
-                    <TouchableOpacity onPress={handleClick}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("SignUp");}} >
                         <Arrow/>
                     </TouchableOpacity>
                 </View>
@@ -59,12 +54,12 @@ const SignUp = props => {
                     </View>
                 </View>
                 
-                <View style={styles.input2}>
+                <TouchableOpacity style={styles.input2} onPress={()=>{navigation.navigate("Login");}}>
                     <RegisterButton text="Proceed"/>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.password}>
                     <Text style={styles.p1}>Did not receive the code?</Text>
-                    <TouchableOpacity onPress={handleResend}>
+                    <TouchableOpacity >
                         <Text style={styles.p2}> Resend OTP</Text>
                     </TouchableOpacity>
                 </View>

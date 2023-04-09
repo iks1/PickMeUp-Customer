@@ -4,20 +4,17 @@ import RegisterButton from "../components/registerButton";
 import InputField from "../components/InputField";
 import Google from "../components/Google";
 import Outlook from "../components/Outlook";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUp = () => {
-    const handleClick = () => {
-        ;
-    };
-    const handleReset = () => {
-        ;
-    };
+    const navigation = useNavigation();
+
 
     return (
         <View style={styles.main}>
             <View style={styles.container}>
                 <View style={styles.arrow}>
-                    <TouchableOpacity onPress={handleClick}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("GetStarted");}}>
                         <Arrow/>
                     </TouchableOpacity>
                 </View>
@@ -26,16 +23,23 @@ const SignUp = () => {
                     <InputField text="Password"/>
                 </View>
                 <View style={styles.input2}>
-                    <RegisterButton text="Login"/>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("Home");}}>
+                        <RegisterButton text="Login"/>
+                    </TouchableOpacity>
+                    
                     <View style={styles.password}>
                         <Text style={styles.p1}>Forgot password?</Text>
-                        <TouchableOpacity onPress={handleReset}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("Home");}}>
                             <Text style={styles.p2}> Reset Password</Text>
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.or}>or</Text>
-                    <Outlook />
-                    <Google/>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("Home");}}>
+                            <Outlook />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("Home");}}>
+                            <Google />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.text}>
                     <Text style={styles.texts}>
@@ -112,6 +116,12 @@ const styles = StyleSheet.create({
         color: "#6F6F6F",
         fontSize: 12,
         fontWeight: 500,
+    },
+    wrapper:{
+        width:"100%",
+        height:38,
+        flexDirection:"row",
+        justifyContent:"center"
     }
 });
 

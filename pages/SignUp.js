@@ -5,20 +5,16 @@ import RegisterButton from "../components/registerButton";
 import InputField from "../components/InputField";
 import Google from "../components/Google";
 import Outlook from "../components/Outlook";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUp = () => {
-    const handleClick = () => {
-        ;
-    };
-
+    const navigation = useNavigation();
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                <View style={styles.arrow}>
-                    <TouchableOpacity onPress={handleClick}>
-                        <Arrow/>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.arrow} onPress={()=>{navigation.navigate("GetStarted");}}>
+                    <Arrow/>
+                </TouchableOpacity>
                 <View style={styles.linev}>
                     <Line1/>
                 </View>
@@ -28,10 +24,16 @@ const SignUp = () => {
                     <InputField text="Password"/>
                 </View>
                 <View style={styles.input2}>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("SignUpPhone");}}>
                     <RegisterButton text="Register"/>
+                    </TouchableOpacity>
                     <Text style={styles.or}>or</Text>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("Home");}}>
                     <Outlook />
-                    <Google/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapper} onPress={()=>{navigation.navigate("Home");}}>
+                    <Google />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.text}>
                     <Text style={styles.texts}>
@@ -98,6 +100,12 @@ const styles = StyleSheet.create({
         color: "#6F6F6F",
         fontSize: 12,
         fontWeight: 500,
+    },
+    wrapper:{
+        width:"100%",
+        height:38,
+        flexDirection:"row",
+        justifyContent:"center"
     }
 });
 

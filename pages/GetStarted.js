@@ -1,8 +1,10 @@
 import React from "react";
 import {View, Text, Button, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
 import ProfileEllipse from '../assets/profileEllipse.svg';
+import { useNavigation } from "@react-navigation/native";
 
 const Start=()=>{
+  const navigation = useNavigation();
     return(
         <View style={styles.mainContainer}>
             
@@ -11,10 +13,10 @@ const Start=()=>{
                 <Text style={styles.Tex2}>Ordering on Campus made easier than ever</Text>
             </View>
             <View style={styles.down}>
-                <TouchableOpacity style={styles.but}>
+                <TouchableOpacity style={styles.but} onPress={()=>{navigation.navigate("SignUp");}}>
                     <Text style={styles.buttonText}>Get Started</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{navigation.navigate("Login");}}>
                     <Text style={styles.Tex}>
                         Already have an account? Log in
                     </Text>
