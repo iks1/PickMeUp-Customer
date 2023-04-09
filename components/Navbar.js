@@ -12,28 +12,9 @@ import { useNavigation } from "@react-navigation/native";
 
 const NavBar = (props) => {
   const navigation = useNavigation();
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    let keyboardEventListeners;
-    if (Platform.OS === "android") {
-      keyboardEventListeners = [
-        Keyboard.addListener("keyboardDidShow", () => setVisible(false)),
-        Keyboard.addListener("keyboardDidHide", () => setVisible(true)),
-      ];
-    }
-    return () => {
-      if (Platform.OS === "android") {
-        keyboardEventListeners &&
-          keyboardEventListeners.forEach((eventListener) =>
-            eventListener.remove()
-          );
-      }
-    };
-  }, []);
 
   return (
-    <View style={[styles.navBar, { display: visible ? "flex" : "none" }]}>
+    <View style={[styles.navBar]}>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Home");

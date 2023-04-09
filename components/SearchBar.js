@@ -4,7 +4,7 @@ import Search_icon2 from '../assets/Search_icon2.svg';
 import Search_icon3 from '../assets/Search_icon3.svg';
 import Search_icon3_copy from '../assets/Search_icon3_copy.svg';
 import Close from '../assets/close.svg'
-import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {StyleSheet, View, Text, TextInput,Modal} from 'react-native';
 import { useState } from "react";
 import FilterCard from "./FilterCard";
 const SearchBar = props => {
@@ -12,7 +12,8 @@ const SearchBar = props => {
     const [vis, setVis] = useState(false);
     return (
         <View style={{flexDirection:'column', alignItems:'center', width:'100%'}}>
-        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20, zIndex:1,borderColor:'#D7D2E9', borderWidth:1,justifyContent:'space-between'}]}>
+
+        <View style={[styles.container,{flexDirection:'row',alignItems:'center',margin:10, width:"90%",backgroundColor:'white',borderRadius:16,height:52,paddingLeft:20, zIndex:1,borderColor:vis?'#D7D2E9':'none', borderWidth:vis?1:0,justifyContent:'space-between'}]}>
             <TextInput
                 style={[styles.text,{width:"75%"}]}
                 placeholder={props.textInput}
@@ -34,12 +35,16 @@ const SearchBar = props => {
             {/* <Image source={Search_icon1} alt="" className="card-img" style={styles.icon3}  /> */}
             </View>
         </View>
-        <View style={{marginTop:-35, display:vis?'flex':"none",width:'90%'}}>
-            <FilterCard list1={[{id:1,label:'name'},{id:2,label:'veg'},{id:3,label:'nonveg'},{id:4,label:'name'}]} list2={[{id:4,label:["price:","low to high"]},{id:1,label:["price:","low to high"]}]}/>
-        </View>
-        <View style={{margin:12,display:vis?'flex':"none"}}>
-            <Close onPress={()=>{setVis(!vis)}} />
-        </View>
+        <Modal transparent={true} visible={vis} >
+            <View style={{flex:1,flexDirection:'column',alignItems:'center', backgroundColor:'#000000aa',top:145,borderRadius:16}}>
+                <View style={{ display:vis?'flex':"none",width:'90%',margin:-16}}>
+                    <FilterCard list1={[{id:1,label:'name'},{id:2,label:'veg'},{id:3,label:'nonveg'},{id:4,label:'name'}]} list2={[{id:4,label:["price:","low to high"]},{id:1,label:["price:","low to high"]}]}/>
+                </View>
+                <View style={{margin:28,display:vis?'flex':"none"}}>
+                    <Close onPress={()=>{setVis(!vis)}} />
+                </View>
+            </View>
+        </Modal>
         </View>
     );
 }

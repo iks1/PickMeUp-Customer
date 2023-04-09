@@ -17,11 +17,10 @@ export default header
 const styles = StyleSheet.create({
     head:{
         marginTop:48,
-        marginLeft:24,
-        marginRight:24,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
+        width:'90%'
     },
     headTex:{
         fontSize:20,

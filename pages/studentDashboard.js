@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
-        paddingTop:20,
+        paddingTop:32,
         marginBottom:64
     },
     main:{
@@ -165,29 +165,30 @@ const styles = StyleSheet.create({
     },
     choice:{
         width:"100%",
-        height:168,
+        height:184,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        padding:25,
+        paddingLeft:16,
+        paddingRight:16
     },
     wrapper2:{
         borderRadius:16,
         height:156,
         width:'48%',
-        marginBottom:20,
+        marginBottom:32,
         borderRadius:16,
     },
     food:{
-        height:136,
+        height:114,
         width:"100%",
-        
+        marginBottom:32
     },
     wrapper3:{
         borderRadius:16,
         height:110,
         width:110,
-        marginRight:10,
-        marginLeft:10
+        marginRight:16,
+        marginLeft:16
     },
 })
