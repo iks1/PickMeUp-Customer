@@ -4,7 +4,7 @@ import Line3 from "../assets/Line3.svg";
 import SmallLine from "../assets/smallLine.svg";
 import RegisterButton from "../components/registerButton";
 
-const SignUp = props => {
+const SignUpOTP = props => {
     const handleClick = () => {
         ;
     };
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUp;
+export default SignUpOTP;

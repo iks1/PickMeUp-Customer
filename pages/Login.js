@@ -5,7 +5,7 @@ import InputField from "../components/InputField";
 import Google from "../components/Google";
 import Outlook from "../components/Outlook";
 
-const SignUp = () => {
+const Login = () => {
     const handleClick = () => {
         ;
     };
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SignUp;
+export default Login;
