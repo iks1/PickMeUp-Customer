@@ -112,6 +112,8 @@ const styles = StyleSheet.create({
         height:180,
         width:"100%",
         zIndex: 2,
+        flexDirection:'column',
+        alignItems:'center',
     },
     down:{
         height:"100%",

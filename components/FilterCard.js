@@ -90,7 +90,7 @@ const FilterCard = props => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#FFFFFF",
-        borderRadius: 16, 
+        borderRadius:16,
         height: 331,
         width: '100%',
         display: "flex", 

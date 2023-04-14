@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    zIndex:2
   },
   foodItemCardsContainerStyle: {
     borderTopRightRadius: 30,
