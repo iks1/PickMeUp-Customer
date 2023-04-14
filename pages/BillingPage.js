@@ -9,11 +9,12 @@ import Edit2 from "../assets/edit2.svg";
 import Tick from "../assets/checkboxtick.svg";
 import Arrow from "../assets/leftArrow.svg";
 import Upi from "../assets/upi.png";
+import { useNavigation } from "@react-navigation/native";
 
 const BillingPage=(props)=>{
 
         const [checked, setChecked] = useState(false);
-      
+        const navigation = useNavigation();
         const handlePress = () => {
           setChecked(!checked);
         };
@@ -23,7 +24,7 @@ const BillingPage=(props)=>{
             <ScrollView  style={styles.main}>
 
                 <View style={styles.up}>
-                    <TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}}>
                         <Arrow />
                     </TouchableOpacity>
                 </View>
@@ -119,9 +120,9 @@ const BillingPage=(props)=>{
                 </View>          
             </ScrollView>   
 
-            {/* <View style={styles.navbar}>
-                    <NavBar active="Print"/>
-            </View> */}
+            <View style={styles.navbar}>
+                    <NavBar active="Food"/>
+            </View>
 
         </View>
     );

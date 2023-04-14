@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  Modal
 } from "react-native";
 
 // icons
@@ -20,8 +21,10 @@ import chickenImage from "./../assets/Img/Chicken.png";
 
 // component
 import HorizontalDashedLine from "./HorizontalDashedLine";
+import FoodPopUp from "./FoodPopUp";
 
 const FoodCard = (props) => {
+  const [vis, setVis] = useState(false);
   const [quantity, setQuantity] = useState(0);
   return (
     <View style={styles.foodCardMainContainer}>
@@ -35,7 +38,7 @@ const FoodCard = (props) => {
               ) : null}
             </View>
             <Text style={styles.heading}>{props.heading}</Text>
-            <Text style={styles.price}>{props.price}</Text>
+            <Text style={styles.price}>₹{props.fullPrice}</Text>
           </View>
           <View style={styles.rating}>
             <Text style={styles.ratingValue}>{props.ratingValue + "  "}</Text>
@@ -45,7 +48,7 @@ const FoodCard = (props) => {
 
         <View style={styles.right}>
           {/* <View style={styles.box}></View> */}
-          <Image source={chickenImage} style={styles.image} />
+          <Image source={props.image} style={styles.image} />
           {quantity == 0 ? (
             <View style={styles.addBtnStyle}>
               <TouchableOpacity
@@ -53,7 +56,7 @@ const FoodCard = (props) => {
                   setQuantity((quantity) => quantity + 1);
                 }}
               >
-                <Text style={styles.addText}>Add +</Text>
+                <TouchableOpacity onPress={()=>{setVis(!vis)}}><Text style={styles.addText}>Add +</Text></TouchableOpacity>
               </TouchableOpacity>
             </View>
           ) : (
@@ -83,6 +86,15 @@ const FoodCard = (props) => {
         </View>
       </View>
       <HorizontalDashedLine style={styles.line} />
+      <Modal transparent={true} visible={vis}>
+        <View style={{flex:1,flexDirection:'column',alignItems:'center', backgroundColor:'#000000aa'}}>
+                  <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={()=>{setVis(!vis)}}></TouchableOpacity>
+                  <View style={{bottom:0, position:'absolute', width:"100%"}}>
+                    <FoodPopUp image={props.image} veg={props.veg} bestSeller={props.bestSeller} halfFull={props.halfFull} price1={props.halfPrice} price2={props.fullPrice} rating={props.ratingValue} itemName={props.heading} />
+                  </View>
+                
+        </View>
+      </Modal>
     </View>
   );
 };

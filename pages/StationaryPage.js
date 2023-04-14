@@ -4,7 +4,7 @@ import { ScrollView } from "react-native";
 import ReviewCard from "../components/ReviewCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ShopHeader from "../components/ShopHeader";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar2";
 import PrintCard from "../components/Printcard";
 import chickenImage from "./../assets/Img/Chicken.png";
 import { Shadow } from "react-native-shadow-2";

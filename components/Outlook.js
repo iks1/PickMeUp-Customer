@@ -2,17 +2,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import OutlookIcon from "../assets/outlook.svg";
 
 const Outlook = () => {
-    const handleClick = () => {
-        ;
-    };
-
     return (
         
         <View style={styles.container}>
             <OutlookIcon/>
-            <TouchableOpacity onPress={handleClick}>
-                <Text style={styles.text}>Continue with Outlook</Text>
-            </TouchableOpacity>
+            <Text style={styles.text}>Continue with Outlook</Text>
         </View>
     );
 

@@ -2,17 +2,12 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import GoogleIcon from "../assets/google.svg";
 
 const Google = () => {
-    const handleClick = () => {
-        ;
-    };
 
     return (
         
         <View style={styles.container}>
             <GoogleIcon/>
-            <TouchableOpacity onPress={handleClick}>
-                <Text style={styles.text}>Continue with Google</Text>
-            </TouchableOpacity>
+            <Text style={styles.text}>Continue with Google</Text>
         </View>
     );
 

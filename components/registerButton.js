@@ -1,16 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const RegisterButton = (props) => {
-    const handleClick = () => {
-        ;
-    };
 
     return (
         
         <View style={styles.container}>
-        <TouchableOpacity onPress={handleClick}>
             <Text style={styles.text}>{props.text}</Text>
-        </TouchableOpacity>
         </View>
     );
 

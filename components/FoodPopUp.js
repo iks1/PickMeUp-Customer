@@ -9,10 +9,11 @@ import Line from '../assets/horizontalLine.svg';
 import { RadioButton } from 'react-native-paper';
 import Plus from '../assets/plus.svg';
 import Minus from '../assets/minus.svg';
+import { useNavigation } from "@react-navigation/native";
 
 const FoodPopUp = props => {
     const [num, setNum]=useState(1);
-
+    const navigation = useNavigation();
     const handleSubtract = () => {
         num!==0 && setNum(num-1);
     };
@@ -100,7 +101,19 @@ const FoodPopUp = props => {
                     </View>
                     
                     
-                </View>) : (<Text></Text>)}
+                </View>) : ( <View style={styles.view}>
+                        <Text>Full</Text>
+                        <View style={styles.icon}>
+                            <Text>₹{props.price2}</Text>
+                            <RadioButton
+                                key="1"
+                                value="1"
+                                status={selectedOption === 2 ? 'checked' : 'unchecked'}
+                                onPress={() => handleOptionSelect(2)}
+                                style={styles.radiobutton}
+                            />
+                        </View>
+                    </View>)}
             </View>
             
             <View style={styles.box3}>
@@ -115,7 +128,7 @@ const FoodPopUp = props => {
                     
                 </View>
                 <View style={styles.button2}>
-                    <TouchableOpacity onPress={handleAddItem}>
+                    <TouchableOpacity  onPress={()=>{navigation.navigate("BillingPage");}}>
                         <Text style={styles.text2}>Add item</Text>
                     </TouchableOpacity>
                 </View>
@@ -129,9 +142,11 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#FFFFFF',
-        borderRadius: 16,
+        borderTopLeftRadius:16,
+        borderTopRightRadius:16,
         justifyContent:'space-between',
         overflow: 'hidden',
+        width:'100%'
     },
     box1: {
         flexDirection: 'row',

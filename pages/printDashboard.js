@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet} from "react-native";
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import ShopCard from './../components/Shopcard'
 import Edit from './../assets/edit.svg'
 import Omelette from "./../assets/omelette.png"
@@ -61,15 +61,15 @@ const PrintDash=({navigation})=>{
                     </View>
                     <View style={styles.places}>
                         <ScrollView horizontal={true}>
-                            <View style={styles.places1}>
-                                <SmallShopCard2 img={canteen} line1="Brahma Hostel Food Canteen" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
-                            </View>
-                            <View style={styles.places1}>
-                                <SmallShopCard2 img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
-                            </View>
-                            <View style={styles.places1}>
-                                <SmallShopCard2 img={canteen} line1="Kapili Hostel Juice Centre" dist="200 m" line2="Snacks, Multi Cuisine" rating="4.0"/>
-                            </View>
+                            <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
+                                <SmallShopCard2 img={stationery} line1="Brahma Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
+                                <SmallShopCard2 img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
+                                <SmallShopCard2 img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                            </TouchableOpacity>
                         </ScrollView>
                     </View>
                     
@@ -79,10 +79,22 @@ const PrintDash=({navigation})=>{
                             </Text>
                     </View>
                     <View style={styles.explore}>
-                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
-                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
+                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}} >
+                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
+                        </TouchableOpacity > 
+                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}}>
+                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}}>
+                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("StationaryPage");}}>
+                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
+                        </TouchableOpacity>
+                                                
+                        {/* <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
                         <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
+                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                         */}
                     </View>
 
                 </View>          
@@ -175,5 +187,12 @@ const styles = StyleSheet.create({
         width:'100%', 
         height:64,
     },
+    wrapper4:{
+        width: "100%", 
+        height: 204, 
+        flexDirection:'column',
+        alignItems: "center",
+        marginVertical: 10,
+    }
 })
 

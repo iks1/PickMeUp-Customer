@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import { StyleSheet, ScrollView, View, Text, Image, Modal } from "react-native";
+import chickenImage from "./../assets/Img/Chicken.png";
 
 // components
 import FoodItemCard from "../components/FoodItemCard";
 import ShopCardInFocus from "../components/ShopCardInFocus";
 import ToggleSwitch from "toggle-switch-react-native";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar2";
 import ShopHeader from "../components/ShopHeader";
+import FoodPopUp from "../components/FoodPopUp";
 
 // icons
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
@@ -29,6 +31,7 @@ const FoodShopPage = () => {
       bestSeller: 1,
       veg: 0,
       id: 12,
+      image:{chickenImage}
     },
     {
       heading: "Butter Panner",
@@ -36,6 +39,7 @@ const FoodShopPage = () => {
       ratingValue: "2.0",
       bestSeller: 0,
       veg: 1,
+      image:{chickenImage},
       id: 432,
     },
   ];
@@ -72,16 +76,9 @@ const FoodShopPage = () => {
             <Text style={styles.recommendedTextStyle}>Recommended</Text>
             <UpArrowIcon />
           </View>
-          {arr.map((item) => (
-            <FoodItemCard
-              heading={item.heading}
-              price={item.price}
-              ratingValue={item.ratingValue}
-              bestSeller={item.bestSeller}
-              veg={item.veg}
-              key={item.id}
-            />
-          ))}
+          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="0" image={chickenImage}/>
+          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="1" image={chickenImage} halfPrice="160"/>
+          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="0" image={chickenImage}/>
         </View>
       </ScrollView>
     </View>
