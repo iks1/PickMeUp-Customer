@@ -6,10 +6,9 @@ import Google from "../components/Google";
 import Outlook from "../components/Outlook";
 import { useNavigation } from "@react-navigation/native";
 
+
 const SignUp = () => {
     const navigation = useNavigation();
-
-
     return (
         <View style={styles.main}>
             <View style={styles.container}>
@@ -125,4 +124,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SignUp;
+export default Login;

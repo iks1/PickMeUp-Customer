@@ -5,6 +5,7 @@ import SmallLine from "../assets/smallLine.svg";
 import RegisterButton from "../components/registerButton";
 import { useNavigation } from "@react-navigation/native";
 
+
 const SignUp = props => {
     const navigation = useNavigation();
     return (
@@ -154,4 +155,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUp;
+export default SignUpOTP;
