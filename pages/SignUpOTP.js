@@ -6,7 +6,7 @@ import RegisterButton from "../components/registerButton";
 import { useNavigation } from "@react-navigation/native";
 
 
-const SignUp = props => {
+const SignUpOTP = props => {
     const navigation = useNavigation();
     return (
         <View style={styles.main}>

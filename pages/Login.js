@@ -7,7 +7,7 @@ import Outlook from "../components/Outlook";
 import { useNavigation } from "@react-navigation/native";
 
 
-const SignUp = () => {
+const Login = () => {
     const navigation = useNavigation();
     return (
         <View style={styles.main}>
