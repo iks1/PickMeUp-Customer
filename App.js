@@ -3,19 +3,19 @@ import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // screens
-import GetStarted from "./pages/GetStarted"
-import SignUp from "./pages/SignUp"
-import SignUpOTP from "./pages/SignUpOTP"
-import Login from "./pages/Login"
-import SignUpPhone from "./pages/signupPhone"
+import GetStarted from "./pages/GetStarted";
+import SignUp from "./pages/SignUp";
+import SignUpOTP from "./pages/SignUpOTP";
+import Login from "./pages/Login";
+import SignUpPhone from "./pages/signupPhone";
 import StudentDashboard from "./pages/studentDashboard";
 import FoodDashboard from "./pages/foodDashboard";
 import PrintDashboard from "./pages/printDashboard";
 import FoodShopPage from "./pages/FoodShopPage";
 import StationaryPage from "./pages/StationaryPage";
-import BillingPage from "./pages/BillingPage"
-import YourOrders from "./pages/YourOrders"
-import Profile from "./pages/Profile"
+import BillingPage from "./pages/BillingPage";
+import YourOrders from "./pages/YourOrders";
+import Profile from "./pages/Profile";
 import PlacesNearYou from "./pages/PlacesNearYou";
 import Canteen from "./pages/Canteen";
 import FoodCourt from "./pages/FoodCourt";
@@ -24,7 +24,7 @@ import Khoka from "./pages/khoka";
 // navigation
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { AuthProvider } from "./context/AuthContext";
 // icons
 
 export default function App() {
@@ -47,10 +47,7 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={StudentDashboard}
-        />
+        <Stack.Screen name="Home" component={StudentDashboard} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Food" component={FoodDashboard} />
         <Stack.Screen name="Print" component={PrintDashboard} />
@@ -58,7 +55,7 @@ export default function App() {
         <Stack.Screen name="StationaryPage" component={StationaryPage} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignUpOTP" component={SignUpOTP}/>
+        <Stack.Screen name="SignUpOTP" component={SignUpOTP} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUpPhone" component={SignUpPhone} />
         <Stack.Screen name="BillingPage" component={BillingPage} />
