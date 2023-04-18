@@ -1,5 +1,6 @@
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useCallback } from "react";
 import {
   View,
   Text,
@@ -11,27 +12,30 @@ import {
 import ProfileEllipse from "../assets/profileEllipse.svg";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
+import { getSession, renewSession } from "../api/auth";
 
 const Start = () => {
-  // useEffect(() => {
-  //     getSession();
-  //   }, []);
-  //   const getSession = useCallback(async () => {
-  //     const storageToken = await AsyncStorage.getItem('refreshToken');
-  //     cognitoPool.storage.sync(function (err, res) {
-  //       if (res !=='SUCCESS') return
-
-  //       const user = cognitoPool.getCurrentUser();
-  //       if (!user) return;
-  //       user.getSession((err, session) => {
-  //         if (err) return;
-
-  //         const sessionToken = session?.refreshToken?.token;
-  //         if (sessionToken === storageToken) navigation.navigate(‘main’);
-  //       });
-  //     });
-  //   }, []);
   const navigation = useNavigation();
+  useEffect(() => {
+    try {
+      const getUserSession = async () => {
+        const token = await AsyncStorage.getItem("accessToken");
+        const data = await getSession(token);
+        if (data.success === true) {
+          navigation.replace("Home");
+        } else if (data.errorMessage === "JWT_EXPIRED") {
+          const Refreshtoken = await AsyncStorage.getItem("refreshToken");
+          const { data } = await renewSession(Refreshtoken);
+          await AsyncStorage.setItem("accessToken", data.access_token);
+          navigation.replace("Home");
+        }
+      };
+      getUserSession();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.up}>

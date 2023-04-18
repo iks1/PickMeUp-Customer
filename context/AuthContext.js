@@ -51,20 +51,16 @@ export const AuthProvider = ({ children }) => {
 
       if (data.success) {
         navigation.replace("Home");
-        // let userInfo = data.userInfo;
-        // console.log(userInfo);
-        // // setUserInfo(userInfo);
         AsyncStorage.setItem(
           "refreshToken",
           JSON.stringify(data.refresh_token)
         );
+        AsyncStorage.setItem("accessToken", JSON.stringify(data.access_token));
         setIsLoading(false);
       } else {
         alert(data.message);
         setIsLoading(false);
       }
-
-      console.log(data);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -97,27 +93,24 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  const isLoggedIn = async () => {
-    try {
-      setSplashLoading(true);
+  // const isLoggedIn = async () => {
+  //   try {
+  //     setSplashLoading(true);
 
-      let userInfo = await AsyncStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
+  //     let userInfo = await AsyncStorage.getItem("");
+  //     userInfo = JSON.parse(userInfo);
 
-      if (userInfo) {
-        setUserInfo(userInfo);
-      }
+  //     if (userInfo) {
+  //       setUserInfo(userInfo);
+  //     }
 
-      setSplashLoading(false);
-    } catch (e) {
-      setSplashLoading(false);
-      console.log(`is logged in error ${e}`);
-    }
-  };
+  //     setSplashLoading(false);
+  //   } catch (e) {
+  //     setSplashLoading(false);
+  //     console.log(`is logged in error ${e}`);
+  //   }
+  // };
 
-  useEffect(() => {
-    isLoggedIn();
-  }, []);
   return (
     <AuthContext.Provider
       value={{
