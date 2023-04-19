@@ -16,13 +16,13 @@ import NavBar from '../components/Navbar';
 import { useNavigation } from "@react-navigation/native";
 
 const Profile=()=>{
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
 
     return (
         <View style={styles.mainContainer}>
             <ScrollView  style={styles.main}>
                 <View style={styles.up}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{navigation.goBack();}}>
                         <Arrow />
                     </TouchableOpacity>
                     <TouchableOpacity>

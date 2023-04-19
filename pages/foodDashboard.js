@@ -35,18 +35,18 @@ const Dash=({})=>{
                         </Text>
                 </View>
                 <View style={styles.choice}>
-                    <View style={styles.wrapper2}>
+                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("Canteen");}}>
                     <LocationCard text='Canteen'/>
-                    </View>
-                    <View style={styles.wrapper2}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("Khoka");}}>
                     <LocationCard text='Khoka'/>
-                    </View>
-                    <View style={styles.wrapper2}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("MarketComplex");}}>
                     <LocationCard text='Market Complex'/>
-                    </View>
-                    <View style={styles.wrapper2}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("FoodCourt");}}>
                     <LocationCard text='Food Court'/>
-                    </View>
+                    </TouchableOpacity>
                     
                 </View>
                 <View style={styles.subHead}>

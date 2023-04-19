@@ -24,7 +24,7 @@ const BillingPage=(props)=>{
             <ScrollView  style={styles.main}>
 
                 <View style={styles.up}>
-                    <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}}>
+                    <TouchableOpacity  onPress={()=>{navigation.goBack();}}>
                         <Arrow />
                     </TouchableOpacity>
                 </View>
