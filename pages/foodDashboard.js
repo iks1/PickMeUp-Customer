@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { ScrollView, View, Text, StyleSheet, Touchable, TouchableOpacity} from "react-native";
 import LocationCard from "../components/LocationCard";
 import {Shadow} from 'react-native-shadow-2';  
@@ -20,7 +20,8 @@ import Recommended from './../components/recommended'
 import bg from './../assets/recdummy.png'
 import { useNavigation } from "@react-navigation/native";
 const Dash=({})=>{
-  const navigation = useNavigation();
+    const [isVisible, setIsVisible] = useState(false);
+    const navigation = useNavigation();
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
@@ -53,7 +54,26 @@ const Dash=({})=>{
                         <Text style={styles.subHeadTex} >
                             Your Favorites
                         </Text>
-                        <Edit/>
+                        {!isVisible ? 
+                            <TouchableOpacity onPress={()=>setIsVisible(!isVisible)}>
+                                <View style={styles.edit}>
+                                    <Edit/> 
+                                </View>
+                            </TouchableOpacity>
+                            : 
+                            <View style={styles.options}>
+                                <TouchableOpacity onPress={()=>setIsVisible(!isVisible)}>
+                                    <View style={styles.op1}>
+                                        <Text style={styles.editText1}>Cancel</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={()=>setIsVisible(!isVisible)}>
+                                    <View style={styles.op2}>
+                                        <Text style={styles.editText2}>Save</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        }
                 </View>
                 <View style={styles.food}>
                     <ScrollView horizontal={true} style={styles.food1}>
@@ -184,6 +204,46 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
     },
+    edit:{
+        paddingRight:8,
+    },
+    options:{
+        flexDirection:'row',
+    },
+    op1:{
+        width:70,
+        height:28,
+        borderRadius:16,
+        backgroundColor:'#EEEDFA',
+        justifyContent:'center',
+        alignItems:'center',
+        borderWidth:1,
+        borderColor:'#D7D2E9',
+    },
+    op2:{
+        width:56,
+        height:28,
+        borderRadius:16,
+        backgroundColor:'#5736B5',
+        justifyContent:'center',
+        alignItems:'center',
+        marginLeft:8,
+    },
+    editText1:{
+        color:'#8A8297',
+        fontSize:14,
+        fontWeight:500,
+    },
+    editText2:{
+        color:'#FFFFFF',
+        fontSize:14,
+        fontWeight:500,
+    },
+    subHeadTex:{
+        color:'#6F6F6F',
+        fontSize:14,
+        fontWeight:500,
+    },
     headTex:{
         fontSize:20,
         fontWeight:500,
@@ -207,13 +267,14 @@ const styles = StyleSheet.create({
         fontWeight:500,
     },
     subHead:{
-        width:"90%",
+        width:"100%",
         height:19,
         flexDirection:'row',
         justifyContent:'space-between',
         marginBottom:16,
-        paddingLeft:10,
-        paddingRight:10,
+        alignItems:'center',
+        paddingLeft:24,
+        paddingRight:16,
     },
     nearYou:{
         width:"100%",
