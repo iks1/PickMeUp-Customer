@@ -1,85 +1,67 @@
-import React, { createContext, useState,useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import client from '../config'
+import React, { createContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import client from "../config";
+import { createUser, userSignIn, verifyOTP } from "../api/auth";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-
-  const  register= async(name,email, password,Confpassword, navigation)=>{
+  const register = async (name, email, password, navigation) => {
     try {
-      const {data} =  await client.post(
-        '/create-user',
-        {
-          fullname:name,
-          email,
-          password,
-          confirmPassword:Confpassword
-        },
-        {
-            headers: {
-            'Content-Type': "application/json",
-            'Accept': "application/json",
-            }  
-        }   
-     );
-    console.log(data);  
-        
+      const data = await createUser(name, email, password);
       if (data.success) {
-        let userInfo = data;
-        console.log(userInfo);
-        setUserInfo(userInfo);
-        AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
-        setIsLoading(false);
-        navigation.replace('Login');
-
-      }else{
+        setUserInfo((prev) => {
+          return data.userInfo;
+        });
+        navigation.replace("SignUpOTP");
+      } else {
         alert(data.message);
         setIsLoading(false);
       }
     } catch (e) {
       console.log(e);
-        console.log(`register error ${e}`);
-        setIsLoading(false);
+      console.log(`register error ${e}`);
+      setIsLoading(false);
     }
-    }
-  
-
-  const login = async (email, password) => {
-    setIsLoading(true);
+  };
+  const OTPverification = async (otp, navigation) => {
+    const userEmail = userInfo.email;
     try {
-      const {data} =  await client.post(
-        '/sign-in',
-        {
-          email,
-          password,
-        },
-        {
-            headers: {
-            'Content-Type': "application/json",
-            'Accept': "application/json",
-            }  
-        }   
-     );
- 
-
+      const data = await verifyOTP(userEmail, otp);
       if (data.success) {
-        let userInfo = data;
-        console.log(userInfo);
-        setUserInfo(userInfo);
-        AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
         setIsLoading(false);
-      }else{
-        setError(data.message)
+        navigation.replace("Login");
+      } else {
+        alert(data.message);
         setIsLoading(false);
       }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-      console.log(data);
-    } catch (error) { 
+  const login = async (email, password, navigation) => {
+    setIsLoading(true);
+    try {
+      const data = await userSignIn(email, password);
+
+      if (data.success) {
+        navigation.replace("Home");
+        AsyncStorage.setItem(
+          "refreshToken",
+          JSON.stringify(data.refresh_token)
+        );
+        AsyncStorage.setItem("accessToken", JSON.stringify(data.access_token));
+        setIsLoading(false);
+      } else {
+        alert(data.message);
+        setIsLoading(false);
+      }
+    } catch (error) {
       setIsLoading(false);
       console.log(error);
     }
@@ -87,59 +69,62 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setIsLoading(true);
-    client.post(
-      '/sign-in',
-      {},
-      
-    {      headers: {
-            headers: {Authorization: `Bearer ${userInfo.token}`}  ,
-      } }  
-   ).then(res => {
-    console.log(res.data);
-    AsyncStorage.removeItem('userInfo');
-    setUserInfo({});
-    setIsLoading(false);
-    setError(null)
-  })
-  .catch(e => {
-    console.log(`logout error ${e}`);
-    setIsLoading(false);
-  });      
+    client
+      .post(
+        "/sign-in",
+        {},
+
+        {
+          headers: {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        AsyncStorage.removeItem("userInfo");
+        setUserInfo({});
+        setIsLoading(false);
+        setError(null);
+      })
+      .catch((e) => {
+        console.log(`logout error ${e}`);
+        setIsLoading(false);
+      });
   };
 
-  const isLoggedIn = async () => {
-    try {
-      setSplashLoading(true);
+  // const isLoggedIn = async () => {
+  //   try {
+  //     setSplashLoading(true);
 
-      let userInfo = await AsyncStorage.getItem('userInfo');
-      userInfo = JSON.parse(userInfo);
+  //     let userInfo = await AsyncStorage.getItem("");
+  //     userInfo = JSON.parse(userInfo);
 
-      if (userInfo) {
-        setUserInfo(userInfo);
-      }
+  //     if (userInfo) {
+  //       setUserInfo(userInfo);
+  //     }
 
-      setSplashLoading(false);
-    } catch (e) {
-      setSplashLoading(false);
-      console.log(`is logged in error ${e}`);
-    }
-  };
+  //     setSplashLoading(false);
+  //   } catch (e) {
+  //     setSplashLoading(false);
+  //     console.log(`is logged in error ${e}`);
+  //   }
+  // };
 
-  useEffect(() => {
-    isLoggedIn();
-  }, []);
   return (
     <AuthContext.Provider
-    value={{
-      isLoading,
-      userInfo,
-      splashLoading,
-      error,
-      register,
-      login,
-      logout,
-    }}>
-    {children}
-  </AuthContext.Provider>
+      value={{
+        isLoading,
+        userInfo,
+        splashLoading,
+        error,
+        register,
+        OTPverification,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };
