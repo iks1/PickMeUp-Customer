@@ -13,7 +13,7 @@ const Login = () => {
         <View style={styles.main}>
             <View style={styles.container}>
                 <View style={styles.arrow}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("GetStarted");}}>
+                    <TouchableOpacity onPress={()=>{navigation.goBack();}}>
                         <Arrow/>
                     </TouchableOpacity>
                 </View>

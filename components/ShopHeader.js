@@ -1,15 +1,18 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import HeartIcon from "../assets/Icons/HeartIcon";
 import LeftArrowIcon from "../assets/Icons/LeftArrowIcon";
-
+import { useNavigation } from "@react-navigation/native";
 const ShopHeader = (props) => {
   const isFavourite = props.isFavourite;
   const toggleFavourite = props.onPress;
+  const navigation = useNavigation();
 
   return (
     <View style={styles.header}>
-      <LeftArrowIcon />
+      <TouchableOpacity onPress={()=>{navigation.goBack();}}>
+        <LeftArrowIcon />
+      </TouchableOpacity>
       <HeartIcon isFavourite={isFavourite} onPress={toggleFavourite} />
     </View>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image, Modal } from "react-native";
 import chickenImage from "./../assets/Img/Chicken.png";
+import { useNavigation } from "@react-navigation/native";
 
 // components
 import FoodItemCard from "../components/FoodItemCard";
@@ -17,6 +18,7 @@ import NonVegIcon from "../assets/Icons/NonVegIcon";
 import VegIcon from "../assets/Icons/VegIcon";
 
 const FoodShopPage = () => {
+  const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
   const [isFavourite, setIsFavourite] = useState(true);

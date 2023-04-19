@@ -4,17 +4,11 @@ import FilePlus from "../assets/filePlus.svg";
 import NavBar from '../components/Navbar'
 
 const UploadFiles = () => {
-    const handleBack = () => {
-
-    };
-    const handleClick = () => {
-    
-    };
 
     return (
         <View style={styles.container}>
             <View style={styles.arrow}>
-                <TouchableOpacity onPress={handleBack}>
+                <TouchableOpacity onPress={()=>{navigation.goBack();}}>
                     <Arrow/>
                 </TouchableOpacity>
             </View>
@@ -27,7 +21,7 @@ const UploadFiles = () => {
                 <View style={styles.box2}>
                     <FilePlus/>
                     <View style={styles.upload}>
-                        <TouchableOpacity onPress={handleClick}>
+                        <TouchableOpacity >
                             <Text style={styles.text3}>Browse files</Text>
                         </TouchableOpacity>
                     </View>

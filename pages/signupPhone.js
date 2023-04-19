@@ -13,7 +13,7 @@ const SignupPhone = () => {
         <View style={styles.main}>
             <View style={styles.container}>
                 <View style={styles.arrow}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("SignUp");}}>
+                    <TouchableOpacity onPress={()=>{navigation.goBack();}}>
                         <Arrow/>
                     </TouchableOpacity>
                 </View>

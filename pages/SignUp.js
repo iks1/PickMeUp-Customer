@@ -12,7 +12,7 @@ const SignUp = () => {
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                <TouchableOpacity style={styles.arrow} onPress={()=>{navigation.navigate("GetStarted");}}>
+                <TouchableOpacity style={styles.arrow} onPress={()=>{navigation.goBack();}}>
                     <Arrow/>
                 </TouchableOpacity>
                 <View style={styles.linev}>

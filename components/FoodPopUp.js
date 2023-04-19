@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, Touchable } from 'react-native';
 import Heart from '../assets/heart.svg';
 import HeartActive from '../assets/heartActive.svg'
 import {useState} from 'react';
@@ -41,9 +41,9 @@ const FoodPopUp = props => {
             <View style={styles.box1}>
 
             <View style={styles.box}>
-                <View style={styles.image}>
+                <TouchableOpacity style={styles.image}>
                     <Image source={props.image} style={styles.image} /> 
-                </View>
+                </TouchableOpacity>
                 <View style={styles.box11}>
                     <View style={styles.headingDecorator}>
                     {(props.veg === "1") ? (<VegIcon/>):(<NonVegIcon/>)}
