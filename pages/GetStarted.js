@@ -20,14 +20,18 @@ const Start = () => {
     try {
       const getUserSession = async () => {
         const token = await AsyncStorage.getItem("accessToken");
-        const data = await getSession(token);
-        if (data.success === true) {
-          navigation.replace("Home");
-        } else if (data.errorMessage === "JWT_EXPIRED") {
-          const Refreshtoken = await AsyncStorage.getItem("refreshToken");
-          const { data } = await renewSession(Refreshtoken);
-          await AsyncStorage.setItem("accessToken", data.access_token);
-          navigation.replace("Home");
+        if (token) {
+          const data = await getSession(token);
+          if (data.success === true) {
+            navigation.replace("Home");
+          } else if (data.errorMessage === "JWT_EXPIRED") {
+            const Refreshtoken = await AsyncStorage.getItem("refreshToken");
+            const { data } = await renewSession(Refreshtoken);
+            await AsyncStorage.setItem("accessToken", data.access_token);
+            navigation.replace("Home");
+          }
+        } else {
+          console.log("User not authenticated");
         }
       };
       getUserSession();

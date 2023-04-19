@@ -62,35 +62,15 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false);
       }
     } catch (error) {
+      console.log("here is ther error");
       setIsLoading(false);
       console.log(error);
     }
   };
 
-  const logout = () => {
-    setIsLoading(true);
-    client
-      .post(
-        "/sign-in",
-        {},
-
-        {
-          headers: {
-            headers: { Authorization: `Bearer ${userInfo.token}` },
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        AsyncStorage.removeItem("userInfo");
-        setUserInfo({});
-        setIsLoading(false);
-        setError(null);
-      })
-      .catch((e) => {
-        console.log(`logout error ${e}`);
-        setIsLoading(false);
-      });
+  const logout = async (navigation) => {
+    await AsyncStorage.removeItem("accessToken");
+    navigation.replace("GetStarted");
   };
 
   // const isLoggedIn = async () => {

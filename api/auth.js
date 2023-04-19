@@ -50,7 +50,7 @@ export const userSignIn = async (email, password) => {
       },
     }
   );
-  console.log(data);
+  console.log("user signed in", data);
   return data;
 };
 

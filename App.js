@@ -40,33 +40,35 @@ export default function App() {
     //   {/* <StationaryPage /> */}
 
     // </View>
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="GetStarted"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Home" component={StudentDashboard} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Food" component={FoodDashboard} />
-        <Stack.Screen name="Print" component={PrintDashboard} />
-        <Stack.Screen name="FoodShop" component={FoodShopPage} />
-        <Stack.Screen name="StationaryPage" component={StationaryPage} />
-        <Stack.Screen name="GetStarted" component={GetStarted} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignUpOTP" component={SignUpOTP} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUpPhone" component={SignUpPhone} />
-        <Stack.Screen name="BillingPage" component={BillingPage} />
-        <Stack.Screen name="Order" component={YourOrders} />
-        <Stack.Screen name="PlacesNearYou" component={PlacesNearYou} />
-        <Stack.Screen name="Canteen" component={Canteen} />
-        <Stack.Screen name="FoodCourt" component={FoodCourt} />
-        <Stack.Screen name="MarketComplex" component={MarketComplex} />
-        <Stack.Screen name="Khoka" component={Khoka} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="GetStarted"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Home" component={StudentDashboard} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Food" component={FoodDashboard} />
+          <Stack.Screen name="Print" component={PrintDashboard} />
+          <Stack.Screen name="FoodShop" component={FoodShopPage} />
+          <Stack.Screen name="StationaryPage" component={StationaryPage} />
+          <Stack.Screen name="GetStarted" component={GetStarted} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="SignUpOTP" component={SignUpOTP} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="SignUpPhone" component={SignUpPhone} />
+          <Stack.Screen name="BillingPage" component={BillingPage} />
+          <Stack.Screen name="Order" component={YourOrders} />
+          <Stack.Screen name="PlacesNearYou" component={PlacesNearYou} />
+          <Stack.Screen name="Canteen" component={Canteen} />
+          <Stack.Screen name="FoodCourt" component={FoodCourt} />
+          <Stack.Screen name="MarketComplex" component={MarketComplex} />
+          <Stack.Screen name="Khoka" component={Khoka} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
 
