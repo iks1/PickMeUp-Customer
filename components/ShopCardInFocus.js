@@ -9,26 +9,18 @@ const ShopCardInFocus = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.head}>{"Dihing Canteen"}</Text>
-        <RatingView rating="4.0" />
+        <Text style={styles.head}>{props.name}</Text>
+        <RatingView rating={props.rating} />
       </View>
-      <View>
-        <Text style={styles.description}>
-          {"400m · Snacks, Multi Cuisine  "}
-        </Text>
-      </View>
+      <View></View>
       <View style={styles.openClose}>
-        <Text style={styles.openBtn}>{"Open"}</Text>
+        <Text style={styles.openBtn}>{props.isOpen}</Text>
         <Text style={styles.closesInText}>{"  Closes in 4 hours"}</Text>
       </View>
       <View style={styles.shopDetails}>
         <View style={styles.button}>
           <PhoneIcon style={styles.buttonText} />
-          <Text style={styles.buttonText}>{"  Contact"}</Text>
-        </View>
-        <View style={{ ...styles.button, marginLeft: 10 }}>
-          <ArrowInCircleIcon />
-          <Text style={{ ...styles.buttonText }}>{"  Directions"}</Text>
+          <Text style={styles.buttonText}>{props.contact}</Text>
         </View>
       </View>
     </View>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image, Modal } from "react-native";
 import chickenImage from "./../assets/Img/Chicken.png";
 import { useNavigation } from "@react-navigation/native";
@@ -18,9 +18,25 @@ import StarIcon from "../assets/Icons/StarIcon";
 import NonVegIcon from "../assets/Icons/NonVegIcon";
 import VegIcon from "../assets/Icons/VegIcon";
 
-const FoodShopPage = (props) => {
-  let shopId = props.key;
-  console.log(key);
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+import { getShopById } from "../api/shop";
+
+const FoodShopPage = ({ route }) => {
+  const [shop, setShop] = useState({});
+  let shopId = route.params.id;
+  console.log(shopId);
+  const fetchData = async () => {
+    const { data } = await getShopById(shopId);
+    setShop((prev) => {
+      return { ...data };
+    });
+  };
+  2;
+  useEffect(() => {
+    fetchData();
+  }, []);
+  console.log(shop);
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
@@ -54,7 +70,12 @@ const FoodShopPage = (props) => {
       <ScrollView style={styles.main}>
         <View style={styles.UpperParent}>
           <ShopHeader isFavourite={isFavourite} onPress={toggleFavourite} />
-          <ShopCardInFocus />
+          <ShopCardInFocus
+            isOpen={shop.isOpened ? "OPEN" : "CLOSE"}
+            rating={shop.rating}
+            name={shop.name}
+            contact={shop.phone_number}
+          />
           <View style={styles.searchArea}>
             <SearchBar textInput="Search for food items..." />
           </View>

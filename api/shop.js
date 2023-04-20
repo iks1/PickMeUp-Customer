@@ -36,7 +36,7 @@ export const getAllShops = async () => {
       });
   });
 };
-export const getShopById = async () => {
+export const getShopById = async (id) => {
   return new Promise(async (resolve, reject) => {
     const rawToken = await getAccessToken();
     const accessToken = rawToken.replace(/['"]+/g, "");
@@ -45,7 +45,7 @@ export const getShopById = async () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `${client}/api/shop/getShopById/?id=643294ae0463e80940048069`,
+      url: `${client}/api/shop/getShopById/?id=${id}`,
       headers: {
         Authorization: ` Bearer ${accessToken}`,
       },
