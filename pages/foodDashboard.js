@@ -5,57 +5,80 @@ import ShopCard from './../components/Shopcard'
 import canteen from './../assets/canteen.png'
 import Edit from './../assets/edit.svg'
 import FoodCard2 from "../components/FoodCard2";
-import Omelette from "./../assets/omelette.png"
-import Shake from '../assets/shake.png'
-import Maggie from '../assets/maggi.png'
-import SearchBar from '../components/SearchBar'
-import NavBar from '../components/Navbar'
-import Header from '../components/header'
+import Omelette from "./../assets/omelette.png";
+import Shake from "../assets/shake.png";
+import Maggie from "../assets/maggi.png";
+import SearchBar from "../components/SearchBar";
+import NavBar from "../components/Navbar";
+import Header from "../components/header";
 import SmallShopCard from "../components/smallShopCard";
-import Recommended from './../components/recommended'
-import bg from './../assets/recdummy.png'
+import Recommended from "./../components/recommended";
+import bg from "./../assets/recdummy.png";
 import { useNavigation } from "@react-navigation/native";
+import { getAllShops, getShopById } from "../api/shop";
 
-const Dash=({})=>{
+const Dash = ({}) => {
+  const fetchData = async () => {
+    const data = await getAllShops();
+    const shop = await getShopById();
+    console.log(shop);
+  };
+  fetchData();
+
     const [isVisible, setIsVisible] = useState(false);
     const navigation = useNavigation();
-    return (
-        <View style={styles.mainContainer}>
-        <ScrollView  style={styles.main}>
-            <View style={styles.up}>
-                <Header text="Order with ease" />
-                <SearchBar textInput="Search here for restauran, food, etc"/>
-            </View>
-            <View style={styles.down}>
-                <View style={styles.subHead}>
-                        <Text style={styles.subHeadTex} >
-                            Locations Across Campus
-                        </Text>
-                </View>
-                <View style={styles.choice}>
-                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("Canteen");}}>
-                    <LocationCard text='Canteen'/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("Khoka");}}>
-                    <LocationCard text='Khoka'/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("MarketComplex");}}>
-                    <LocationCard text='Market Complex'/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper2} onPress={()=>{navigation.navigate("FoodCourt");}}>
-                    <LocationCard text='Food Court'/>
-                    </TouchableOpacity>
-                    
-                </View>
-                <View style={styles.subHead}>
-                        <Text style={styles.subHeadTex} >
-                            Your Favorites
-                        </Text>
+  return (
+    <View style={styles.mainContainer}>
+      <ScrollView style={styles.main}>
+        <View style={styles.up}>
+          <Header text="Order with ease" />
+          <SearchBar textInput="Search here for restauran, food, etc" />
+        </View>
+        <View style={styles.down}>
+          <View style={styles.subHead}>
+            <Text style={styles.subHeadTex}>Locations Across Campus</Text>
+          </View>
+          <View style={styles.choice}>
+            <TouchableOpacity
+              style={styles.wrapper2}
+              onPress={() => {
+                navigation.navigate("Canteen");
+              }}
+            >
+              <LocationCard text="Canteen" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapper2}
+              onPress={() => {
+                navigation.navigate("Khoka");
+              }}
+            >
+              <LocationCard text="Khoka" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapper2}
+              onPress={() => {
+                navigation.navigate("MarketComplex");
+              }}
+            >
+              <LocationCard text="Market Complex" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapper2}
+              onPress={() => {
+                navigation.navigate("FoodCourt");
+              }}
+            >
+              <LocationCard text="Food Court" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.subHead}>
+            <Text style={styles.subHeadTex}>Your Favorites</Text>
                         {!isVisible ? 
                             <TouchableOpacity onPress={()=>setIsVisible(!isVisible)}>
                                 <View style={styles.edit}>
-                                    <Edit/> 
-                                </View>
+                        <Edit /> 
+                          </View>
                             </TouchableOpacity>
                             : 
                             <View style={styles.options}>
@@ -72,96 +95,171 @@ const Dash=({})=>{
                             </View>
                         }
                 </View>
-                <View style={styles.food}>
-                    <ScrollView horizontal={true}>
-                    <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Bread Omelette" image={Omelette} veg={false} favVisible={isVisible}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible}/>
-                    </TouchableOpacity>
-                    </ScrollView>
-                </View>
-                <View style={styles.subHead}>
-                        <Text style={styles.subHeadTex} >
-                            Places You Love
-                        </Text>
+          <View style={styles.food}>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.wrapper3}>
+                <FoodCard2 heading1="Bread Omelette" image={Omelette} veg={false} favVisible={isVisible} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.wrapper3}>
+                <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.wrapper3}>
+                <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.wrapper3}>
+                <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.wrapper3}>
+                <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible} />
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+          <View style={styles.subHead}>
+            <Text style={styles.subHeadTex}>Places You Love</Text>
                         <View style={styles.edit}>
-                            <Edit/>
-                        </View>
+                <Edit />
+                  </View>
                 </View>
 
-                <View style={styles.placeYouLove}>
-                    <ScrollView horizontal={true}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
-                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Hostel Food Canteen"/>
-                        </TouchableOpacity >
-                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
-                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
-                        </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
-                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
-                        </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
-                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
-                        </TouchableOpacity>
-                    </ScrollView>
-                </View>
-                <View style={styles.subHead}>
-                        <Text style={styles.subHeadTex} >
-                            Recommended
-                        </Text>
-                </View>
-                <View style={styles.rec}>
-                    <View style={styles.wrapper6}>
-                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
-                    </View>
-                    <View style={styles.wrapper6}>
-                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
-                    </View>
-                    <View style={styles.wrapper6}>
-                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
-                    </View>
-                    <View style={styles.wrapper6}>
-                    <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
-                    </View>
-                </View>
-                
-                
-                <View style={styles.subHead}>
-                        <Text style={styles.subHeadTex} >
-                            Explore Places
-                        </Text>
-                </View>
-                <View style={styles.nearYou}>
-                <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    
-                </View>
+          <View style={styles.placeYouLove}>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("FoodShop");
+                }}
+              >
+                <SmallShopCard
+                  rating="4.5"
+                  img={canteen}
+                  dist="200m"
+                  line2="Snacks-Multi Cuisine"
+                  line1="Brahma Food Center"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("FoodShop");
+                }}
+              >
+                <SmallShopCard
+                  rating="4.5"
+                  img={canteen}
+                  dist="200m"
+                  line2="Snacks-Multi Cuisine"
+                  line1="Brahma Food Center"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("FoodShop");
+                }}
+              >
+                <SmallShopCard
+                  rating="4.5"
+                  img={canteen}
+                  dist="200m"
+                  line2="Snacks-Multi Cuisine"
+                  line1="Brahma Food Center"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("FoodShop");
+                }}
+              >
+                <SmallShopCard
+                  rating="4.5"
+                  img={canteen}
+                  dist="200m"
+                  line2="Snacks-Multi Cuisine"
+                  line1="Brahma Food Center"
+                />
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+          <View style={styles.subHead}>
+            <Text style={styles.subHeadTex}>Recommended</Text>
+          </View>
+          <View style={styles.rec}>
+            <View style={{ width: "45%" }}>
+              <Recommended
+                bg={bg}
+                rating="4.5"
+                name="Chicken Shawarma"
+                dest="Lohit Canteen"
+              />
             </View>
-            
-        </ScrollView>
-        <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                <NavBar active="Food"/>
-        </View>
-        </View>
-    );
-}
+            <View style={{ width: "45%" }}>
+              <Recommended
+                bg={bg}
+                rating="4.5"
+                name="Chicken Shawarma"
+                dest="Lohit Canteen"
+              />
+            </View>
+            <View style={{ width: "45%" }}>
+              <Recommended
+                bg={bg}
+                rating="4.5"
+                name="Chicken Shawarma"
+                dest="Lohit Canteen"
+              />
+            </View>
+            <View style={{ width: "45%" }}>
+              <Recommended
+                bg={bg}
+                rating="4.5"
+                name="Chicken Shawarma"
+                dest="Lohit Canteen"
+              />
+            </View>
+          </View>
 
-export default Dash
+          <View style={styles.subHead}>
+            <Text style={styles.subHeadTex}>Explore Places</Text>
+          </View>
+          <View style={styles.nearYou}>
+            <TouchableOpacity
+              style={styles.wrapper4}
+              onPress={() => {
+                navigation.navigate("FoodShop");
+              }}
+            >
+              <ShopCard
+                img={canteen}
+                line1="Brahma Canteen"
+                dist="200m"
+                line2="Snacks.Cuisines"
+                rating="4.5"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapper4}
+              onPress={() => {
+                navigation.navigate("FoodShop");
+              }}
+            >
+              <ShopCard
+                img={canteen}
+                line1="Brahma Canteen"
+                dist="200m"
+                line2="Snacks.Cuisines"
+                rating="4.5"
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+      <View
+        style={{ position: "absolute", bottom: 0, width: "100%", height: 68 }}
+      >
+        <NavBar active="Food" />
+      </View>
+    </View>
+  );
+};
+
+export default Dash;
 
 const styles = StyleSheet.create({
     up:{

@@ -10,6 +10,7 @@ import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar2";
 import ShopHeader from "../components/ShopHeader";
 import FoodPopUp from "../components/FoodPopUp";
+import NavBar from "../components/Navbar"
 
 // icons
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
@@ -83,6 +84,7 @@ const FoodShopPage = () => {
           <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="0" image={chickenImage}/>
         </View>
       </ScrollView>
+          <NavBar active="Food"/>
     </View>
   );
 };
