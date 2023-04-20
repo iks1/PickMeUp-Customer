@@ -36,7 +36,7 @@ const Dash = ({}) => {
         key={item.id}
         style={styles.wrapper4}
         onPress={() => {
-          navigation.navigate("FoodShop");
+          this.props.navigation.navigate("FoodShop",{key});
         }}
       >
         <ShopCard img={canteen} line1={item.name} rating={item.rating} />

@@ -18,8 +18,9 @@ import StarIcon from "../assets/Icons/StarIcon";
 import NonVegIcon from "../assets/Icons/NonVegIcon";
 import VegIcon from "../assets/Icons/VegIcon";
 
-const FoodShopPage = () => {
-  let shopId;
+const FoodShopPage = (props) => {
+  let shopId = props.key;
+  console.log(key);
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
