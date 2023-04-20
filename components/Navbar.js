@@ -63,7 +63,7 @@ const NavBar = (props) => {
         {props.active === "Order" ? <OrderIconActive /> : <OrderIcon />}
 
         <Text style={props.active === "Order" ? styles.activeText : styles.text}>
-          Order
+          Orders
         </Text>
       </TouchableOpacity>
     </View>

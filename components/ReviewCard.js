@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 7,
+    marginBottom: 12,
   },
   ReviewCardHeader: {
     display: "flex",
@@ -42,11 +42,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   container: {
-    width: 280,
+    width: "100%",
     padding: 15,
     backgroundColor: "white",
     borderRadius: 20,
-    marginRight: 20,
   },
 });
 

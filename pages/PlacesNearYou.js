@@ -174,8 +174,9 @@ const styles = StyleSheet.create({
         marginLeft:16
     },
     wrapper4:{
-        width:"100%",
+        width:"92%",
         justifyContent:"center",
-        flexDirection:"row"
+        flexDirection:"row",
+        marginBottom:16,
         }
 })

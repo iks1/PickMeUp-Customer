@@ -26,44 +26,32 @@ const StationaryPage = () => {
           <SearchBar textInput="Search for food items..." />
         </View>
 
-        <View style={styles.servicesContainer}>
-          <View style={{ ...styles.headingView, marginLeft: 20 }}>
+        <View>
+          <View style={styles.headingView }>
             <Text>Services</Text>
           </View>
           <View style={styles.options}>
             <View style={styles.options1}>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="Color Print" image={chickenImage} />
                 </View>
-              </Shadow>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="B/W Print" image={chickenImage} />
                 </View>
-              </Shadow>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="Laminate" image={chickenImage} />
                 </View>
-              </Shadow>
             </View>
             <View style={styles.options1}>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="Spiral Binding" image={chickenImage} />
                 </View>
-              </Shadow>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="Banner Print" image={chickenImage} />
                 </View>
-              </Shadow>
-              <Shadow distance={30} startColor={"#00000010"} radius={16}>
                 <View style={styles.wrapper1}>
                   <PrintCard heading1="ID Card Print" image={chickenImage} />
                 </View>
-              </Shadow>
             </View>
           </View>
         </View>
@@ -74,14 +62,18 @@ const StationaryPage = () => {
           </View>
           <View style={styles.reviewScroll}>
             <ScrollView horizontal={true}>
-              <ReviewCard
-                name="Himanshi Gautam"
-                review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc ididunt ut labore et dolore...more"
-              />
-              <ReviewCard
-                name="Himanshi Gautam"
-                review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc ididunt ut labore et dolore...more"
-              />
+              <View style={styles.rev}>
+                <ReviewCard
+                  name="Himanshi Gautam"
+                  review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc ididunt ut labore et dolore...more"
+                />
+              </View>
+              <View style={styles.rev}>
+                <ReviewCard
+                  name="Himanshi Gautam"
+                  review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc ididunt ut labore et dolore...more"
+                />
+              </View>
             </ScrollView>
           </View>
         </View>
@@ -98,50 +90,47 @@ const styles = StyleSheet.create({
   options: {
     width: "100%",
     flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 12,
-  },
-  servicesContainer: {
-    // marginLeft: "5%",
   },
   options1: {
-    height: 102,
-    width: "100%",
+    width: "91%",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 16,
-    marginTop: 6,
-    marginHorizontal: 4,
+    alignSelf: "center",
+    marginBottom: 16,
   },
   wrapper1: {
     borderRadius: 16,
     height: 98,
-    width: 105,
+    width: "30%",
   },
   headingView: {
     // marginLeft: 30,
     marginBottom: 15,
-    marginTop: 15,
+    marginTop: 10,
+    marginLeft: 24,
   },
   reviewScroll: {
     display: "flex",
     flexDirection: "row",
   },
   reviewsContainer: {
-    marginLeft: "5%",
-    marginBottom: 10,
+    marginBottom: 19,
+  },
+  rev: {
+    marginHorizontal: 16,
+    width: 280,
   },
   searchArea: {
     display: "flex",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 3,
   },
   UpperParent: {
     display: "flex",
     alignItems: "center",
-    marginTop: 35,
+    marginTop: 40,
   },
   main: {
     backgroundColor: "#EFEEFA",
@@ -150,8 +139,6 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     width: "100%",
-    // height: "100%",
-    // marginBottom: 64,
   },
 });
 

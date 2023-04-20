@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
         borderRadius: 16, 
         bottom: 0, 
         right: 0, 
-        height: "50%", 
-        width: "60%",
+        height: "47%", 
+        width: "62%",
     },
 });
 

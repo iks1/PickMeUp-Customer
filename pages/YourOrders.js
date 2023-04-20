@@ -29,7 +29,7 @@ const YourOrders=()=>{
             <View style={styles.down}>
             <View style={styles.subHead}>
                         <Text style={styles.subHeadTex} >
-                            Your Orders
+                            Previous Orders
                         </Text>
             </View>
             <OrderCard orderNumber="1002" place="Dihing Canteen" status="Open" dist="400m" time="32m" date="16 April 2023" orderTime="17" bill="1000" list={[{veg:1,num:1,item:"maggi",price:20},{veg:1,num:1,item:"maggi",price:20},{veg:1,num:1,item:"maggi",price:20},{veg:1,num:1,item:"maggi",price:20},{veg:0,num:2,item:"pizza",price:200}]}/>

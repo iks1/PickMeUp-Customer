@@ -28,7 +28,8 @@ const Start = () => {
             const Refreshtoken = await AsyncStorage.getItem("refreshToken");
             const { data } = await renewSession(Refreshtoken);
             await AsyncStorage.setItem("accessToken", data.access_token);
-            navigation.replace("Home");
+            getUserSession();
+            // navigation.replace("Home");
           }
         } else {
           console.log("User not authenticated");
