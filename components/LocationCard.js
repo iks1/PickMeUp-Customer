@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
-        height: 96,
+        height: 92,
         width: '100%',
         position:"relative",
         display: "flex", 

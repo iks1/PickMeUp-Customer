@@ -19,13 +19,13 @@ const SmallShopCard = (props) => {
 
                         <View style={styles.container4}>
 
-                            <Text style={styles.name}> {props.line1} </Text>
+                            <Text style={styles.name}>{props.line1}</Text>
 
                         </View>
 
                         <View style={styles.rate}>
                             
-                            <Text style={styles.rating}> {props.rating} </Text>
+                            <Text style={styles.rating}>{props.rating}</Text>
                             <Star />
                                 
                         </View> 
@@ -44,10 +44,6 @@ const styles = StyleSheet.create({
     container: {
         width: 236, 
         height: 230, 
-        marginTop: 17,
-        marginBottom: 32,
-        marginRight: 16,
-        marginLeft: 16,
         backgroundColor: "#FFFFFF", 
         borderRadius: 16, 
         display: "flex", 
@@ -66,7 +62,7 @@ const styles = StyleSheet.create({
         paddingTop: 15, 
     },   
     container3: {
-        height:36,
+        height:40,
         width: "100%",
         flexWrap:"wrap",
         flexDirection:'row',
@@ -76,7 +72,8 @@ const styles = StyleSheet.create({
     },     
     container4: {
         width:145,
-        height:36,
+        height:40,
+        paddingLeft: 16,
     },
     rate: {
         height: 20, 
@@ -85,15 +82,15 @@ const styles = StyleSheet.create({
         borderRadius: 8, 
         alignItems: "center",
         flexDirection: "row", 
-        paddingLeft: 4,
+        justifyContent: "space-between",
+        paddingLeft: 6,
         paddingRight: 6,
         marginRight: 16,
     },
     name: {
         fontWeight: 500, 
-        textAlign: "center",
         fontSize: 16, 
-        color: "#020314", 
+        color: "#020314",        
     },
     rating: {
         fontSize: 12, 

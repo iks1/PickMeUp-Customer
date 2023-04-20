@@ -16,7 +16,7 @@ const PendingOrderCard = props => {
                     <Text style={styles.head}>{props.place}</Text>
                     <View style={styles.bottomtex}>
                         <View  style={styles.status} ><Text style={styles.statusTex} >{props.status}</Text></View>
-                        <Text style={styles.text2} >{props.dist}•{props.time}</Text>
+                        <Text style={styles.text2} >{props.dist} • {props.time}</Text>
                     </View>
                 </View>
             </View>
@@ -26,10 +26,10 @@ const PendingOrderCard = props => {
                     <View style={styles.order}>
                         <View style={styles.it}>
                         {it.veg === 1 ? <Veg /> : <NonVeg />}
-                        <Text> {it.num} × {it.item}</Text> 
+                        <Text style={styles.text1}> {it.num} × {it.item}</Text> 
                         </View>
                         <View>
-                            <Text>₹ {it.price}</Text>
+                            <Text style={styles.price}>₹ {it.price}</Text>
                         </View>
                     </View>
 
@@ -38,7 +38,7 @@ const PendingOrderCard = props => {
             <Line style={styles.line}/>
             <View style={styles.total}>
                 <Text style={styles.text2}>{props.date}</Text>
-                <Text>₹ {props.bill}</Text>    
+                <Text style={styles.head}>₹ {props.bill}</Text>    
             </View>
             <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.buttonbox} >
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems:"center",
         borderRadius: 16,
-        paddingBottom: 12,
+        paddingBottom: 16,
     },
     line1: {
         padding: 16,
@@ -74,14 +74,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     text1: {
-        color: "#5736B5",
+        color: "#020314",
         fontSize: 14,
         fontWeight: 500,
     },
     text2: {
         color: "#6F6F6F",
         fontSize: 14,
-        fontWeight: 500,
+        fontWeight: 400,
+    },
+    price: {
+        color: "#020314",
+        fontSize: 14,
+        fontWeight: 400,
     },
     line: {
         paddingBottom: 12,
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
     total: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingTop: 16,
+        paddingTop: 12,
         width:"90%"
     },
     buttonbox: {
@@ -115,8 +120,9 @@ const styles = StyleSheet.create({
         alignSelf:"center",
         paddingLeft: 16,
         paddingRight: 16,
-        marginTop: 24,
-    },buttonbox1: {
+        marginTop: 16,
+    },
+    buttonbox1: {
         backgroundColor:"#5736B5",
         borderRadius: 20,
         height: 36,
@@ -125,7 +131,7 @@ const styles = StyleSheet.create({
         alignSelf:"center",
         paddingLeft: 16,
         paddingRight: 16,
-        marginTop: 24,
+        marginTop: 16,
     },
     button: {
         color:"#000000",
@@ -156,7 +162,7 @@ const styles = StyleSheet.create({
     },
     head:{
         fontWeight: 500,
-        fontAize: 16,
+        fontSize: 16,
         color:"#020314"
     },
     status:{

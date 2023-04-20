@@ -4,12 +4,12 @@ import NavBar from '../components/Navbar'
 import ItemsAdded from "../components/itemsAddedCard";
 import OrderCard from "../components/smallOrderCard";
 import Lines from "../assets/horizontalLine.svg"
-import InfoIcon from "../assets/infoIcon.svg";
 import Edit2 from "../assets/edit2.svg";
 import Tick from "../assets/checkboxtick.svg";
 import Arrow from "../assets/leftArrow.svg";
-import Upi from "../assets/upi.png";
 import { useNavigation } from "@react-navigation/native";
+import Burger from "../assets/burger.png";
+import BillSummary from "../components/billSummary";
 
 const BillingPage=(props)=>{
 
@@ -38,20 +38,22 @@ const BillingPage=(props)=>{
                             <Text style={styles.HeadText} >
                                 Add to your order
                             </Text>
-                            <Text style={styles.LinkText}>
-                                View more
-                            </Text>
+                            <TouchableOpacity>
+                                <Text style={styles.LinkText}>
+                                    View more
+                                </Text>
+                            </TouchableOpacity>
                     </View>
                     <View style={styles.add}>
                         <ScrollView horizontal={true}>
                             <View style={styles.options}>
-                                <OrderCard bg={props.img} veg={true} name="Chicken Burger" price="80"/>
+                                <OrderCard bg={Burger} veg={true} name="Chicken Burger" price="80"/>
                             </View>
                             <View style={styles.options}>
-                                <OrderCard bg={props.img} veg={false} name="Chicken Shawarma" price="120"/>
+                                <OrderCard bg={Burger} veg={false} name="Chicken Shawarma" price="120"/>
                             </View>
                             <View style={styles.options}>
-                                <OrderCard bg={props.img} veg={false} name="Special Chicken Burger" price="454"/>
+                                <OrderCard bg={Burger} veg={false} name="Special Chicken Burger" price="454"/>
                             </View>
                         </ScrollView>
                     </View>
@@ -82,39 +84,8 @@ const BillingPage=(props)=>{
 
                     </View>
 
-                    <View style={styles.bill}>
-                        <Text style={styles.head}>Bill Summary</Text>
-                        <View style={styles.row}>
-                            <Text style={styles.subHead}>Subtotal</Text>
-                            <Text style={styles.subHead}>₹{props.subtotal}</Text>
-                        </View>
-                        <View style={styles.row}>
-                            <View style={styles.icon}>
-                                <Text style={styles.subHead2}>GST and other taxes </Text>
-                                <InfoIcon style={{marginLeft: 8}}/>
-                            </View>
-                            <Text style={styles.subHead2}>₹{props.tax}</Text>                            
-                        </View>
-                        <View style={styles.row}>
-                            <Text style={styles.subHead2}>Packaging charges</Text>
-                            <Text style={styles.subHead2}>₹{props.packing}</Text>                            
-                        </View>
-                        <Lines />
-                        <View style={styles.row}>
-                            <Text style={styles.subHead}>Grand Total</Text>
-                            <Text style={styles.subHead}>₹{props.total}</Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.pay}>
-                        <View style={styles.paytext}>
-                            <Text style={styles.text1}>Pay using</Text>
-                            <Image source={Upi} style={styles.upi}/>
-                        </View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>Grand total</Text>
-                            <Text style={styles.buttonText2}>₹{props.total}</Text>
-                        </TouchableOpacity>
+                    <View style={{width: "100%"}}>
+                        <BillSummary subtotal="369" tax="18.45" packing="10" total="398.45"/>
                     </View>
 
                 </View>          
@@ -208,83 +179,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    bill:{
-        width:"91%",
-        height: 214,
-        backgroundColor:'#FFFFFF',
-        borderRadius: 16,
-        padding: 20,
-        justifyContent:'space-between',
-        marginBottom: 24,
-    },
-    head: {
-        color: "#6F6F6F",
-        fontSize: 16,
-        fontWeight: 500,
-    },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginVertical: 4,
-    },
-    icon: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    subHead: {
-        color: "#020314",
-        fontSize: 16,
-        fontWeight: 500,
-    },
-    subHead2: {
-        color: "#020314",
-        fontSize: 14,
-        fontWeight: 400,
-    },
-    pay: {
-        width:"100%",
-        height: 94,
-        backgroundColor:'#FFFFFF',
-        borderRadius: 16,
-        padding: 16,
-        paddingLeft: 32,
-        justifyContent:'space-between',
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    // paytext: {
-    //     flexDirection: 'column',
-    //     justifyContent: 'space-between',
-    // },
-    text1: {
-        color: "#6F6F6F",
-        fontSize: 12,
-        fontWeight: 400,
-    },
-    upi: {
-        marginTop: 8,
-        width: 50,
-        height: 14,
-    },
-    button: {
-        backgroundColor: "#5736B5",
-        borderRadius: 16,
-        width: "70%",
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        flexDirection: 'column',
-    },
-    buttonText: {
-        color: "#FFFFFF",
-        fontSize: 12,
-        fontWeight: 400,
-    },
-    buttonText2: {
-        color: "#FFFFFF",
-        fontSize: 16,
-        fontWeight: 500,
-    },
     navbar: {
         position:'absolute', 
         bottom:0, 
@@ -293,4 +187,3 @@ const styles = StyleSheet.create({
     },
 })
 
-{/* <Billing img ={Chicken} subtotal="369" tax="18.45" packing="10" total="397.45"/> */}
