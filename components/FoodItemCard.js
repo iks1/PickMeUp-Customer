@@ -92,7 +92,6 @@ const FoodCard = (props) => {
                   <View style={{bottom:0, position:'absolute', width:"100%"}}>
                     <FoodPopUp image={props.image} veg={props.veg} bestSeller={props.bestSeller} halfFull={props.halfFull} price1={props.halfPrice} price2={props.fullPrice} rating={props.ratingValue} itemName={props.heading} />
                   </View>
-                
         </View>
       </Modal>
     </View>

@@ -47,7 +47,7 @@ const FoodPopUp = props => {
                 <View style={styles.box11}>
                     <View style={styles.headingDecorator}>
                     {(props.veg === "1") ? (<VegIcon/>):(<NonVegIcon/>)}
-                    {(props.bestSeller === "1") ? (<Text style={styles.texts}>BestSeller</Text>) : (<Text></Text>)}
+                    {(props.bestSeller) ? (<Text style={styles.texts}>BestSeller</Text>) : (<Text></Text>)}
                     </View>
                     <View>
                     <Text style={styles.text}>
