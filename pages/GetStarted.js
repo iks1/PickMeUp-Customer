@@ -20,6 +20,7 @@ const Start = () => {
     try {
       const getUserSession = async () => {
         const token = await AsyncStorage.getItem("accessToken");
+        console.log(token);
         if (token) {
           const data = await getSession(token);
           if (data.success === true) {

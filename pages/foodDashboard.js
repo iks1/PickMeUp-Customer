@@ -30,16 +30,22 @@ const Dash = ({}) => {
   const navigation = useNavigation();
   const ctx = useContext(ShopContext);
   let cards = [];
+
   const fetchData = async () => {
     cards = ctx.shop.map((item) => (
       <TouchableOpacity
-        key={item.id}
+        key={item._id}
         style={styles.wrapper4}
         onPress={() => {
-          navigation.navigate("FoodShop");
+          navigation.navigate("FoodShop", { id: item._id });
         }}
       >
-        <ShopCard img={canteen} line1={item.name} rating={item.rating} />
+        <ShopCard
+          img={canteen}
+          line1={item.name}
+          line2="Snacks & cuisines"
+          rating={item.rating}
+        />
       </TouchableOpacity>
     ));
   };
