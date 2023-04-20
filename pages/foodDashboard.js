@@ -76,21 +76,21 @@ const Dash=({})=>{
                         }
                 </View>
                 <View style={styles.food}>
-                    <ScrollView horizontal={true} style={styles.food1}>
+                    <ScrollView horizontal={true}>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Bread Omelette" image={Omelette}/>
+                        <FoodCard2 heading1="Bread Omelette" image={Omelette} favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
+                        <FoodCard2 heading1="Ore Shake" image={Shake} favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake}/>
+                        <FoodCard2 heading1="Ore Shake" image={Shake} favVisible={isVisible}/>
                     </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -98,21 +98,23 @@ const Dash=({})=>{
                         <Text style={styles.subHeadTex} >
                             Places You Love
                         </Text>
-                        <Edit/>
+                        <View style={styles.edit}>
+                            <Edit/>
+                        </View>
                 </View>
 
                 <View style={styles.placeYouLove}>
                     <ScrollView horizontal={true}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}}>
-                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
+                        <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Hostel Food Canteen"/>
                         </TouchableOpacity >
-                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
                         <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}}>
+                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
                         <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}}>
+                        <TouchableOpacity  onPress={()=>{navigation.navigate("FoodShop");}} style={styles.wrapper5}>
                         <SmallShopCard rating="4.5" img={canteen} dist="200m" line2="Snacks-Multi Cuisine" line1="Brahma Food Center"/>
                         </TouchableOpacity>
                     </ScrollView>
@@ -123,16 +125,16 @@ const Dash=({})=>{
                         </Text>
                 </View>
                 <View style={styles.rec}>
-                    <View style={{width:'45%'}}>
+                    <View style={styles.wrapper6}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
                     </View>
-                    <View style={{width:'45%'}}>
+                    <View style={styles.wrapper6}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
                     </View>
-                    <View style={{width:'45%'}}>
+                    <View style={styles.wrapper6}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
                     </View>
-                    <View style={{width:'45%'}}>
+                    <View style={styles.wrapper6}>
                     <Recommended bg = {bg} rating="4.5" name="Chicken Shawarma" dest="Lohit Canteen"/>
                     </View>
                 </View>
@@ -173,10 +175,6 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         alignItems:'center',
     },
-    shadow:{
-        marginBottom:20,
-        borderRadius:16,
-    },
     down:{
         height:"100%",
         width:"100%",
@@ -184,7 +182,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#EFEEFA',
         flexDirection:'column',
         alignItems:'center',
-        paddingTop:20,
+        paddingTop:16,
         paddingBottom:64
     },
     main:{
@@ -205,7 +203,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     edit:{
-        paddingRight:8,
+        paddingRight:9,
     },
     options:{
         flexDirection:'row',
@@ -268,79 +266,68 @@ const styles = StyleSheet.create({
     },
     subHead:{
         width:"100%",
-        height:19,
         flexDirection:'row',
         justifyContent:'space-between',
-        marginBottom:16,
         alignItems:'center',
         paddingLeft:24,
         paddingRight:16,
+        marginTop:16,
     },
     nearYou:{
         width:"100%",
         height:"100%",
-        flexDirection:'column',
         alignItems:'center',
+        paddingHorizontal:16,
+        paddingTop:16,
     },
     choice:{
         width:"100%",
-        height:238,
+        height:232,
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center',
-        paddingLeft:25,
-        paddingRight:25,
+        padding: 16,
         flexWrap:'wrap'
     },
     wrapper2:{
         borderRadius:16,
-        height: 96,
-        width: "46%",
+        width: "47.5%",
         marginBottom:16,
     },
     food:{
-        height:138,
-        width:"100%",
-        
+        width:"100%",  
+        flexDirection:'row',
     },
     wrapper3:{
         borderRadius:16,
         height:110,
         width:110,
-        marginRight:10,
-        marginLeft:10
+        marginRight:16,
+        margin:16,
     },
     placeYouLove:{
-        height:269,
         width:"100%",
         flexDirection:'row',
     },
-    wrapper4:{
+    wrapper5:{
         width: 236, 
         height: 230, 
-        backgroundColor: "#FFFFFF", 
         borderRadius: 16, 
-    },
-    shadow2:{
-        width: 236, 
-        height: 230, 
-        marginTop: 17,
-        marginBottom: 32,
-        marginRight: 16,
-        marginLeft: 16,
-        borderRadius:6,
+        marginRight:16,
+        margin:16,
     },
     rec:{
-        height:416,
-        width:"90%",
+        width:"92%",
         flexDirection:'row',
         justifyContent:'space-between',
         flexWrap:'wrap',
-        alignItems:'center'
+        paddingVertical:8,
+    },
+    wrapper6:{
+        borderRadius:16,
+        width: "47.5%",
     },
     wrapper4:{
         width:"100%",
-        justifyContent:"center",
-        flexDirection:"row"
-        }
+        marginBottom:16,
+    }
 })

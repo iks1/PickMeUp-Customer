@@ -8,7 +8,7 @@ import NavBar from '../components/Navbar'
 import PrintCard from "../components/Printcard";
 import Header from "../components/header";
 import stationery from "./../assets/stationery.png"
-import SmallShopCard2 from "../components/smallShopCard2";
+import SmallShopCard from "../components/smallShopCard";
 import canteen from "./../assets/canteen.png"
 
 const PrintDash=({navigation})=>{
@@ -62,13 +62,13 @@ const PrintDash=({navigation})=>{
                     <View style={styles.places}>
                         <ScrollView horizontal={true}>
                             <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
-                                <SmallShopCard2 img={stationery} line1="Brahma Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                                <SmallShopCard img={stationery} line1="Brahma Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
-                                <SmallShopCard2 img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                                <SmallShopCard img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.places1}  onPress={()=>{navigation.navigate("StationaryPage");}}>
-                                <SmallShopCard2 img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
+                                <SmallShopCard img={stationery} line1="Kapili Stationary" dist="200 m" line2="-Color Printout, xerox" rating="4.0"/>
                             </TouchableOpacity>
                         </ScrollView>
                     </View>
@@ -176,10 +176,11 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     explore:{
-        flexDirection:'column',
-        alignItems: "center",
-        width: "100%",
-        height: "100%"
+        width:"100%",
+        height:"100%",
+        alignItems:'center',
+        paddingHorizontal:16,
+        paddingTop: 6,
     },
     navbar: {
         position:'absolute', 
@@ -188,11 +189,8 @@ const styles = StyleSheet.create({
         height:64,
     },
     wrapper4:{
-        width: "100%", 
-        height: 204, 
-        flexDirection:'column',
-        alignItems: "center",
-        marginVertical: 10,
+        width:"100%",
+        marginBottom:16,
     }
 })
 

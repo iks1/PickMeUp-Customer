@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#FFFFFF",
         borderRadius: 16, 
-        height: 114,
+        height: 110,
         width: '100%',
         position:"relative",
         display: "flex", 

@@ -54,9 +54,9 @@ const ShopCard = (props) => {
 const styles = StyleSheet.create({
     container: {
         position: "relative", 
-        width: "90%", 
+        width: "100%", 
         height: 204, 
-        marginVertical: 10,
+        // marginVertical: 10,
         backgroundColor: "#FFFFFF", 
         borderRadius: 16, 
         display: "flex", 

@@ -224,8 +224,8 @@ const styles = StyleSheet.create({
     nearYou:{
         width:"100%",
         height:"100%",
-        flexDirection:'column',
         alignItems:'center',
+        paddingHorizontal:16,
     },
     choice:{
         width:"100%",
@@ -257,7 +257,6 @@ const styles = StyleSheet.create({
     },
     wrapper4:{
         width:"100%",
-        justifyContent:"center",
-        flexDirection:"row"
-        }
+        marginBottom:16,
+    }
 })

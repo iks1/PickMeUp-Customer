@@ -31,7 +31,7 @@ export default rec
 
 const styles = StyleSheet.create({
     main:{
-        height:170,
+        height:156,
         width:'100%',
         borderRadius:16,
         flexDirection:'column',
