@@ -10,8 +10,9 @@ import Header from "../components/header";
 import stationery from "./../assets/stationery.png"
 import SmallShopCard2 from "../components/smallShopCard2";
 import canteen from "./../assets/canteen.png"
-
-const PrintDash=({navigation})=>{
+import { useNavigation } from "@react-navigation/native";
+const PrintDash=()=>{
+    const navigation = useNavigation();
     return (
         <View style={styles.mainContainer}>
             <ScrollView  style={styles.main}>
@@ -30,15 +31,15 @@ const PrintDash=({navigation})=>{
                     </View>
                     <View style={styles.options}>
                         <View style={styles.options1}>
-                                <View style={styles.wrapper1}>
+                                <TouchableOpacity style={styles.wrapper1} onPress={()=>{navigation.navigate("ColorPrint")}}>
                                     <PrintCard heading1="Color Print" image={Omelette}/>
-                                </View>
-                                <View style={styles.wrapper1}>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.wrapper1}>
                                     <PrintCard heading1="B/W Print" image={Omelette}/>
-                                </View>
-                                <View style={styles.wrapper1}>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.wrapper1}>
                                     <PrintCard heading1="Laminate" image={Omelette}/>
-                                </View>
+                                </TouchableOpacity>
                         </View>
                         <View style={styles.options1}>
                                 <View style={styles.wrapper1}>

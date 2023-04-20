@@ -21,6 +21,12 @@ import Canteen from "./pages/Canteen";
 import FoodCourt from "./pages/FoodCourt";
 import MarketComplex from "./pages/MarketComplex";
 import Khoka from "./pages/khoka";
+import ColorPrint from "./pages/ColorPrint"
+import BwPrint from "./pages/BwPrint"
+import Lamination from "./pages/Lamination"
+import SpiralBinding from "./pages/SpiralBinding"
+import BannerPrint from "./pages/BannerPrint"
+import IdCard from "./pages/IdCard"
 // navigation
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -62,6 +68,12 @@ export default function App() {
           <Stack.Screen name="BillingPage" component={BillingPage} />
           <Stack.Screen name="Order" component={YourOrders} />
           <Stack.Screen name="PlacesNearYou" component={PlacesNearYou} />
+          <Stack.Screen name="ColorPrint" component={ColorPrint} />
+          <Stack.Screen name="BwPrint" component={BwPrint} />
+          <Stack.Screen name="IdCard" component={IdCard} />
+          <Stack.Screen name="Banner" component={BannerPrint} />
+          <Stack.Screen name="SpiralBinding" component={SpiralBinding} />
+          <Stack.Screen name="Lamination" component={Lamination} />
           <Stack.Screen name="Canteen" component={Canteen} />
           <Stack.Screen name="FoodCourt" component={FoodCourt} />
           <Stack.Screen name="MarketComplex" component={MarketComplex} />
