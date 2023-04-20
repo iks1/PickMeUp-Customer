@@ -92,9 +92,6 @@ const PrintDash=({navigation})=>{
                             <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
                         </TouchableOpacity>
                                                 
-                        {/* <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                        
-                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>                         */}
                     </View>
 
                 </View>          

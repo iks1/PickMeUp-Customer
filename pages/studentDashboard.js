@@ -63,21 +63,21 @@ const Dash=()=>{
                         }
                 </View>
                 <View style={styles.food}>
-                    <ScrollView horizontal={true} style={styles.food1}>
+                    <ScrollView horizontal={true}>
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Bread Omelette" image={Omelette} favVisible={isVisible} />
+                        <FoodCard2 heading1="Bread Omelette" image={Omelette} veg={false} favVisible={isVisible} />
                     </View>
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Oreo Shake" image={Shake} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Oreo Shake" image={Shake} veg={true} favVisible={isVisible}/>
                     </View>
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true} favVisible={isVisible}/>
                     </View>
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true} favVisible={isVisible}/>
                     </View>
                     <View style={styles.wrapper3}>
-                        <FoodCard2 heading1="Oreo Shake" image={Shake} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Oreo Shake" image={Shake} veg={true} favVisible={isVisible}/>
                     </View>
                     </ScrollView>
                 </View>

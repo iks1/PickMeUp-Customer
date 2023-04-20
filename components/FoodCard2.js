@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {StyleSheet, Image, View, Text, TouchableOpacity} from 'react-native';
 import Heart from '../assets/smallHeart.svg';
 import HeartActive from '../assets/smallHeartActive.svg'
+import VegIcon from "../assets/veg.svg";
+import NonVegIcon from "../assets/nonVeg.svg";
 
 const FoodCard = props => {
     const [isFavourite, setIsFavourite]=useState(true);
@@ -17,13 +19,19 @@ const FoodCard = props => {
                     {props.heading1}
                 </Text>
             </View>
-            {props.favVisible && <View style={styles.circle}>
-                <TouchableOpacity onPress={handleClick}>
-                    <View style={{width: 24, height: 24, backgroundColor : isFavourite? "red" : "white", borderRadius: 24}}>
-                        {isFavourite? (<HeartActive style={styles.heart}/>):(<Heart style={styles.heart}/>)}
-                    </View>
-                </TouchableOpacity>
-            </View>}   
+            {props.favVisible ? 
+                <View style={styles.circle}>
+                    <TouchableOpacity onPress={handleClick}>
+                        <View style={{width: 24, height: 24, backgroundColor : isFavourite? "red" : "white", borderRadius: 24}}>
+                            {isFavourite? (<HeartActive style={styles.heart}/>):(<Heart style={styles.heart}/>)}
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                :
+                <View style={styles.veg}>
+                    {props.veg ? <VegIcon /> : <NonVegIcon />}
+                </View>
+            }   
             <Image source={props.image} style={styles.image} />
         </View>
     );
@@ -54,6 +62,11 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 8,
         right: 8,
+    },
+    veg: {
+        position: "absolute",
+        top: 12,
+        right: 12,
     },
     heart: {
         position: "absolute",

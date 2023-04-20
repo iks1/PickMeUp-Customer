@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     wrapper4:{
         width:"92%",
         justifyContent:"center",
-        flexDirection:"row"
+        flexDirection:"row",
+        marginBottom:16,
         }
 })

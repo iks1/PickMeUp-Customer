@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
         position: "relative", 
         width: "100%", 
         height: 204, 
-        // marginVertical: 10,
         backgroundColor: "#FFFFFF", 
         borderRadius: 16, 
         display: "flex", 

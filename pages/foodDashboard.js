@@ -1,12 +1,8 @@
 import React, {useState} from "react";
 import { ScrollView, View, Text, StyleSheet, Touchable, TouchableOpacity} from "react-native";
 import LocationCard from "../components/LocationCard";
-import {Shadow} from 'react-native-shadow-2';  
-import Profile from './../assets/profile.svg'
 import ShopCard from './../components/Shopcard'
 import canteen from './../assets/canteen.png'
-import FoodCard from './../components/FoodCard'
-import Pizza from './../assets/pizza.png'
 import Edit from './../assets/edit.svg'
 import FoodCard2 from "../components/FoodCard2";
 import Omelette from "./../assets/omelette.png"
@@ -19,6 +15,7 @@ import SmallShopCard from "../components/smallShopCard";
 import Recommended from './../components/recommended'
 import bg from './../assets/recdummy.png'
 import { useNavigation } from "@react-navigation/native";
+
 const Dash=({})=>{
     const [isVisible, setIsVisible] = useState(false);
     const navigation = useNavigation();
@@ -78,19 +75,19 @@ const Dash=({})=>{
                 <View style={styles.food}>
                     <ScrollView horizontal={true}>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Bread Omelette" image={Omelette} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Bread Omelette" image={Omelette} veg={false} favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Maggie" image={Maggie} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Maggie" image={Maggie} veg={true}  favVisible={isVisible}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.wrapper3}>
-                        <FoodCard2 heading1="Ore Shake" image={Shake} favVisible={isVisible}/>
+                        <FoodCard2 heading1="Ore Shake" image={Shake} veg={true}  favVisible={isVisible}/>
                     </TouchableOpacity>
                     </ScrollView>
                 </View>
