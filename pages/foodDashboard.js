@@ -23,17 +23,29 @@ import Recommended from "./../components/recommended";
 import bg from "./../assets/recdummy.png";
 import { useNavigation } from "@react-navigation/native";
 import { getAllShops, getShopById } from "../api/shop";
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
 
 const Dash = ({}) => {
+  const navigation = useNavigation();
+  const ctx = useContext(ShopContext);
+  let cards = [];
   const fetchData = async () => {
-    const data = await getAllShops();
-    const shop = await getShopById();
-    console.log(shop);
+    cards = ctx.shop.map((item) => (
+      <TouchableOpacity
+        key={item.id}
+        style={styles.wrapper4}
+        onPress={() => {
+          navigation.navigate("FoodShop");
+        }}
+      >
+        <ShopCard img={canteen} line1={item.name} rating={item.rating} />
+      </TouchableOpacity>
+    ));
   };
   fetchData();
 
   const [isVisible, setIsVisible] = useState(false);
-  const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
@@ -248,45 +260,17 @@ const Dash = ({}) => {
           </View>
 
           <View style={styles.subHead}>
-              <Text style={styles.subHeadTex} >
-                Explore Food Outlets
-                        </Text>
-                        <TouchableOpacity onPress={()=>{navigation.navigate("ExploreFood");}}>
-                            <Text style={styles.LinkText}>
-                                See all
-                            </Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.nearYou}>
+            <Text style={styles.subHeadTex}>Explore Food Outlets</Text>
+
             <TouchableOpacity
-              style={styles.wrapper4}
               onPress={() => {
-                navigation.navigate("FoodShop");
+                navigation.navigate("ExploreFood");
               }}
             >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
+              <Text style={styles.LinkText}>See all</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.nearYou}>{cards}</View>
         </View>
       </ScrollView>
       <View

@@ -22,7 +22,6 @@ export const getAllShops = async () => {
     axios
       .request(config)
       .then(async (response) => {
-        console.log(response.data);
         if (response.data.success === false) {
           const RefreshToken = await AsyncStorage.getItem("refreshToken");
           const { data } = await renewSession(RefreshToken);

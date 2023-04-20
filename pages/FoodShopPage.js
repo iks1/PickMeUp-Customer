@@ -10,7 +10,7 @@ import ToggleSwitch from "toggle-switch-react-native";
 import SearchBar from "../components/SearchBar2";
 import ShopHeader from "../components/ShopHeader";
 import FoodPopUp from "../components/FoodPopUp";
-import NavBar from "../components/Navbar"
+import NavBar from "../components/Navbar";
 
 // icons
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
@@ -19,6 +19,7 @@ import NonVegIcon from "../assets/Icons/NonVegIcon";
 import VegIcon from "../assets/Icons/VegIcon";
 
 const FoodShopPage = () => {
+  let shopId;
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
@@ -34,7 +35,7 @@ const FoodShopPage = () => {
       bestSeller: 1,
       veg: 0,
       id: 12,
-      image:{chickenImage}
+      image: { chickenImage },
     },
     {
       heading: "Butter Panner",
@@ -42,7 +43,7 @@ const FoodShopPage = () => {
       ratingValue: "2.0",
       bestSeller: 0,
       veg: 1,
-      image:{chickenImage},
+      image: { chickenImage },
       id: 432,
     },
   ];
@@ -79,12 +80,37 @@ const FoodShopPage = () => {
             <Text style={styles.recommendedTextStyle}>Recommended</Text>
             <UpArrowIcon />
           </View>
-          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="0" image={chickenImage}/>
-          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="1" image={chickenImage} halfPrice="160"/>
-          <FoodItemCard heading="Chicken Tikka" fullPrice="250" ratingValue="4.5" veg={0} bestSeller={1} halfFull="0" image={chickenImage}/>
+          <FoodItemCard
+            heading="Chicken Tikka"
+            fullPrice="250"
+            ratingValue="4.5"
+            veg={0}
+            bestSeller={1}
+            halfFull="0"
+            image={chickenImage}
+          />
+          <FoodItemCard
+            heading="Chicken Tikka"
+            fullPrice="250"
+            ratingValue="4.5"
+            veg={0}
+            bestSeller={1}
+            halfFull="1"
+            image={chickenImage}
+            halfPrice="160"
+          />
+          <FoodItemCard
+            heading="Chicken Tikka"
+            fullPrice="250"
+            ratingValue="4.5"
+            veg={0}
+            bestSeller={1}
+            halfFull="0"
+            image={chickenImage}
+          />
         </View>
       </ScrollView>
-          <NavBar active="Food"/>
+      <NavBar active="Food" />
     </View>
   );
 };
@@ -123,7 +149,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    zIndex:2
+    zIndex: 2,
   },
   foodItemCardsContainerStyle: {
     borderTopRightRadius: 30,
