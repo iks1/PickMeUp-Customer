@@ -84,9 +84,9 @@ const Dash=()=>{
 
                 <View style={styles.subHead}>
                         <Text style={styles.subHeadTex} >
-                            Places Near You
+                            Explore Places
                         </Text>
-                        <TouchableOpacity onPress={()=>{navigation.navigate("PlacesNearYou");}}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("Explore");}}>
                             <Text style={styles.LinkText}>
                                 See all
                             </Text>

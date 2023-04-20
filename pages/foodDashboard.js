@@ -248,7 +248,14 @@ const Dash = ({}) => {
           </View>
 
           <View style={styles.subHead}>
-            <Text style={styles.subHeadTex}>Explore Places</Text>
+              <Text style={styles.subHeadTex} >
+                Explore Food Outlets
+                        </Text>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("ExploreFood");}}>
+                            <Text style={styles.LinkText}>
+                                See all
+                            </Text>
+              </TouchableOpacity>
           </View>
           <View style={styles.nearYou}>
             <TouchableOpacity

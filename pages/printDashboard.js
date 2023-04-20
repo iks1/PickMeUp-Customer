@@ -75,9 +75,14 @@ const PrintDash=()=>{
                     </View>
                     
                     <View style={styles.subHead}>
-                            <Text style={styles.subHeadTex} >
-                                Explore Places
+                    <Text style={styles.subHeadTex} >
+                        Explore Stationaries
+                    </Text>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("ExploreStationary");}}>
+                            <Text style={styles.LinkText}>
+                                See all
                             </Text>
+              </TouchableOpacity>
                     </View>
                     <View style={styles.explore}>
                         <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}} >
