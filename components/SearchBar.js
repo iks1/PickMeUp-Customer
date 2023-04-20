@@ -38,7 +38,7 @@ const SearchBar = props => {
         <Modal transparent={true} visible={vis} >
             <View style={{flex:1,flexDirection:'column',alignItems:'center', backgroundColor:'#000000aa',top:145,borderRadius:16}}>
                 <View style={{ display:vis?'flex':"none",width:'90%',margin:-16}}>
-                    <FilterCard list1={[{id:1,label:'name'},{id:2,label:'veg'},{id:3,label:'nonveg'},{id:4,label:'name'}]} list2={[{id:4,label:["price:","low to high"]},{id:1,label:["price:","low to high"]}]}/>
+                    <FilterCard/>
                 </View>
                 <View style={{margin:28,display:vis?'flex':"none"}}>
                     <Close onPress={()=>{setVis(!vis)}} />

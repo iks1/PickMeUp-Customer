@@ -2,31 +2,39 @@ import React,{useState} from "react";
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 import { RadioButton } from 'react-native-paper';
+import Tick from "../assets/checkboxtick.svg";
+
 const FilterCard = props => {
-    const [checkboxState, setCheckboxState] = useState(
-        props.list1.map((checkbox) => ({
-            id: checkbox.id,
-            label: checkbox.label,
-            checked: false,
-        }))
-    );
-    const onCheckHandler = (index) => {
-        const newCheckboxState = [...checkboxState];
-        newCheckboxState[index].checked = !newCheckboxState[index].checked;
-        setCheckboxState(newCheckboxState);
+    const [checked1, setChecked1] = useState(false);
+    const [checked2, setChecked2] = useState(false);
+    const [checked3, setChecked3] = useState(false);
+    const [checked4, setChecked4] = useState(false);
+    const [checked5, setChecked5] = useState(false);
+    
+    const handlePress1 = () => {
+        setChecked1(!checked1);
     };
+    const handlePress2 = () => {
+        setChecked2(!checked2);
+    };
+    const handlePress3 = () => {
+        setChecked3(!checked3);
+    };
+    const handlePress4 = () => {
+        setChecked4(!checked4);
+    };
+    
     const [selectedOption, setSelectedOption] = useState(null);
     const handleOptionSelect = (value) => {
         setSelectedOption(value);
     };
     
     const handleClearAll = () => {
-        const newCheckboxState = checkboxState.map((checkbox) => ({
-            ...checkbox,
-            checked: false,
-          }));
-          setCheckboxState(newCheckboxState);
-          setSelectedOption(null);
+        setChecked1(false);
+        setChecked2(false);
+        setChecked3(false);
+        setChecked4(false);
+        setSelectedOption(null);
     };
     
     const [apply, setApply] = useState(false);
@@ -37,39 +45,88 @@ const FilterCard = props => {
         <View style={styles.container}>  
             <View style={styles.box1}>
                 <View style={styles.side1}>
-                    {checkboxState.map((checkbox, index) => (
-                        <View style={styles.item1} key={index}>
-                            <Text style={styles.text}>{checkbox.label}</Text>
-                            <CheckBox
-                                key={checkbox.id}
-                                checked={checkbox.checked}
-                                onChange={() => onCheckHandler(index)}
-                                label=''
-                                checkboxStyle={styles.checkbox}
-                            />
-                        </View>
-                    ))}
+                    
+                    <View style={styles.item1} key="1">
+                        <Text style={styles.text}>Vegetarian</Text>
+                        <TouchableOpacity onPress={handlePress1}>
+                            <View style={[{backgroundColor : checked1 ? "#5736B5" : "white"},styles.checkbox]}>
+                                {checked1 ? <Tick /> : null}
+                            </View>
+                        </TouchableOpacity>     
+                    </View>
+                    <View style={styles.item1} key="2">
+                        <Text style={styles.text}>4.0+ Rated</Text>
+                        <TouchableOpacity onPress={handlePress2}>
+                            <View style={[{backgroundColor : checked2 ? "#5736B5" : "white"},styles.checkbox]}>
+                                {checked2 ? <Tick /> : null}
+                            </View>
+                        </TouchableOpacity>     
+                    </View>
+                    <View style={styles.item1} key="3">
+                        <Text style={styles.text}>Prev. Ordered</Text>
+                        <TouchableOpacity onPress={handlePress3}>
+                            <View style={[{backgroundColor : checked3 ? "#5736B5" : "white"},styles.checkbox]}>
+                                {checked3 ? <Tick /> : null}
+                            </View>
+                        </TouchableOpacity>     
+                    </View>
+                    <View style={styles.item1} key="4">
+                        <Text style={styles.text}>On Campus</Text>
+                        <TouchableOpacity onPress={handlePress4}>
+                            <View style={[{backgroundColor : checked4 ? "#5736B5" : "white"},styles.checkbox]}>
+                                {checked4 ? <Tick /> : null}
+                            </View>
+                        </TouchableOpacity>     
+                    </View>
+                    
                 </View>
                 <View
                     style={styles.line}
                 />
                 <View style={styles.side1}>
-                    {props.list2.map((item, index) => (
-                        <View style={styles.item2} key={item.id}>
-                            <View>
-                            <Text>{item.label[0]}</Text>
-                            <Text>{item.label[1]}</Text>
-                            </View>
-                            <RadioButton
-                                key={item.id}
-                                value={item.id}
-                                status={selectedOption === item ? 'checked' : 'unchecked'}
-                                onPress={() => handleOptionSelect(item)}
-                                style={styles.radiobutton}
-                            />
+                
+                    <View style={styles.item2} key="1">
+                        <View>
+                            <Text>Rating:</Text>
+                            <Text>High To Low</Text>
                         </View>
-                    ))}
-                    
+                        <RadioButton
+                            key="1"
+                            value="1"
+                            uncheckedColor= "#5736B5"
+                            status={selectedOption === 1 ? 'checked' : 'unchecked'}
+                            onPress={() => handleOptionSelect(1)}
+                            style={styles.radiobutton}
+                        />
+                    </View>
+                    <View style={styles.item2} key="2">
+                        <View>
+                            <Text>Cost:</Text>
+                            <Text>High To Low</Text>
+                        </View>
+                        <RadioButton
+                            key="2"
+                            value="2"
+                            uncheckedColor= "#5736B5"
+                            status={selectedOption === 2 ? 'checked' : 'unchecked'}
+                            onPress={() => handleOptionSelect(2)}
+                            style={styles.radiobutton}
+                        />
+                    </View>
+                    <View style={styles.item2} key="3">
+                        <View>
+                            <Text>Cost:</Text>
+                            <Text>Low To High</Text>
+                        </View>
+                        <RadioButton
+                            key="3"
+                            value="3"
+                            uncheckedColor= "#5736B5"
+                            status={selectedOption === 3 ? 'checked' : 'unchecked'}
+                            onPress={() => handleOptionSelect(3)}
+                            style={styles.radiobutton}
+                        />
+                    </View>
                 </View>
             </View>
             <View style={styles.box2}>
@@ -91,17 +148,18 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#FFFFFF",
         borderRadius:16,
-        height: 331,
+        height: 251,
         width: '100%',
         display: "flex", 
         flexDirection: "column",
         overflow: 'hidden',
     },
     box1: {
-        paddingTop: 40,
-        paddingLeft: 20,
-        paddingRight: 20,
-        flex: 0.9,
+        height: 180,
+        paddingTop: 20,
+        paddingLeft: 16,
+        paddingRight: 16,
+        // flex: 0.9,
         flexDirection: "row", 
     },
     side1: {
@@ -110,7 +168,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
     },
     item1: {
-        paddingLeft: 20,
+        paddingLeft: 10,
         width: "90%",
         fontSize:14, 
         lineHeight: 19,
@@ -118,6 +176,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     item2: {
+        paddingLeft: 10,
         fontSize:14, 
         lineHeight: 19,
         flexDirection: "row",
@@ -125,11 +184,16 @@ const styles = StyleSheet.create({
     },
     text: {
         alignSelf: "center",
+        
     },
     checkbox: {
-        borderColor:"#5736B5",
-        borderRadius: 4,
-        borderWidth: 1,
+        borderRadius: 6,
+        width: 20, 
+        height: 20, 
+        borderColor: "#5736B5",
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     radiobutton: {
         color:"#5736B5",
@@ -142,7 +206,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     box2: {
-        paddingTop: 36,
+        paddingTop: 20,
         flexDirection: "row",
         justifyContent: "space-around",
     }, 
