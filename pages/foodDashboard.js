@@ -30,9 +30,10 @@ const Dash = ({}) => {
   const navigation = useNavigation();
   const ctx = useContext(ShopContext);
   let cards = [];
+  let favI = [];
 
   const fetchData = async () => {
-    cards = ctx.shop.map((item) => (
+    cards = ctx.shop.filter(item => item.isFood==true).slice(0,3).map((item) => (
       <TouchableOpacity
         key={item._id}
         style={styles.wrapper4}
@@ -48,6 +49,24 @@ const Dash = ({}) => {
         />
       </TouchableOpacity>
     ));
+    
+    favI = ctx.favItem.map((item) => (
+      <TouchableOpacity
+        key={item._id}
+        style={styles.wrapper4}
+        onPress={() => {
+          navigation.navigate("FoodShop", { id: item._id });
+        }}
+      >
+        <ShopCard
+          img={canteen}
+          line1={item.name}
+          line2="Snacks & cuisines"
+          rating={item.rating}
+        />
+      </TouchableOpacity>
+    ));
+
   };
   fetchData();
 

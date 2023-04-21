@@ -36,6 +36,8 @@ export const getAllShops = async () => {
       });
   });
 };
+
+
 export const getShopById = async (id) => {
   return new Promise(async (resolve, reject) => {
     const rawToken = await getAccessToken();

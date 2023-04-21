@@ -15,9 +15,35 @@ import SearchBar from '../components/SearchBar'
 import NavBar from '../components/Navbar'
 import Header from '../components/header'
 import { useNavigation } from "@react-navigation/native";
+import { ShopContext } from "../context/ShopContext";
+import { useContext } from "react";
 
 const Khoka=()=>{
-  const navigation = useNavigation();
+    const navigation = useNavigation();
+    const ctx = useContext(ShopContext);
+
+    let cards = [];
+
+    const fetchData = async () => {
+        cards = ctx.shop.filter(item => item.category==2).map((item) => (
+        <TouchableOpacity
+            key={item._id}
+            style={styles.wrapper4}
+            onPress={() => {
+            navigation.navigate("FoodShop", { id: item._id });
+            }}
+        >
+            <ShopCard
+            img={canteen}
+            line1={item.name}
+            line2="Snacks & cuisines"
+            rating={item.rating}
+            />
+        </TouchableOpacity>
+        ));
+    };
+    fetchData();
+
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
@@ -32,36 +58,13 @@ const Khoka=()=>{
                         </Text>
                 </View>
                 <View style={styles.nearYou}>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
+                    {cards}
                 </View>
             </View>
             
         </ScrollView>
         <View style={{position:'absolute', bottom:0, width:'100%', height:68}}>
-                <NavBar active="Home"/>
+                <NavBar active="Food"/>
         </View>
         </View>
     );
@@ -174,8 +177,9 @@ const styles = StyleSheet.create({
         marginLeft:16
     },
     wrapper4:{
-        width:"100%",
-        justifyContent:"center",
-        flexDirection:"row"
-        }
+        width: "92%",
+        justifyContent: "center",
+        flexDirection: "row",
+        marginBottom: 16,
+    }
 })

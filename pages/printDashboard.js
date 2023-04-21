@@ -9,10 +9,34 @@ import PrintCard from "../components/Printcard";
 import Header from "../components/header";
 import stationery from "./../assets/stationery.png"
 import SmallShopCard from "../components/smallShopCard";
-import canteen from "./../assets/canteen.png"
 import { useNavigation } from "@react-navigation/native";
+import { ShopContext } from "../context/ShopContext";
+import { useContext } from "react";
+
 const PrintDash=()=>{
+    const ctx = useContext(ShopContext);
     const navigation = useNavigation();
+    let cards = [];
+
+    const fetchData = async () => {
+        cards = ctx.shop.filter(item => item.isFood==false).map((item) => (
+        <TouchableOpacity
+            key={item._id}
+            style={styles.wrapper4}
+            onPress={() => {
+            navigation.navigate("StationaryPage", { id: item._id });
+            }}
+        >
+            <ShopCard
+            img={canteen}
+            line1={item.name}
+            line2="Snacks & cuisines"
+            rating={item.rating}
+            />
+        </TouchableOpacity>
+        ));
+    };
+    fetchData();
     return (
         <View style={styles.mainContainer}>
             <ScrollView  style={styles.main}>
@@ -76,28 +100,16 @@ const PrintDash=()=>{
                     
                     <View style={styles.subHead}>
                     <Text style={styles.subHeadTex} >
-                        Explore Stationaries
+                        Explore Stationeries
                     </Text>
                         <TouchableOpacity onPress={()=>{navigation.navigate("ExploreStationary");}}>
                             <Text style={styles.LinkText}>
                                 See all
                             </Text>
-              </TouchableOpacity>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.explore}>
-                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}} >
-                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        </TouchableOpacity > 
-                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}}>
-                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.wrapper4}  onPress={()=>{navigation.navigate("StationaryPage");}}>
-                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("StationaryPage");}}>
-                            <ShopCard img={stationery} line1="Brahma Hostel Stationery" dist="200 m" line2="-Color Printout, xerox" rating="4.5"/>
-                        </TouchableOpacity>
-                                                
+                        {cards}
                     </View>
 
                 </View>          
@@ -192,8 +204,10 @@ const styles = StyleSheet.create({
         height:64,
     },
     wrapper4:{
-        width:"100%",
-        marginBottom:16,
+        width: "92%",
+        justifyContent: "center",
+        flexDirection: "row",
+        marginBottom: 16,
     }
 })
 
