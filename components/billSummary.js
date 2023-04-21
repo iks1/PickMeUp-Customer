@@ -3,8 +3,33 @@ import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import Lines from '../assets/horizontalLine.svg';
 import InfoIcon from '../assets/infoIcon.svg';
 import Upi from "../assets/upi.png";
+import RazorpayCheckout from 'react-native-razorpay';
 
 const Bill = (props) => {
+1
+    const makePayment= ()=>{
+        var options = {
+            description: 'Credits towards consultation',
+            image: 'https://i.imgur.com/3g7nmJC.png',
+            currency: 'INR',
+            key: 'rzp_test_GfOBC35zI8tl8h',
+            amount: '5000',
+            name: 'foo',
+            prefill: {
+              email: 'void@razorpay.com',
+              contact: '9191919191',
+              name: 'Razorpay Software'
+            },
+            theme: {color: '#F37254'}
+          }
+          RazorpayCheckout.open(options).then((data) => {
+            // handle success
+            alert(`Success: ${data.razorpay_payment_id}`);
+          }).catch((error) => {
+            // handle failure
+            alert(error);
+          });
+    }
 
     return(
         <View style={styles.container}>
@@ -37,7 +62,7 @@ const Bill = (props) => {
                     <Text style={styles.text1}>Pay using</Text>
                     <Image source={Upi} style={styles.upi}/>
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={makePayment}>
                     <Text style={styles.buttonText}>Grand total</Text>
                     <Text style={styles.buttonText2}>₹ {props.total}</Text>
                 </TouchableOpacity>
