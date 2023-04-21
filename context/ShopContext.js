@@ -2,20 +2,28 @@ import React, { createContext, useState, useEffect } from "react";
 export const ShopContext = createContext();
 import { getAllShops } from "../api/shop";
 import { getAllItems } from "../api/shop";
+import { getFavouritesItems } from "../api/user";
 
 export const ShopProvider = ({ children }) => {
   const [shop, setShop] = useState([]);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);  
+  const [favItem, setFavItem] = useState([]);
+
   const pushShops = async () => {
     const response = await getAllShops();
     const response2 = await getAllItems();
     const shops = response.data;
     const items = response2.data;
     setShop((prev) => {
-      return [...shops];
+      return [...prev, ...shops];
     });
-    setItems((prev) => {
-      return [...items];
+  };
+
+  const pushFavItems = async () => {
+    const response = await getFavouritesItems();
+    const favItems = response.data;
+    setFavItem((prev) => {
+      return [...prev, ...favItems];
     });
   };
 
@@ -28,6 +36,21 @@ export const ShopProvider = ({ children }) => {
     <ShopContext.Provider
       value={{
         shop,
+        items
+      }}
+    >
+      {children}
+    </ShopContext.Provider>
+  );
+
+  useEffect(() => {
+    pushFavItems();
+  }, []);
+  console.log(favItem);
+  return (
+    <ShopContext.Provider
+      value={{
+        favItem,
       }}
     >
       {children}
