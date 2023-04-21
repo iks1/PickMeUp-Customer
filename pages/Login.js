@@ -75,9 +75,11 @@ const Login = () => {
         </View>
         <View style={styles.text}>
           <Text style={styles.texts}>
-            By tapping Register, or continue with Outlook or Google, you agree
-            to our Terms of Use and Privacy Policy.
-          </Text>
+            By tapping Register, or continue with Outlook or Google, you agree to our
+            <Text style={styles.boldText}> Terms of Use </Text> 
+              and  
+            <Text style={styles.boldText}> Privacy Policy</Text>                  
+          </Text>  
         </View>
       </View>
     </View>
@@ -148,6 +150,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#6F6F6F",
     fontSize: 12,
+    fontWeight: 400,
+  },
+  boldText: {
     fontWeight: 500,
   },
   wrapper: {

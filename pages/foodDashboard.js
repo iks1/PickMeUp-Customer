@@ -173,7 +173,7 @@ const Dash = ({}) => {
 
           <View style={styles.placeYouLove}>
             <ScrollView horizontal={true}>
-              <TouchableOpacity
+              <TouchableOpacity style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -186,7 +186,7 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity
+              <TouchableOpacity style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -199,7 +199,7 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity
+              <TouchableOpacity style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -212,7 +212,7 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity
+              <TouchableOpacity style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -431,6 +431,9 @@ const styles = StyleSheet.create({
   placeYouLove: {
     width: "100%",
     flexDirection: "row",
+  },
+  box: {
+    margin: 16,
   },
   wrapper5: {
     width: 236,
