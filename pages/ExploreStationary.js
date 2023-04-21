@@ -26,8 +26,28 @@ import { useContext } from "react";
 
 const PlacesNearYou = () => {
   const ctx = useContext(ShopContext);
-  console.log(ctx.shop);
   const navigation = useNavigation();
+  let cards = [];
+
+    const fetchData = async () => {
+        cards = ctx.shop.filter(item => item.isFood==false).map((item) => (
+        <TouchableOpacity
+            key={item._id}
+            style={styles.wrapper4}
+            onPress={() => {
+            navigation.navigate("StationaryPage", { id: item._id });
+            }}
+        >
+            <ShopCard
+            img={canteen}
+            line1={item.name}
+            line2="Snacks & cuisines"
+            rating={item.rating}
+            />
+        </TouchableOpacity>
+        ));
+  };
+  fetchData();
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
@@ -37,121 +57,10 @@ const PlacesNearYou = () => {
         </View>
         <View style={styles.down}>
           <View style={styles.subHead}>
-            <Text style={styles.subHeadTex}>Explore Stationaries</Text>
+            <Text style={styles.subHeadTex}>Explore Stationery</Text>
           </View>
           <View style={styles.nearYou}>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.wrapper4}
-              onPress={() => {
-                navigation.navigate("FoodShop");
-              }}
-            >
-              <ShopCard
-                img={canteen}
-                line1="Brahma Canteen"
-                dist="200m"
-                line2="Snacks.Cuisines"
-                rating="4.5"
-              />
-            </TouchableOpacity>
+            {cards}
           </View>
         </View>
       </ScrollView>
