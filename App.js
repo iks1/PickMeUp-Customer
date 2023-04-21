@@ -28,12 +28,14 @@ import Lamination from "./pages/Lamination";
 import SpiralBinding from "./pages/SpiralBinding";
 import BannerPrint from "./pages/BannerPrint";
 import IdCard from "./pages/IdCard";
+
 import ExploreAll from "./pages/Explore"
 import ExploreFood from "./pages/ExploreFood"
 import ExploreStationary from "./pages/ExploreStationary"
 import SearchPlaces from "./pages/SearchPlaces"
 import SearchFood from "./pages/SearchFood"
 import SearchStationary from "./pages/SearchStationary"
+
 // navigation
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -88,7 +90,10 @@ export default function App() {
             <Stack.Screen name="Khoka" component={Khoka} />
             <Stack.Screen name="Explore" component={ExploreAll} />
             <Stack.Screen name="ExploreFood" component={ExploreFood} />
-            <Stack.Screen name="ExploreStationary" component={ExploreStationary} />
+            <Stack.Screen
+              name="ExploreStationary"
+              component={ExploreStationary}
+            />
             <Stack.Screen name="SearchPlaces" component={SearchPlaces} />
             <Stack.Screen name="SearchFood" component={SearchFood} />
             <Stack.Screen name="SearchStationary" component={SearchStationary} />
