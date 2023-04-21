@@ -13,11 +13,36 @@ import SearchBar from '../components/SearchBar'
 import NavBar from '../components/Navbar'
 import Header from '../components/header'
 import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
 
 const Dash=()=>{
-    const [isVisible, setIsVisible] = useState(false);
+    const navigation = useNavigation();
 
-  const navigation = useNavigation();
+    const ctx = useContext(ShopContext);
+    let cards = [];
+
+    const fetchData = async () => {
+        cards = ctx.shop.slice(0,3).map((item) => (
+        <TouchableOpacity
+            key={item._id}
+            style={styles.wrapper4}
+            onPress={() => {
+            navigation.navigate("FoodShop", { id: item._id });
+            }}
+        >
+            <ShopCard
+            img={canteen}
+            line1={item.name}
+            line2="Snacks & cuisines"
+            rating={item.rating}
+            />
+        </TouchableOpacity>
+        ));
+    };
+    fetchData();
+
+    const [isVisible, setIsVisible] = useState(false);
     return (
         <View style={styles.mainContainer}>
         <ScrollView  style={styles.main}>
@@ -93,12 +118,7 @@ const Dash=()=>{
                         </TouchableOpacity>
                 </View>
                 <View style={styles.nearYou}>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapper4} onPress={()=>{navigation.navigate("FoodShop");}}>
-                    <ShopCard img={canteen} line1="Brahma Canteen" dist="200m" line2="Snacks.Cuisines" rating="4.5"/>
-                    </TouchableOpacity>
+                    {cards}
                 </View>
             </View>
             
