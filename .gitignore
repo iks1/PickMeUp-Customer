@@ -19,3 +19,4 @@ web-build/
 
 # files
 package-lock.json
+config.js

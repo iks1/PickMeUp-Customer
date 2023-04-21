@@ -4,12 +4,14 @@ import Search_icon2 from '../assets/Search_icon2.svg';
 import Search_icon3 from '../assets/Search_icon3.svg';
 import Search_icon3_copy from '../assets/Search_icon3_copy.svg';
 import Close from '../assets/close.svg'
-import {StyleSheet, View, Text, TextInput,Modal} from 'react-native';
+import {StyleSheet, View, Text, TextInput,Modal, TouchableOpacity} from 'react-native';
 import { useState } from "react";
 import FilterCard from "./FilterCard";
+import { useNavigation } from "@react-navigation/native";
 const SearchBar = props => {
-
+    const navigation = useNavigation();
     const [vis, setVis] = useState(false);
+    const [text, setText] = useState("");
     return (
         <View style={{flexDirection:'column', alignItems:'center', width:'100%'}}>
 
@@ -18,19 +20,21 @@ const SearchBar = props => {
                 style={[styles.text,{width:"75%"}]}
                 placeholder={props.textInput}
                 placeholderTextColor="#A9A9A9"
+                defaultValue={props.defText?defText:text}
+                onChangeText={(newText)=>{setText(newText)}}
             />
            
             <View style={[styles.iconContainer,{flexDirection:'row'}]}>
-            <View style={{marginLeft:4,marginRight:4}}>
+            <TouchableOpacity style={{marginLeft:4,marginRight:4}} onPress={()=>{navigation.navigate("SearchPlaces",{tex:{text}})}}>
                 <Search_icon1  />
-            </View>
+            </TouchableOpacity>
             
-            <View style={{marginLeft:4,marginRight:4}}>
+            <TouchableOpacity style={{marginLeft:4,marginRight:4}}>
                 <Search_icon2  />
-            </View>
-            <View style={{marginLeft:4,marginRight:4}}>
+            </TouchableOpacity>
+            <TouchableOpacity style={{marginLeft:4,marginRight:4}}>
             {vis==true ?<Search_icon3_copy onPress={()=>{setVis(!vis)}}/> : <Search_icon3 onPress={()=>{setVis(!vis)}}/>}
-            </View>
+            </TouchableOpacity>
            
             {/* <Image source={Search_icon1} alt="" className="card-img" style={styles.icon3}  /> */}
             </View>
