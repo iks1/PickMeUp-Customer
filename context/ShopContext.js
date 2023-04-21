@@ -6,7 +6,8 @@ import { getFavouritesItems } from "../api/user";
 
 export const ShopProvider = ({ children }) => {
   const [shop, setShop] = useState([]);
-  const [items, setItems] = useState([]);  const [favItem, setFavItem] = useState([]);
+  const [items, setItems] = useState([]);  
+  const [favItem, setFavItem] = useState([]);
 
   const pushShops = async () => {
     const response = await getAllShops();
