@@ -1,15 +1,18 @@
 import React, { createContext, useState, useEffect } from "react";
 export const ShopContext = createContext();
 import { getAllShops } from "../api/shop";
+import { getAllItems } from "../api/shop";
 import { getFavouritesItems } from "../api/user";
 
 export const ShopProvider = ({ children }) => {
   const [shop, setShop] = useState([]);
-  const [favItem, setFavItem] = useState([]);
+  const [items, setItems] = useState([]);  const [favItem, setFavItem] = useState([]);
 
   const pushShops = async () => {
     const response = await getAllShops();
+    const response2 = await getAllItems();
     const shops = response.data;
+    const items = response2.data;
     setShop((prev) => {
       return [...prev, ...shops];
     });
@@ -26,7 +29,8 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     pushShops();
   }, []);
-  console.log(shop);
+  console.log("SHOP FETCHED", shop);
+  console.log("iTEM fetched", items);
   return (
     <ShopContext.Provider
       value={{
