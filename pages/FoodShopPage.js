@@ -23,20 +23,27 @@ import { ShopContext } from "../context/ShopContext";
 import { getShopById } from "../api/shop";
 
 const FoodShopPage = ({ route }) => {
-  const [shop, setShop] = useState({});
+  const [shopI, setShopI] = useState({});
   let shopId = route.params.id;
-  console.log(shopId);
-  const fetchData = async () => {
-    const { data } = await getShopById(shopId);
-    setShop((prev) => {
-      return { ...data };
-    });
-  };
-  2;
+  const [itemList,setItemList] = useState([]);
+  console.log(shopId)
+  const ctx = useContext(ShopContext);
   useEffect(() => {
-    fetchData();
-  }, []);
-  console.log(shop);
+    //Runs only on the first render
+    const items = [];
+    ctx.shop.forEach(element =>{
+      if(element._id === shopId){
+        setShopI(element)
+        element.menu.forEach(item=>{
+        items.push(item)
+        })
+      }
+    })
+    setItemList(prev=>[...items])
+  }, [shopId]);
+  
+  console.log(shopI);
+  console.log(itemList)
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
@@ -44,37 +51,27 @@ const FoodShopPage = ({ route }) => {
   const toggleFavourite = () => {
     setIsFavourite((isFavourite) => !isFavourite);
   };
-  const arr = [
-    {
-      heading: "Chicken Tikka Masala",
-      price: "₹265",
-      ratingValue: "4.0",
-      bestSeller: 1,
-      veg: 0,
-      id: 12,
-      image: { chickenImage },
-    },
-    {
-      heading: "Butter Panner",
-      price: "₹400",
-      ratingValue: "2.0",
-      bestSeller: 0,
-      veg: 1,
-      image: { chickenImage },
-      id: 432,
-    },
-  ];
 
+const itemCard = itemList.map(item=> <FoodItemCard
+  heading={item.name}
+  fullPrice={item.price}
+  ratingValue={item.rating}
+  veg={item.veg ? 1 : 0}
+  bestSeller={1}
+  halfFull="1"
+  image={chickenImage}
+  halfPrice="160"
+/>)
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
         <View style={styles.UpperParent}>
           <ShopHeader isFavourite={isFavourite} onPress={toggleFavourite} />
           <ShopCardInFocus
-            isOpen={shop.isOpened ? "OPEN" : "CLOSE"}
-            rating={shop.rating}
-            name={shop.name}
-            contact={shop.phone_number}
+            isOpen={shopI.isOpened ? "OPEN" : "CLOSE"}
+            rating={shopI.rating}
+            name={shopI.name}
+            contact={shopI.phone_number}
           />
           <View style={styles.searchArea}>
             <SearchBar textInput="Search for food items..." />
@@ -102,34 +99,7 @@ const FoodShopPage = ({ route }) => {
             <Text style={styles.recommendedTextStyle}>Recommended</Text>
             <UpArrowIcon />
           </View>
-          <FoodItemCard
-            heading="Chicken Tikka"
-            fullPrice="250"
-            ratingValue="4.5"
-            veg={0}
-            bestSeller={1}
-            halfFull="0"
-            image={chickenImage}
-          />
-          <FoodItemCard
-            heading="Chicken Tikka"
-            fullPrice="250"
-            ratingValue="4.5"
-            veg={0}
-            bestSeller={1}
-            halfFull="1"
-            image={chickenImage}
-            halfPrice="160"
-          />
-          <FoodItemCard
-            heading="Chicken Tikka"
-            fullPrice="250"
-            ratingValue="4.5"
-            veg={0}
-            bestSeller={1}
-            halfFull="0"
-            image={chickenImage}
-          />
+    {itemCard}
         </View>
       </ScrollView>
       <NavBar active="Food" />

@@ -28,6 +28,7 @@ export const ShopProvider = ({ children }) => {
     <ShopContext.Provider
       value={{
         shop,
+        items
       }}
     >
       {children}

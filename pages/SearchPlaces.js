@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   View,
@@ -16,40 +16,99 @@ import { useNavigation } from "@react-navigation/native";
 import { getAllShops, getShopById } from "../api/shop";
 import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
-
+import Item from "../components/item"
 const SearchPlaces=({route})=>{
-    // console.log(route.params.tex.text)
-    let searchPhrase = route.params.tex.text
+    
+    const [state,setState] = useState(1)
+    const text = route.params.tex.text;
     const navigation = useNavigation();
     const ctx = useContext(ShopContext);
     let cards = [];
-    let res = []
-    console.log(ctx.shop[0].rating)
-    ctx.shop.forEach(item => {
-        if(item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))){
-            res.push(item)
-            console.log(item.rating)
+    const [res,setRes]=useState([])
+    // console.log(ctx.shop[0].rating)
+    useEffect(()=>{
+        if(state===1){
+            const newArray = [];
+            ctx.shop.forEach(item => {
+                if(item.name.toUpperCase().includes(text.toUpperCase().trim().replace(/\s/g, ""))){
+                   newArray.push(item)
+                }
+            });
+            setRes((prev)=>[...newArray])
         }
-    });
-  const fetchData = async () => {
+          else if(state===2){
+            
+              const newArray = []
+            console.log(ctx.items)
+            ctx.items.forEach(element => {
+            
+                if(element.name.toUpperCase().includes(text.toUpperCase().trim().replace(/\s/g, ""))){
+                    newArray.push(element);
+                }
+            });
+            setRes((prev)=>[...newArray])
+          }
+          else if(state===3){
+            const newArray = [];
+            ctx.items.forEach(element => {
+               
+                if((element.name.toUpperCase().includes(text.toUpperCase().trim().replace(/\s/g, "")) && (element.isFood ===false))){
+                    newArray.push(element)
+                    
+                }
+            });   
+        setRes((prev)=>[...newArray])       }
+
+    },[state])
+if(state === 1){
     cards = res.map((item) => (
-      <TouchableOpacity
-        key={item._id}
-        style={styles.wrapper4}
-        onPress={() => {
-          navigation.navigate("FoodShop", { id: item._id });
-        }}
-      >
-        <ShopCard
-          img={canteen}
-          line1={item.name}
-          line2="Snacks & cuisines"
-          rating={item.rating}
-        />
-      </TouchableOpacity>
-    ));
-  };
-  fetchData();
+       <TouchableOpacity
+         key={item._id}
+         style={styles.wrapper4}
+         onPress={() => {
+           navigation.navigate("FoodShop", { id: item._id });
+         }}
+       >
+         <ShopCard
+         key={item._id}
+           img={canteen}
+           line1={item.name}
+           line2="Snacks & cuisines"
+           rating={item.rating}
+         />
+       </TouchableOpacity>
+     ));
+}else if (state === 2){
+    cards = res.map((element) => (
+       
+        <TouchableOpacity
+          key={element._id}
+          style={styles.wrapper4}
+          onPress={() => {
+            navigation.navigate("FoodShop", { id: element.shopId });
+          }}
+        >
+          <Item 
+          name={element.name} 
+          shop={element.price} />
+        </TouchableOpacity>
+      ));
+}else if(state === 3){
+    cards = res.map((element) => (
+        <TouchableOpacity
+          key={element._id}
+          style={styles.wrapper4}
+          onPress={() => {
+            navigation.navigate("FoodShop", { id: element.shopId });
+          }}
+        >
+          <Item 
+          name={element.name} 
+          shop={element.price} />
+        </TouchableOpacity>
+      ));
+}
+  console.log(res)
     return(
         <View>
             <ScrollView>
@@ -61,14 +120,14 @@ const SearchPlaces=({route})=>{
             <SearchBar textInput="Search here for restaurant, food, etc"/>
             <View style={styles.tabs}>
                         <ScrollView horizontal={true}>
-                            <TouchableOpacity style={styles.tab1} onPress={()=>{navigation.navigate("Pending");}}>
-                                <Text style={styles.tabtext1}>Places</Text>
+                            <TouchableOpacity style={state === 1? styles.tab1 : styles.tab2} onPress={()=>{ setState(1)}}>
+                                <Text style={state ===1 ?  styles.tabtext1 : styles.tabtext2}>Places</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.tab2} onPress={()=>{navigation.navigate("Ready");}}>
-                                <Text style={styles.tabtext2}>Food</Text>
+                            <TouchableOpacity style={state === 2? styles.tab1 : styles.tab2} onPress={()=>{setState(2)}}>
+                                <Text style={state ===2 ?  styles.tabtext1 : styles.tabtext2}>Food</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.tab3} onPress={()=>{navigation.navigate("Completed");}}>
-                                <Text style={styles.tabtext2}>Stationary</Text>
+                            <TouchableOpacity style={state === 3? styles.tab1 : styles.tab2} onPress={()=>{setState(3)}}>
+                                <Text style={state ===3 ?  styles.tabtext1 : styles.tabtext2}>Stationary</Text>
                             </TouchableOpacity>
                         </ScrollView>
             </View>

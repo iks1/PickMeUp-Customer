@@ -60,7 +60,7 @@ export const getSession = (token) => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8080/api/auth/user/jwt",
+      url: `${client}/api/auth/user/jwt`,
       headers: {
         Authorization: ` Bearer ${token}`,
       },
@@ -83,7 +83,7 @@ export const renewSession = (token) => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8080/api/auth/user/renew",
+      url: `${client}/api/auth/user/renew`,
       headers: {
         Authorization: ` Bearer ${token}`,
       },
