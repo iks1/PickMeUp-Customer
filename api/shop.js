@@ -36,6 +36,38 @@ export const getAllShops = async () => {
       });
   });
 };
+export const getAllItems = async () => {
+  return new Promise(async (resolve, reject) => {
+    const rawToken = await getAccessToken();
+    const accessToken = rawToken.replace(/['"]+/g, "");
+
+    let data = "";
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `${client}/api/item/allItems`,
+      headers: {
+        Authorization: ` Bearer ${accessToken}`,
+      },
+      data: data,
+    };
+    axios
+      .request(config)
+      .then(async (response) => {
+        if (response.data.success === false) {
+          const RefreshToken = await AsyncStorage.getItem("refreshToken");
+          const { data } = await renewSession(RefreshToken);
+          await AsyncStorage.setItem("accessToken", data.access_token);
+          getAllShops();
+        }
+        return resolve(response.data);
+      })
+      .catch((error) => {
+        console.log("AXIOS_ERROR_here", error);
+        // return reject(new Error(error.message));
+      });
+  });
+};
 export const getShopById = async (id) => {
   return new Promise(async (resolve, reject) => {
     const rawToken = await getAccessToken();
