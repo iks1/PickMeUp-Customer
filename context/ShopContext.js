@@ -6,37 +6,50 @@ import { getFavouritesItems } from "../api/user";
 
 export const ShopProvider = ({ children }) => {
   const [shop, setShop] = useState([]);
-  const [items, setItems] = useState([]);  
+  const [items, setItems] = useState([]);
   const [favItem, setFavItem] = useState([]);
 
   const pushShops = async () => {
-    const response = await getAllShops();
-    const response2 = await getAllItems();
-    const shops = response.data;
-    const items = response2.data;
+    let shops;
+    let items;
+
+    try {
+      const response = await getAllShops();
+      const response2 = await getAllItems();
+      shops = response.data;
+      items = response2.data;
+    } catch (err) {
+      console.log(err);
+    }
     setShop((prev) => {
-      return [...prev, ...shops];
+      return [...shops];
+    });
+    setItems((prev) => {
+      return [...items];
     });
   };
 
   const pushFavItems = async () => {
-    const response = await getFavouritesItems();
-    const favItems = response.data;
+    let favItems;
+    try {
+      const response = await getFavouritesItems();
+      favItems = response.data;
+    } catch (err) {
+      console.log(err);
+    }
     setFavItem((prev) => {
-      return [...prev, ...favItems];
+      return [...favItems];
     });
   };
 
   useEffect(() => {
     pushShops();
   }, []);
-  console.log("SHOP FETCHED", shop);
-  console.log("iTEM fetched", items);
   return (
     <ShopContext.Provider
       value={{
         shop,
-        items
+        items,
       }}
     >
       {children}

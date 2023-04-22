@@ -22,7 +22,6 @@ import SmallShopCard from "../components/smallShopCard";
 import Recommended from "./../components/recommended";
 import bg from "./../assets/recdummy.png";
 import { useNavigation } from "@react-navigation/native";
-import { getAllShops, getShopById } from "../api/shop";
 import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
@@ -31,25 +30,27 @@ const Dash = ({}) => {
   const ctx = useContext(ShopContext);
   let cards = [];
   let favI = [];
-
   const fetchData = async () => {
-    cards = ctx.shop.filter(item => item.isFood==true).slice(0,3).map((item) => (
-      <TouchableOpacity
-        key={item._id}
-        style={styles.wrapper4}
-        onPress={() => {
-          navigation.navigate("FoodShop", { id: item._id });
-        }}
-      >
-        <ShopCard
-          img={canteen}
-          line1={item.name}
-          line2="Snacks & cuisines"
-          rating={item.rating}
-        />
-      </TouchableOpacity>
-    ));
-    
+    cards = ctx.shop
+      .filter((item) => item.isFood == true)
+      .slice(0, 3)
+      .map((item) => (
+        <TouchableOpacity
+          key={item._id}
+          style={styles.wrapper4}
+          onPress={() => {
+            navigation.navigate("FoodShop", { id: item._id });
+          }}
+        >
+          <ShopCard
+            img={canteen}
+            line1={item.name}
+            line2="Snacks & cuisines"
+            rating={item.rating}
+          />
+        </TouchableOpacity>
+      ));
+
     favI = ctx.favItem.map((item) => (
       <TouchableOpacity
         key={item._id}
@@ -66,9 +67,12 @@ const Dash = ({}) => {
         />
       </TouchableOpacity>
     ));
-
   };
-  fetchData();
+  try {
+    fetchData();
+  } catch (err) {
+    console.log(err);
+  }
 
   const [isVisible, setIsVisible] = useState(false);
   return (
@@ -192,7 +196,8 @@ const Dash = ({}) => {
 
           <View style={styles.placeYouLove}>
             <ScrollView horizontal={true}>
-              <TouchableOpacity style={styles.box}
+              <TouchableOpacity
+                style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -205,7 +210,8 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}
+              <TouchableOpacity
+                style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -218,7 +224,8 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}
+              <TouchableOpacity
+                style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}
@@ -231,7 +238,8 @@ const Dash = ({}) => {
                   line1="Brahma Food Center"
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}
+              <TouchableOpacity
+                style={styles.box}
                 onPress={() => {
                   navigation.navigate("FoodShop");
                 }}

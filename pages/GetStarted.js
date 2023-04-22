@@ -19,10 +19,15 @@ const Start = () => {
   useEffect(() => {
     try {
       const getUserSession = async () => {
+        let data;
         const token = await AsyncStorage.getItem("accessToken");
-        console.log(token);
         if (token) {
-          const data = await getSession(token);
+          try {
+            data = await getSession(token);
+          } catch (err) {
+            console.log(err);
+            r;
+          }
           if (data.success === true) {
             navigation.replace("Home");
           } else if (data.errorMessage === "JWT_EXPIRED") {
@@ -38,7 +43,7 @@ const Start = () => {
       };
       getUserSession();
     } catch (err) {
-      console.log(err);
+      console.log("error here", err);
     }
   }, []);
 

@@ -69,7 +69,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async (navigation) => {
-    await AsyncStorage.removeItem("accessToken");
+    try {
+      await AsyncStorage.removeItem("accessToken");
+    } catch (err) {
+      console.log(err);
+    }
     navigation.replace("GetStarted");
   };
 

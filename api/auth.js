@@ -1,5 +1,6 @@
 import client from "../config";
 import axios from "axios";
+import { baseURL } from "../config";
 
 export const createUser = async (name, email, password) => {
   const { data } = await client.post(
@@ -60,7 +61,7 @@ export const getSession = (token) => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `${client}/api/auth/user/jwt`,
+      url: `${baseURL}/api/auth/user/jwt`,
       headers: {
         Authorization: ` Bearer ${token}`,
       },
@@ -70,6 +71,7 @@ export const getSession = (token) => {
     axios
       .request(config)
       .then((response) => {
+        console.log(response.data);
         resolve(response.data);
       })
       .catch((error) => {
@@ -83,7 +85,7 @@ export const renewSession = (token) => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `${client}/api/auth/user/renew`,
+      url: `${baseURL}/api/auth/user/renew`,
       headers: {
         Authorization: ` Bearer ${token}`,
       },

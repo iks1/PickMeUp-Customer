@@ -1,4 +1,5 @@
 import { client } from "../config";
+import { baseURL } from "../config";
 import { renewSession } from "./auth";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -13,7 +14,7 @@ export const getAllShops = async () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `${client}/api/shop/allShops`,
+      url: `${baseURL}/api/shop/allShops`,
       headers: {
         Authorization: ` Bearer ${accessToken}`,
       },
@@ -45,7 +46,7 @@ export const getAllItems = async () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `${client}/api/item/allItems`,
+      url: `${baseURL}/api/item/allItems`,
       headers: {
         Authorization: ` Bearer ${accessToken}`,
       },
@@ -77,7 +78,7 @@ export const getShopById = async (id) => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `${client}/api/shop/getShopById/?id=${id}`,
+      url: `${baseURL}/api/shop/getShopById/?id=${id}`,
       headers: {
         Authorization: ` Bearer ${accessToken}`,
       },
