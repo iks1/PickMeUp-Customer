@@ -25,25 +25,23 @@ import { getShopById } from "../api/shop";
 const FoodShopPage = ({ route }) => {
   const [shopI, setShopI] = useState({});
   let shopId = route.params.id;
-  const [itemList,setItemList] = useState([]);
-  console.log(shopId)
+  const [itemList, setItemList] = useState([]);
   const ctx = useContext(ShopContext);
   useEffect(() => {
-    //Runs only on the first render
     const items = [];
-    ctx.shop.forEach(element =>{
-      if(element._id === shopId){
-        setShopI(element)
-        element.menu.forEach(item=>{
-        items.push(item)
-        })
+    ctx.shop.forEach((element) => {
+      if (element._id === shopId) {
+        setShopI(element);
+        element.menu.forEach((item) => {
+          items.push(item);
+        });
       }
-    })
-    setItemList(prev=>[...items])
+    });
+    setItemList((prev) => [...items]);
   }, [shopId]);
-  
+
   console.log(shopI);
-  console.log(itemList)
+  console.log(itemList);
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
@@ -52,16 +50,24 @@ const FoodShopPage = ({ route }) => {
     setIsFavourite((isFavourite) => !isFavourite);
   };
 
-const itemCard = itemList.map(item=> <FoodItemCard
-  heading={item.name}
-  fullPrice={item.price}
-  ratingValue={item.rating}
-  veg={item.veg ? 1 : 0}
-  bestSeller={1}
-  halfFull="1"
-  image={chickenImage}
-  halfPrice="160"
-/>)
+  const itemCard = itemList.map((item) => {
+    console.log(item._id);
+    return (
+      <FoodItemCard
+        shopId={shopId}
+        itemId={item._id}
+        key={item._id}
+        heading={item.name}
+        fullPrice={item.price}
+        ratingValue={item.rating}
+        veg={item.veg ? 1 : 0}
+        bestSeller={1}
+        halfFull="1"
+        image={chickenImage}
+        halfPrice="160"
+      />
+    );
+  });
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
@@ -99,7 +105,7 @@ const itemCard = itemList.map(item=> <FoodItemCard
             <Text style={styles.recommendedTextStyle}>Recommended</Text>
             <UpArrowIcon />
           </View>
-    {itemCard}
+          {itemCard}
         </View>
       </ScrollView>
       <NavBar active="Food" />

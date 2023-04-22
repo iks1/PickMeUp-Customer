@@ -18,15 +18,23 @@ import Arrow from "../assets/leftArrow.svg";
 import { useNavigation } from "@react-navigation/native";
 import Burger from "../assets/burger.png";
 import BillSummary from "../components/billSummary";
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
 
-const BillingPage = (props) => {
+const BillingPage = ({ route }) => {
+  const ctx = useContext(ShopContext);
+  let shopId = route.params.shopId;
+  let itemId = route.params.itemId;
+  let isFull = route.params.isFull;
+  let quantity = route.params.quantity;
   const [checked, setChecked] = useState(false);
+  const itemList = ctx.itemList;
+  console.log(" ffsdf", itemList);
   const navigation = useNavigation();
   const handlePress = () => {
     setChecked(!checked);
   };
   const [total, setTotal] = useState(0);
-
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.main}>
@@ -42,18 +50,7 @@ const BillingPage = (props) => {
 
         <View style={styles.down}>
           <View style={styles.added}>
-            <ItemsAdded
-              list={[
-                {
-                  veg: 0,
-                  quantity: 2,
-                  item: "Chicken Tikka Masala",
-                  price: 265,
-                },
-                { veg: 1, quantity: 3, item: "Tandoori Roti", price: 12 },
-                { veg: 1, quantity: 1, item: "Veg Fried Rice", price: 80 },
-              ]}
-            />
+            <ItemsAdded list={itemList} />
           </View>
 
           <View style={styles.Head}>

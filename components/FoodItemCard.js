@@ -6,7 +6,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
-  Modal
+  Modal,
 } from "react-native";
 
 // icons
@@ -56,7 +56,13 @@ const FoodCard = (props) => {
                   setQuantity((quantity) => quantity + 1);
                 }}
               >
-                <TouchableOpacity onPress={()=>{setVis(!vis)}}><Text style={styles.addText}>Add +</Text></TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    setVis(!vis);
+                  }}
+                >
+                  <Text style={styles.addText}>Add +</Text>
+                </TouchableOpacity>
               </TouchableOpacity>
             </View>
           ) : (
@@ -87,11 +93,34 @@ const FoodCard = (props) => {
       </View>
       <HorizontalDashedLine style={styles.line} />
       <Modal transparent={true} visible={vis}>
-        <View style={{flex:1,flexDirection:'column',alignItems:'center', backgroundColor:'#000000aa'}}>
-                  <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={()=>{setVis(!vis)}}></TouchableOpacity>
-                  <View style={{bottom:0, position:'absolute', width:"100%"}}>
-                    <FoodPopUp image={props.image} veg={props.veg} bestSeller={props.bestSeller} halfFull={props.halfFull} price1={props.halfPrice} price2={props.fullPrice} rating={props.ratingValue} itemName={props.heading} />
-                  </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "#000000aa",
+          }}
+        >
+          <TouchableOpacity
+            style={{ height: "100%", width: "100%" }}
+            onPress={() => {
+              setVis(!vis);
+            }}
+          ></TouchableOpacity>
+          <View style={{ bottom: 0, position: "absolute", width: "100%" }}>
+            <FoodPopUp
+              itemId={props.itemId}
+              shopId={props.shopId}
+              image={props.image}
+              veg={props.veg}
+              bestSeller={props.bestSeller}
+              halfFull={props.halfFull}
+              price1={props.halfPrice}
+              price2={props.fullPrice}
+              rating={props.ratingValue}
+              itemName={props.heading}
+            />
+          </View>
         </View>
       </Modal>
     </View>

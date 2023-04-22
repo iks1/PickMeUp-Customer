@@ -71,7 +71,6 @@ export const getSession = (token) => {
     axios
       .request(config)
       .then((response) => {
-        console.log(response.data);
         resolve(response.data);
       })
       .catch((error) => {

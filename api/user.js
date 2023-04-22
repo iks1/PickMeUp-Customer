@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { getAccessToken } from "../utils/getTokens";
 import { baseURL } from "../config";
 
 export const getFavouritesItems = async (userId) => {
@@ -33,6 +34,32 @@ export const getFavouritesItems = async (userId) => {
       })
       .catch((error) => {
         console.log("AXIOS_ERROR_here", error);
+        // return reject(new Error(error.message));
+      });
+  });
+};
+export const getUser = async () => {
+  return new Promise(async (resolve, reject) => {
+    const rawToken = await getAccessToken();
+    const accessToken = rawToken.replace(/['"]+/g, "");
+
+    let data = "";
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `${baseURL}/api/user/getUser`,
+      headers: {
+        Authorization: ` Bearer ${accessToken}`,
+      },
+      data: data,
+    };
+    axios
+      .request(config)
+      .then(async (response) => {
+        return resolve(response.data);
+      })
+      .catch((error) => {
+        console.log("AXIOS_ERROR_here in fetching user details", error);
         // return reject(new Error(error.message));
       });
   });
