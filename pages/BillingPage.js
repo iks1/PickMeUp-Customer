@@ -22,11 +22,11 @@ import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 const BillingPage = ({ route }) => {
+  let totalPrice = 0;
   const ctx = useContext(ShopContext);
-  let shopId = route.params.shopId;
-  let itemId = route.params.itemId;
-  let isFull = route.params.isFull;
-  let quantity = route.params.quantity;
+  ctx.itemList.forEach((item) => {
+    totalPrice = totalPrice + parseInt(item.totalPrice);
+  });
   const [checked, setChecked] = useState(false);
   const itemList = ctx.itemList;
   console.log(" ffsdf", itemList);
@@ -118,10 +118,10 @@ const BillingPage = ({ route }) => {
 
           <View style={{ width: "100%" }}>
             <BillSummary
-              subtotal={total}
+              subtotal={+totalPrice}
               tax="18.45"
               packing="10"
-              total="398.45"
+              total={+totalPrice + 18.45}
             />
           </View>
         </View>

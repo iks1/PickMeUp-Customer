@@ -20,7 +20,7 @@ import Minus from "../assets/minus.svg";
 import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useNavigation } from "@react-navigation/native";
-
+import SmallPopUp from "../components/smallPopUp";
 const FoodPopUp = (props) => {
   const ctx = useContext(ShopContext);
   let itemId = props.itemId;
@@ -159,12 +159,7 @@ const FoodPopUp = (props) => {
               ctx.addToList({ itemId: itemId }, { shopId: shopId }, num, {
                 isFull: selectedOption === 2 ? true : false,
               });
-              navigation.navigate("BillingPage", {
-                itemId: { itemId },
-                quantity: num,
-                shopId: { shopId },
-                isFull: selectedOption === 2 ? true : false,
-              });
+              props.changeVisibility();
             }}
           >
             <Text style={styles.text2}>Add item</Text>

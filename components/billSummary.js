@@ -23,7 +23,6 @@ const Bill = (props) => {
     };
     RazorpayCheckout.open(options)
       .then((data) => {
-        // handle success
         alert(`Success: ${data.razorpay_payment_id}`);
       })
       .catch((error) => {

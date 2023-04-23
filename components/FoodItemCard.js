@@ -15,7 +15,6 @@ import StarIcon from "../assets/Icons/StarIcon";
 import VegIcon from "../assets/Icons/VegIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
 import MinusIcon from "../assets/Icons/MinusIcon";
-
 // image
 import chickenImage from "./../assets/Img/Chicken.png";
 
@@ -26,6 +25,9 @@ import FoodPopUp from "./FoodPopUp";
 const FoodCard = (props) => {
   const [vis, setVis] = useState(false);
   const [quantity, setQuantity] = useState(0);
+  const changeVisibility = () => {
+    setVis((prev) => !prev);
+  };
   return (
     <View style={styles.foodCardMainContainer}>
       <View style={styles.container}>
@@ -109,6 +111,7 @@ const FoodCard = (props) => {
           ></TouchableOpacity>
           <View style={{ bottom: 0, position: "absolute", width: "100%" }}>
             <FoodPopUp
+              changeVisibility={changeVisibility}
               itemId={props.itemId}
               shopId={props.shopId}
               image={props.image}

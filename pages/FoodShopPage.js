@@ -11,6 +11,7 @@ import SearchBar from "../components/SearchBar2";
 import ShopHeader from "../components/ShopHeader";
 import FoodPopUp from "../components/FoodPopUp";
 import NavBar from "../components/Navbar";
+import SmallPopUp from "../components/smallPopUp";
 
 // icons
 import UpArrowIcon from "../assets/Icons/UpArrowIcon";
@@ -23,9 +24,11 @@ import { ShopContext } from "../context/ShopContext";
 import { getShopById } from "../api/shop";
 
 const FoodShopPage = ({ route }) => {
+  const [vis, setVis] = useState(false);
   const [shopI, setShopI] = useState({});
   let shopId = route.params.id;
   const [itemList, setItemList] = useState([]);
+
   const ctx = useContext(ShopContext);
   useEffect(() => {
     const items = [];
@@ -40,8 +43,13 @@ const FoodShopPage = ({ route }) => {
     setItemList((prev) => [...items]);
   }, [shopId]);
 
-  console.log(shopI);
-  console.log(itemList);
+  let numAdded = 0;
+  let totalPrice = 0;
+  console.log(ctx.itemList);
+  ctx.itemList.forEach((item) => {
+    numAdded = numAdded + item.quantity;
+    totalPrice = totalPrice + item.totalPrice;
+  });
   const navigation = useNavigation();
   const [veg, setVeg] = useState(true);
   const label = "Veg";
@@ -51,7 +59,6 @@ const FoodShopPage = ({ route }) => {
   };
 
   const itemCard = itemList.map((item) => {
-    console.log(item._id);
     return (
       <FoodItemCard
         shopId={shopId}
@@ -108,6 +115,9 @@ const FoodShopPage = ({ route }) => {
           {itemCard}
         </View>
       </ScrollView>
+      <View style={styles.popUp}>
+        <SmallPopUp text={numAdded} price={totalPrice} />
+      </View>
       <NavBar active="Food" />
     </View>
   );
@@ -260,6 +270,13 @@ const styles = StyleSheet.create({
   foodCardMainContainer: {
     backgroundColor: "#FFFFFF",
     // marginTop: -1,
+  },
+  popUp: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 64,
   },
 });
 

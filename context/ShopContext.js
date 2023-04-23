@@ -25,15 +25,21 @@ export const ShopProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
-    setShop((prev) => {
-      return [...shops];
-    });
-    setItems((prev) => {
-      return [...items];
-    });
-    setUser((prev) => {
-      return { ...user };
-    });
+    if (shops) {
+      setShop((prev) => {
+        return [...shops];
+      });
+    }
+    if (items) {
+      setItems((prev) => {
+        return [...items];
+      });
+    }
+    if (user) {
+      setUser((prev) => {
+        return { ...user };
+      });
+    }
   };
 
   const addToList = ({ itemId }, { shopId }, quantity, isFull) => {
@@ -43,6 +49,7 @@ export const ShopProvider = ({ children }) => {
         element.menu.forEach((item) => {
           if (item._id === itemId) {
             let itemObj = {
+              itemId: itemId,
               name: item.name,
               isVeg: item.veg,
               totalPrice: isFull
